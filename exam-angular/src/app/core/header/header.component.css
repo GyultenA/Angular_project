@@ -1,78 +1,50 @@
-header {
-    background: rgb(0, 128, 182);
-    background: linear-gradient(
-      0deg,
-      rgba(0, 128, 182, 1) 0%,
-      rgba(0, 128, 182, 1) 35%,
-      rgba(0, 212, 255, 1) 100%
-    );
-  }
-  
-  header ul {
-    padding: 0;
+
+.container {
+    /*max-width: 1200px;*/
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.site-header {
+    padding: 2em;
+}
+
+.site-header {
     display: flex;
-    align-items: center;
-    width: 75%;
-    margin: auto;
-  }
-  
-  header ul span {
-    color: white;
-    padding: 0.5em;
-  }
-  
-  .mini-navbar ul {
-    border: 1px solid #00d4ff;
-    border-radius: 0.3em;
-    padding-left: 0;
-    width: 100%;
-  }
-  
-  header li {
-    list-style: none;
-    margin: 0.35em;
-    padding: 0 0.95em;
-  }
-  
-  header a {
-    text-decoration: none;
-    color: white;
-    cursor: pointer;
-  }
-  
-  nav {
-    border-top: 1px solid #00acf4;
-  }
-  
-  .logo {
-    font-size: 1.3em;
-    color: white;
-    padding-bottom: 0;
-  }
-  
-  .logo-wrap {
-    font-family: "Parisienne", cursive;
-    letter-spacing: 0.5em;
-    margin: 0.5em 0;
-  }
-  
-  .mini-navbar-wrap {
-    display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    width: 75%;
-    margin: auto;
-  }
-  
-  /* mini-navbar */
-  
-  .mini-navbar ul {
-    background-color: #6ba1b8;
-    border-radius: 5px;
-  }
-  
-  .mini-navbar ul li + li {
-    border-left: 1px solid lightgrey;
-    padding-left: 0.5em;
-  }
+
+}
+.site-header nav {
+    padding-right: 1em;
+}
+
+.site-header nav ul {
+    display: flex;
+}
+
+nav li {
+    list-style: none outside;
+    padding: 0 0.5em;
+    color: #112faa;
+    font-size: 18px;
+}
+
+.site-header nav a {
+    text-decoration: none;
+    color: #0e770e;   
+}
+
+.site-title a {
+    display: block;
+    width: 130px;
+    height: 110px;
+    overflow: hidden;
+    text-indent: -250vw;
+   /* background-image: url("images/logo.webp");*/
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-left: 20em;
+}

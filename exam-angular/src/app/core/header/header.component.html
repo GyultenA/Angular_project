@@ -1,32 +1,14 @@
-<p>header works!</p>
-<header>
-    <div class="mini-navbar-wrap">
-      <div class="logo-wrap">
-        <p class="logo"><span class="logo">SoftUni Forum</span></p>
-      </div>
-      <div *ngIf="!isLoggedIn" class="mini-navbar">
-        <ul>
-          <li>
-            <a href="#">Login</a>
-          </li>
-          <li>
-            <a href="#">Register</a>
-          </li>
-        </ul>
-      </div>
+<header class="site-section site-header">
+    <div class="site-title">
+        <a href="#">Business</a>
     </div>
     <nav>
-      <ul>
-        <li>
-          <a href="#">Home</a>
-        </li>
-        <li>
-          <a href="#">Themes</a>
-        </li>
-        <li>
-          <a href="#">New Theme</a>
-        </li>
-      </ul>
+        <ul>
+            <li><a routerLink="/home"></a>HOME</li>
+            <li><a routerLink="/dashboard"></a>DASHBOARD</li>
+            <li><a routerLink="/login"></a>LOGIN</li>
+            <li><a routerLink="/register"></a>REGISTER</li>
+            <li><a routerLink="contact"></a>CONTACT</li>
+        </ul>
     </nav>
-  </header>
-  
+</header>
