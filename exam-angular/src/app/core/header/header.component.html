@@ -6,8 +6,17 @@
         <ul>
             <li><a routerLink="/home"></a>HOME</li>
             <li><a routerLink="/dashboard"></a>DASHBOARD</li>
-            <li><a routerLink="/login"></a>LOGIN</li>
-            <li><a routerLink="/register"></a>REGISTER</li>
+
+            <ul *ngIf="isLoggedIn" class="user">
+                <li><a routerLink="/add-post">Create Post</a></li>
+                <li><a routerLink="/home">Logout</a></li>
+            </ul>
+
+                <ul *ngIf="!isLoggedIn" class="guest">
+                <li><a routerLink="/login"></a>LOGIN</li>
+                <li><a routerLink="/register"></a>REGISTER</li>
+                </ul>
+
             <li><a routerLink="contact"></a>CONTACT</li>
         </ul>
     </nav>

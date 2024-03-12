@@ -33,7 +33,8 @@ nav li {
 
 .site-header nav a {
     text-decoration: none;
-    color: #0e770e;   
+   /* color: #0e770e;   */
+   cursor: pointer;
 }
 
 .site-title a {
