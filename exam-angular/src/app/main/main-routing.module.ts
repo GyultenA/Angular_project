@@ -1,9 +1,21 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { DashboardComponent } from "../dashboard/dashboard.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { AddPostComponent } from "./add-post/add-post.component";
+import { PageComponent } from "./page/page.component";
+import { AuthActivate } from "../core/guards/auth";
 
 const routes: Routes = [
-    {path: "posts", component: DashboardComponent}
+    {
+        path: "posts",
+        children: [
+            { path: "", pathMatch: 'full', component: DashboardComponent }
+        ]
+    },
+    { path: ':postsId', component: PageComponent },
+    { path: 'add-post', component: AddPostComponent, 
+    //canActivate: [AuthActivate]
+ }
 ];
 
 
@@ -12,4 +24,4 @@ const routes: Routes = [
     exports: [RouterModule]
 })
 
-export class MainRoutingModule {}
+export class MainRoutingModule { }

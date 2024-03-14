@@ -1,4 +1,4 @@
-<p>add-post works!</p>
+
 <div class="login-page">
       <div class="form">
         <div class="login">
@@ -8,9 +8,9 @@
           </div>
         </div>
         <form class="login-form">
-          <input type="text" placeholder="username"/>
-          <input type="password" placeholder="password"/>
-          <button>login</button>
+          <input type="email" placeholder="email" name="email" id="email" #inputEmail/>
+          <input type="password" placeholder="password" id="password" name="password" #inputPassword />
+          <button (click)="login(inputEmail.value, inputPassword.value)">login</button>
           <p class="message">Not registered? <a routerLink="/register">Create an account</a></p>
         </form>
       </div>

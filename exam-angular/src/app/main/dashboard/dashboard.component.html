@@ -1,1 +1,18 @@
-<p>dashboard works!</p>
+<p>dashboard</p>
+<h2>See en the new posts</h2>
+<section id="dashboard">
+    <div *ngIf="!isLoading">
+        <app-loader />
+    </div>
+    <!-- Display a div with information about every post (if any)-->
+    <div *ngIf="isLoading">
+        <div *ngFor="let post of postslist" class="post-list-container">
+            <h3 class="username">{{post.userId.username}}</h3>
+            <img src="" alt="" />
+            <p class="comment">{{post.text}}</p>
+            <p>Date: <time>{{post.created_at}}</time></p>
+            <a class="details-btn" [routerLink]="">More Info</a><!--{{post.id}}-->
+        </div>
+    </div>
+
+</section>

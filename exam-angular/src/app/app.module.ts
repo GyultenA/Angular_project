@@ -11,13 +11,15 @@ import { MainModule } from './main/main.module';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { UsersModule } from './users/users.module';
-import { PageComponent } from './page/page.component';
+import { PageComponent } from './main/page/page.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ErrorComponent,
+    WelcomeComponent,
     
    
   ],
