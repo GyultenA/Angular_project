@@ -12,25 +12,25 @@ import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { UsersModule } from './users/users.module';
 import { PageComponent } from './main/page/page.component';
-import { WelcomeComponent } from './welcome/welcome.component';
+//import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ErrorComponent,
-    WelcomeComponent,
+
     
    
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     CoreModule,
     SharedModule,
     MainModule,
     UsersModule,
     HttpClientModule,
-    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

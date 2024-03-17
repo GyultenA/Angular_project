@@ -2,16 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from './loader/loader.component';
 import { RouterModule } from '@angular/router';
+import { EmailDirective } from './validator/email.directive';
+
 
 
 
 @NgModule({
   declarations: [
-    LoaderComponent
+    LoaderComponent,
+    EmailDirective,
+  
   ],
   imports: [
     CommonModule, RouterModule
   ],
-  exports: [LoaderComponent,]
+  exports: [LoaderComponent, EmailDirective,]
 })
 export class SharedModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
 import { Post } from 'src/app/types';
+import { UserService } from 'src/app/users/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +12,11 @@ export class DashboardComponent  {
   postslist: Post[]= [];
   isLoading: boolean = true;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private userService: UserService) { }
+
+  get isLogged (): boolean {
+    return this.userService.isLogged;
+  }
 
   //ngOnInit(): void {
    // this.apiService.getAllPosts().subscribe(

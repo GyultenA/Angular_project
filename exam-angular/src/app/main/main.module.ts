@@ -5,6 +5,9 @@ import { AddPostComponent } from './add-post/add-post.component';
 import { MainRoutingModule } from './main-routing.module';
 import { PageComponent } from './page/page.component';
 import { SharedModule } from '../shared/shared.module';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+//import { WelcomeComponent } from '../welcome/welcome.component';
 
 
 
@@ -12,10 +15,14 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     DashboardComponent,
     AddPostComponent,
-    PageComponent
+    PageComponent,
   ],
   imports: [
-    CommonModule, MainRoutingModule,SharedModule
+    CommonModule, 
+    MainRoutingModule,
+    SharedModule, 
+    FormsModule,
+    //RouterModule
   ],
  exports: [
    DashboardComponent,

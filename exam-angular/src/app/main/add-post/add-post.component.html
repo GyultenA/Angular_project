@@ -1,1 +1,54 @@
 <p>add-post works!</p>
+<section id="create">
+    <article class="narrow">
+        <header class="pad-med">
+            <h1>New Post</h1>
+        </header>
+        <form id="create-form" class="main-form pad-large" #form="ngForm" (ngSubmit)="addPost(form)">
+            <div class="error">Error message.</div>
+            <label>Title: <input type="text" 
+                name="name" 
+                #inputTitle="ngModel"
+                ngModel
+                required
+                minlength="5"
+                >
+                <ng-container *ngIf="inputTitle.touched">
+                    <p class="error" *ngIf="inputTitle?.errors?.['required']">
+                      Theme name is required.
+                    </p>
+                    <p class="error" *ngIf="inputTitle?.errors?.['minlength']">
+                      Title must be at least 5 characters long.
+                    </p>
+                  </ng-container>
+            
+            </label>
+
+            <label>Logo URL: <input type="text" name="logoUrl"
+                ></label>
+
+            <label>Description: <textarea name="description"
+                #textareaPostText="ngModel"
+                ngModel
+                required
+                minlength="10"></textarea>
+                <ng-container *ngIf="textareaPostText.touched">
+                    <p class="error" *ngIf="textareaPostText?.errors?.['required']">
+                      The field with your post is required.
+                    </p>
+                    <p class="error" *ngIf="textareaPostText?.errors?.['minlength']">
+                      Post must be at least 10 characters long.
+                    </p>
+                  </ng-container>
+            </label>
+
+            <div class="new-post-buttons">
+                <button class="cancel">Cancel</button>
+                <button class="public" (click)="addPost(form)">Create Post</button>
+              </div>
+
+           <!--<input class="action cta" type="submit" value="Create Post">--> 
+
+        </form>
+    </article>
+</section>

@@ -1,22 +1,96 @@
-<p>add-post works!</p>
-<form>
+<p>Register works!</p>
+<form class="register" [formGroup]="form" (ngSubmit)="register()">
     <h2>Register Form</h2>
     <div class="input-container">
       <i class="fa fa-user icon"></i>
-      <input class="input-field" type="text" placeholder="Username" name="usrnm">
+      <input class="input-field" 
+      type="text"
+      id="username" 
+      placeholder="Username" 
+      name="username"
+      formControlName="username"
+      />
+      <ng-container *ngIf="form.get('username')?.touched">
+        <p class="error" *ngIf="form.get('username')?.errors?.['required']">
+          Username is required!
+        </p>
+  
+        <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">
+          Username must be at least 5 characters!
+        </p>
+      </ng-container>
     </div>
+
+   
+
   
     <div class="input-container">
       <i class="fa fa-envelope icon"></i>
-      <input class="input-field" type="text" placeholder="Email" name="email">
+      <input class="input-field" 
+      type="text" 
+      placeholder="Email" 
+      name="email"
+      id="email"
+      formControlName="email"
+      />
+      <ng-container *ngIf="form.get('email')?.touched">
+        <p class="error" *ngIf="form.get('email')?.errors?.['required']">
+          Email is required!
+        </p>
+        <p class="error" *ngIf="form.get('email')?.errors?.['emailValidator']">
+          Email is not valid!
+        </p>
+      </ng-container>
     </div>
+   
+
+    <ng-container formGroupName="passGroup">
+      <div class="input-container">
+        <label for="password">
+          <i class="fa fa-key icon"></i>
+        </label>
+        <input class="input-field" 
+        type="password" 
+        name="password"
+        id="password"
+        placeholder="Password" 
+        formControlName="password"
+        />
+      </div>
+
+      <div class="input-container">
+        <label for="rePass">
+          <i class="fa fa-key icon"></i>
+        </label>
+       
+        <input class="input-field" 
+        type="password" 
+        name="rePass"
+        id="rePass"
+        placeholder="Reapet Password" 
+        formControlName="rePassword"
+        />
+      </div>
+      <ng-container *ngIf="passGroup?.get('rePassword')?.touched">
+        <p
+          class="error"
+          *ngIf="passGroup?.errors?.['matchPasswordsValidator'] || 
+          passGroup?.get('rePassword')?.errors?.['required']"
+        >
+          Repeat Password does not match password!
+        </p>
+      </ng-container>
+
+    </ng-container>
   
-    <div class="input-container">
-      <i class="fa fa-key icon"></i>
-      <input class="input-field" type="password" placeholder="Password" name="psw">
-    </div>
-  
-    <button type="submit" class="btn">Register</button>
+    <button class="btn"
+    [disabled]="form.invalid"
+    [style]="{ backgroundColor: form.invalid ? 'grey' : 'blue' }"
+  > Create Account
+  </button>
+    
+  <!-- <button class="btn">Register</button>-->
+   
     <p class="text-center">
         Have an account?
         <a routerLink="/login">Log In</a>

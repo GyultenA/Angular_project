@@ -64,3 +64,9 @@ export interface Theme {
     updatedAt: string;
     __v: number;
   }
+
+  export interface ProfileDetails {
+    username: string;
+    email: string;
+   // tel: string;
+  }

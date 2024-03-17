@@ -1,0 +1,49 @@
+.main-form label {
+    display: block;
+    margin: 16px auto;
+    position: relative;
+}
+
+.main-form textarea {
+    display: block;
+    border: 1px solid #4f6457;
+    width: 100%;
+    resize: vertical;
+    height: 300px;
+    padding: 4px 8px;
+}
+
+.pad-small {
+    padding: 8px 16px;
+}
+
+.pad-med {
+    padding: 16px 32px;
+}
+
+.pad-large {
+    padding: 32px 64px;
+}
+
+
+.left-col {
+    float: left;
+}
+
+.narrow {
+    margin-left: 280px;
+    margin-right: 280px;
+}
+
+.cta {
+    display: block;
+    margin: 32px auto;
+    text-align: center;
+    width: 200px;
+    font-size: 20px;
+}
+
+.error {
+    text-align: center;
+    color: red
+}
