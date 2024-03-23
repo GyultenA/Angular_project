@@ -1,13 +1,23 @@
+footer {
+    background: rgb(219, 229, 231);
+   /* position: absolute;*/
+   /* bottom: 0;*/
+   /*width: 100vw;*/
+    
+  }
 
 .container {
     
-    max-width: 1400px;
+    max-width: 1000px;
     margin: 0 auto;
-   
     padding-top: 2em;
     padding-bottom: 2em;
 }
 
+.column ul li {
+
+    list-style: none;
+}
 
 
 .column-container {
@@ -35,10 +45,7 @@
 }
 
 
-.column ul li {
 
-    list-style: none;
-}
 
 .column h4 {
     padding-bottom: 1em;

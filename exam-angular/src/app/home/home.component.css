@@ -1,0 +1,24 @@
+.home-list a {
+    color: white;
+    text-decoration: none;
+    background-color: #4ebced;
+    border: none;
+    border-radius: 0.3em;
+    padding: 0.5em 5.2em;
+    margin: 1em;
+  }
+  
+  .home-list a:hover {
+    cursor: pointer;
+  }
+  
+  .home-list ul {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+    margin: 1em;
+  }
+  
+  .home-list li {
+    list-style: none;
+  }

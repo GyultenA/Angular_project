@@ -1,17 +1,37 @@
-export interface Theme {
+//export interface Posts {
+   // _id: string,
+  //  created_at: string,
+   // likes: number,
+   // text: string,
+   // title: string,
+   // updatedAt: string,
+  //  user_id: User,
+//}
 
-    post: string [];
-
-
+export interface Posts {
+    image: string,
+    created: number,
+    name: string,
+    ___class: string,
+    comment: string,
+    ownerId: null,
+    updated: number,
+    objectId: string,
 }
+
+
 
 export interface User {
-
+    email: string,
+    img: string,
+    name: string,
+    password: string,
 }
 
-export interface Post {
-    likes: string[];
-    userId: User;
-    text: string [];
-    created_at: string;
-}
+export interface UserForAuth {
+    firstName: string;
+    email: string;
+    phoneNumber: string;
+    password: string;
+    id: string;
+  }

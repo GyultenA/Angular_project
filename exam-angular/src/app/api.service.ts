@@ -1,39 +1,30 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http'
-import { Post, Theme, User } from './types';
-
-
-//const apiUrl: 'http://localhost:3000/api';
+import { Posts } from './types/usersType';
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class ApiService {
- // URLPost = 'https://agilebreath.backendless.app/api/data/allposts';
- // URLUsers = `https://agilebreath.backendless.app/api/data/usersexam`;
 
- URLUsers = 'http://localhost:3000/api/users'
- URLPost = 'http://localhost:3000/api/posts';
- URLThemes = 'http://localhost:3000/api/themes'
+  URLUsers = 'https://testfisrt-default-rtdb.europe-west1.firebasedatabase.app/'
+  //URLPost = 'https://examangularg-default-rtdb.firebaseio.com/';
+  URLPost = 'https://agilebreath.backendless.app/api/data/allposts'
 
   constructor(private http: HttpClient) { }
 
-  getAllPosts (){
-    return this.http.get<Post[]>(this.URLPost);
-  }
+getPosts (limit?: number){
+ // let url = `${this.URLPost}/.json`;
+ let url = `${this.URLPost}`
 
-  getPostId(id:string) {
-    return this.http.get<Post[]>(`${this.URLPost}/posts/${id}`)
+  if (limit){
+  url +=`?limit=${limit}`
   }
+   return this.http.get<Posts[]>(url);
+}
 
-  
-  getThemes() {
-   
-    return this.http.get<Theme[]>(this.URLThemes);
-  }
+createPost(name:string, comment:string){
+  return this.http.post<Posts>(this.URLPost, { name, comment})
+}
 
-  getAllUsers (){
-    return this.http.get<User[]>(this.URLUsers);
-  }
 }

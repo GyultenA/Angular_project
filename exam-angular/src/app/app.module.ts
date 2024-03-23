@@ -1,36 +1,37 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+//import { MainComponent } from './page/main/main.component';
+import { HomeComponent } from './home/home.component';
 
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { MainModule } from './main/main.module';
-import { HomeComponent } from './home/home.component';
+import { PageModule } from './page/page.module';
+import { DashboardComponent } from './page/dashboard/dashboard.component';
+import { UserModule } from './user/user.module';
 import { ErrorComponent } from './error/error.component';
-import { UsersModule } from './users/users.module';
-import { PageComponent } from './main/page/page.component';
-//import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+   // MainComponent,
     HomeComponent,
-    ErrorComponent,
+   ErrorComponent,
+    
 
     
-   
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     CoreModule,
     SharedModule,
-    MainModule,
-    UsersModule,
+    PageModule,
     HttpClientModule,
+    UserModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

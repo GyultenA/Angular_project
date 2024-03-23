@@ -1,6 +1,5 @@
-/* You can add global styles to this file, and also import other
- style files */
- @import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Infant&display=swap");
 
 
@@ -28,6 +27,13 @@ img {
     width: 100%;
     height: auto;
 }
+
+body {
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+    min-height: 100vh;
+  }
 
 
 /* Media Queries */
