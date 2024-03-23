@@ -14,14 +14,13 @@ import { DashboardComponent } from './page/dashboard/dashboard.component';
 import { UserModule } from './user/user.module';
 import { ErrorComponent } from './error/error.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
    // MainComponent,
     HomeComponent,
    ErrorComponent,
-    
-
     
   ],
   imports: [

@@ -9,10 +9,11 @@ import { AuthActivate } from "../guards/auth.activate";
 const routes: Routes = [
     { path: 'posts', children: [
         {path: '', pathMatch: 'full', component: DashboardComponent },
-        {path: ':postId', component: CurrentPostComponent}
+        {path: ':postId', component: CurrentPostComponent},
+        //{ path: 'add-post', component: AddPostComponent, canActivate:[AuthActivate] }
     ]
       },
-    { path: 'add-post', component: AddPostComponent, canActivate:[AuthActivate] }
+   { path: 'add-post', component: AddPostComponent, canActivate:[AuthActivate] }
 ];
 
 

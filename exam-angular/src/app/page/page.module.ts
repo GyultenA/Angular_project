@@ -6,20 +6,23 @@ import { AddPostComponent } from './add-post/add-post.component';
 import { SharedModule } from '../shared/shared.module';
 import { PageRoutingModule } from './page-routing.module';
 import { MainComponent } from './main/main.component';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
+    MainComponent,
     DashboardComponent,
     CurrentPostComponent,
     AddPostComponent,
-    MainComponent,
+    
   ],
   imports: [
     CommonModule,
     SharedModule,
     PageRoutingModule,
+    FormsModule,
   ],
   exports:[DashboardComponent, 
     CurrentPostComponent, 

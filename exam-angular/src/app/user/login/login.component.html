@@ -1,61 +1,5 @@
 <p>login works!</p>
 
-<div class="container">
-    <form class="login" action="" method="post">
-      <fieldset>
-        <h2>Login Form</h2>
-  
-        <p class="field field-icon">
-          <label for="email"
-            ><span><i class="fas fa-envelope"></i></span
-          ></label>
-          <input
-            class="input-error"
-            type="email"
-            name="email"
-            id="email"
-            placeholder="john.doe@gmail.com"
-            #inputEmail
-          />
-        </p>
-        <p class="error">Email is required!</p>
-        <!-- <p class="error">
-                  Email is not valid!
-              </p> -->
-  
-        <p class="field field-icon">
-          <label for="password"
-            ><span><i class="fas fa-lock"></i></span
-          ></label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="******"
-            #inputPassword
-          />
-        </p>
-        <!-- <p class="error">
-                  Password is required!
-              </p>
-              <p class="error">
-                  Password must be at least 4 characters!
-              </p> -->
-  
-        <button>
-          Login
-        </button>
-  
-        <p class="text-center">
-          Have an account?
-          <a routerLink="/register">Register</a>
-        </p>
-      </fieldset>
-    </form>
-  </div>
-  
-
-<!--MINE
 <div class="login-page">
     <div class="form">
       <div class="login">
@@ -72,7 +16,9 @@
         #inputEmail="ngModel" 
         required 
         [appEmail]="domains"
+        
         />
+        <!--[appEmail]="domains"-->
   
         <ng-container *ngIf="inputEmail.touched">
           <p class="error" *ngIf="inputEmail.errors?.['required']">
@@ -101,10 +47,10 @@
                 Password must be at least 6 characters!
               </p>
             </ng-container>
-        <button (click)="login(inputEmail.value, inputPassword.value)">login</button>
+        <!--<button (click)="login(inputEmail.value, inputPassword.value)">login</button>-->
         <button [disabled]="form.invalid"
-        [style]="{ backgroundColor: form.invalid ? 'grey' : 'blue' }">Login</button>
+        [style]="{ backgroundColor: form.invalid ? 'grey' : '' }">Login</button>
         <p class="message">Not registered? <a routerLink="/register">Create an account</a></p>
       </form>
     </div>
-  </div>-->
+  </div>

@@ -38,3 +38,7 @@
   .btn:hover {
     opacity: 1;
   }
+  
+  p.error {
+    color: red;
+  }
