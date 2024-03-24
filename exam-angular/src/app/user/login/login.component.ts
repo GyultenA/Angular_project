@@ -10,13 +10,13 @@ import { EMAIL_DOMAINS } from 'src/app/shared/validator/email.validator';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
- domains = EMAIL_DOMAINS;
+  domains = EMAIL_DOMAINS;
 
   constructor(private userService: UserService, private router: Router) { }
 
   //login(email:string, password:string): void {
-   // this.userService.login();
-   // this.router.navigate(['/profile'])
+  // this.userService.login();
+  // this.router.navigate(['/profile'])
   //}
 
   login(form: NgForm) {
@@ -24,7 +24,11 @@ export class LoginComponent {
       return;
     }
 
-    this.userService.login();
+    const { email, password } = form.value;
+
+    this.userService.login(email, password).subscribe(() => {
     this.router.navigate(['/home']);
+    })
+
   }
 }

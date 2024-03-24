@@ -48,9 +48,8 @@
               </p>
             </ng-container>
         <!--<button (click)="login(inputEmail.value, inputPassword.value)">login</button>-->
-        <button [disabled]="form.invalid"
-        [style]="{ backgroundColor: form.invalid ? 'grey' : '' }">Login</button>
-        <p class="message">Not registered? <a routerLink="/register">Create an account</a></p>
+        <button [disabled]="form.invalid">Login</button>
+        <p class="message">Not registered? <a routerLink="/auth/register">Create an account</a></p>
       </form>
     </div>
   </div>

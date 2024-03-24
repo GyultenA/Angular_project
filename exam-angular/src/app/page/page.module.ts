@@ -12,10 +12,10 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    MainComponent,
     DashboardComponent,
     CurrentPostComponent,
     AddPostComponent,
+    MainComponent,
     
   ],
   imports: [

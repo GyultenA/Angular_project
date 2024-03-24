@@ -5,9 +5,12 @@ import { Posts } from './types/usersType';
 @Injectable({
   providedIn: 'root'
 })
+
+
+
 export class ApiService {
 
-  URLUsers = 'https://testfisrt-default-rtdb.europe-west1.firebasedatabase.app/'
+   URLUsers = 'https://testfisrt-default-rtdb.europe-west1.firebasedatabase.app/'
   //URLPost = 'https://examangularg-default-rtdb.firebaseio.com/';
   URLPost = 'https://agilebreath.backendless.app/api/data/allposts'
 
@@ -23,8 +26,8 @@ getPosts (limit?: number){
    return this.http.get<Posts[]>(url);
 }
 
-createPost(name:string, comment:string){
-  return this.http.post<Posts>(this.URLPost, { name, comment})
+createPost(title:string, comment:string){
+  return this.http.post<Posts>('https://agilebreath.backendless.app/api/data/posts', { title, comment})
 }
 
 }

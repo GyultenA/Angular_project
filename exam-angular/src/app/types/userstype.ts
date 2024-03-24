@@ -10,7 +10,8 @@
 
 export interface Posts {
     image: string,
-    created: number,
+    created: string,
+    title: string,
     name: string,
     ___class: string,
     comment: string,
@@ -24,14 +25,13 @@ export interface Posts {
 export interface User {
     email: string,
     img: string,
-    name: string,
+    username: string,
     password: string,
 }
 
 export interface UserForAuth {
-    firstName: string;
+    username: string;
     email: string;
-    phoneNumber: string;
     password: string;
     id: string;
   }

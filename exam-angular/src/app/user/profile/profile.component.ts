@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { EMAIL_DOMAINS, emailValidator } from 'src/app/shared/validator/email.validator';
 import { ProfileDetails } from 'src/app/types/usersType';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-profile',
@@ -22,7 +23,7 @@ export class ProfileComponent {
     
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private userService: UserService) {}
 
   onToggle(): void {
     this.showEditMode = !this.showEditMode;
@@ -35,7 +36,12 @@ export class ProfileComponent {
     }
 
     this.profileDetails = this.form.value as ProfileDetails;
-    this.onToggle();
+    const { username, email} = this.profileDetails;
+    this.userService.updateProfile(username, email)
+    .subscribe(()=> {
+      this.onToggle();
+    })
+    
   }
 
   onCancel(e: Event) {

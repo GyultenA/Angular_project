@@ -8,14 +8,14 @@
             <li><a routerLink="/posts">DASHBOARD</a></li>
 
             <ul *ngIf="isLoggedIn" class="user">
-                <li><a routerLink="/profile">user's Profile</a></li> <!--[{first name}}-->
+                <li><a routerLink="/auth/profile">{{username}}'s Profile</a></li> <!--[{first name}}-->
                 <li><a routerLink="/add-post">Create Post</a></li>
-                <li><a>Logout</a></li>
+                <li (click)="logout()"><a>Logout</a></li>
             </ul>
 
                 <ul *ngIf="!isLoggedIn" class="guest">
-                <li><a routerLink="/login">Login</a></li>
-                <li><a routerLink="/register">Register</a></li>
+                <li><a routerLink="/auth/login">Login</a></li>
+                <li><a routerLink="/auth/register">Register</a></li>
                 </ul>
 
             <li><a routerLink="/contacts">CONTACTS</a></li>

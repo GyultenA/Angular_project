@@ -5,9 +5,9 @@
             <h1>New Post</h1>
         </header>
         <form id="create-form" class="main-form pad-large" #form="ngForm" (ngSubmit)="addPost(form)">
-            <div class="error">Error message.</div>
+           <!-- <div class="error">Error message.</div>-->
             <label>Title: <input type="text" 
-                name="name" 
+                name="title" 
                 #inputTitle="ngModel"
                 ngModel
                 required
@@ -15,7 +15,7 @@
                 >
                 <ng-container *ngIf="inputTitle.touched">
                     <p class="error" *ngIf="inputTitle?.errors?.['required']">
-                      Theme name is required.
+                      Title is required.
                     </p>
                     <p class="error" *ngIf="inputTitle?.errors?.['minlength']">
                       Title must be at least 5 characters long.
@@ -23,7 +23,7 @@
                   </ng-container>
             </label>
 
-            <label>Logo URL: <input type="text" name="logoUrl"
+            <label>Image URL: <input type="text" name="imgUrl"
                 ></label>
 
             <label>Comment: <textarea name="description"
@@ -43,7 +43,7 @@
 
             <div class="new-post-buttons">
                 <button class="cancel">Cancel</button>
-                <button class="public" (click)="addPost(form)">Create Post</button>
+                <button class="public">Create Post</button>
               </div>
 
            <!--<input class="action cta" type="submit" value="Create Post">--> 

@@ -13,6 +13,8 @@ import { PageModule } from './page/page.module';
 import { DashboardComponent } from './page/dashboard/dashboard.component';
 import { UserModule } from './user/user.module';
 import { ErrorComponent } from './error/error.component';
+import { appInterceptorProvider } from './app.interceptor';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
 
 
 @NgModule({
@@ -21,6 +23,7 @@ import { ErrorComponent } from './error/error.component';
    // MainComponent,
     HomeComponent,
    ErrorComponent,
+   AuthenticateComponent,
     
   ],
   imports: [
@@ -29,10 +32,10 @@ import { ErrorComponent } from './error/error.component';
     SharedModule,
     PageModule,
     HttpClientModule,
-    UserModule,
+   // UserModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [appInterceptorProvider,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
