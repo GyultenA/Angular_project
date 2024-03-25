@@ -29,11 +29,25 @@ img {
 }
 
 body {
-    max-width: 1200px;
-    margin: auto;
-    position: relative;
-    min-height: 100vh;
+  max-width: 1400px;
+  margin: 0 auto;
+ /* border: 2px solid black;
+  color: #fff;*/
+  padding-top: 1em;
+  padding-bottom: 2em;
   }
+
+  body {
+    background-image: url("images/dog-and-cat-cover.jpg");
+    background-repeat: no-repeat;
+    background-size: 40%;  /*cover*/
+    background-position: top center;
+    
+
+}
+
+
+
 
 
 /* Media Queries */

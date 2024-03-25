@@ -1,26 +1,20 @@
-.container {
-    /*max-width: 1200px;*/
-    max-width: 1400px;
-    margin: 0 auto;
-    padding-top: 2em;
-    padding-bottom: 2em;
-}
+
+
 
 .site-header {
-    padding: 2em;
-}
-
-.site-header {
+    padding: 0 auto;
     display: flex;
     justify-content: space-between;
 
 }
 .site-header nav {
     padding-right: 1em;
+   
 }
 
 .site-header nav ul {
     display: flex;
+    
 }
 
 nav li {
@@ -38,13 +32,13 @@ nav li {
 
 .site-title a {
     display: block;
-    width: 130px;
-    height: 110px;
+    width: 150px;
+    height: 120px;
     overflow: hidden;
     text-indent: -250vw;
-   /* background-image: url("images/logo.webp");*/
+   background-image: url("images/logo-love.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    padding-left: 20em;
+    padding-left: 15em;
 }

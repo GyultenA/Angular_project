@@ -1,3 +1,15 @@
+.home-container {
+  padding-top: 15em;
+}
+
+.home-container h1 {
+  padding-bottom: 1em;
+}
+
+.home-container p {
+  text-align: center;
+}
+
 .home-list a {
     color: white;
     text-decoration: none;
@@ -15,7 +27,7 @@
   .home-list ul {
     display: flex;
     justify-content: space-evenly;
-    padding: 0;
+    padding: 2em 0;
     margin: 1em;
   }
   

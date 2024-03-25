@@ -22,7 +22,8 @@ export class UserService implements OnDestroy {
   }
 
   constructor(private http: HttpClient) { 
- this.userSubscription = this.user$.subscribe(user => {
+
+ this.userSubscription = this.user$.subscribe((user) => {
     this.user = user;
  })
   //  try {
@@ -46,7 +47,7 @@ export class UserService implements OnDestroy {
   }
 
   logout() {
-    return this.http.post('https://agilebreath.backendless.app/api/data/usersexam', {})
+    return this.http.get('https://agilebreath.backendless.app/api/data/usersexam', {})
    .pipe(tap(() => this.user$$.next(undefined)));
    // this.user= undefined;
    // localStorage.removeItem(this.USER_KEY);
