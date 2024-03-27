@@ -12,7 +12,7 @@ export interface Posts {
     image: string,
     created: string,
     title: string,
-    name: string,
+    username: string,
     ___class: string,
     comment: string,
     ownerId: null,

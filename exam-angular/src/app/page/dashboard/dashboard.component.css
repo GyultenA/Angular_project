@@ -1,12 +1,117 @@
-.post-list-container {
+body {
+    background: #EEE;
+    font: 14px/1.5 "Lato", Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2em;
+  }
+  h2 {
+    margin-top: 4em;
+  }
+  
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2em;
+    width: 100%;
+    max-width: 1100px;
+    margin: 4em auto;
+  }
+
+  main {
+   /* flex: 0 0 65%;*/
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 100vw;
+  }
+
+
+  
+  @media (min-width: 800px) {
+    .container {
+      flex-direction: row;
+    }
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /*container: quote / inline-size;*/
+  }
+  
+  section .inner {
+   /* flex-grow: 1;*/
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 2em;
+    gap: 2em;
+    border-radius: 0.3em;
+    box-shadow: -0.2em 0.2em 0.5em 0 rgba(0,0,0,0.05);
+  }
+  
+  /*@container quote (max-width: 400px) {
+    section .inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }*/
+
+  section .media {
+    overflow: hidden;
+    flex: 0 0 25%;
+    aspect-ratio: 1/1;
+    position: relative;
+    border-radius: 50%;
+    background: #090;
+    border: 5px solid #fff;
+    box-shadow: 0 0 1em 0 rgb(0,0,0,0.2);
+  }
+
+  section .comment {
+    color: #9e9f9f;
+    padding-bottom: 2em;
+  }
+  
+  section .author {
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+
+
+
+
+
+
+
+
+
+
+
+/*.post-list-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 0.5em;
-}
+}*/
 
-.details-btn {
+/*.details-btn {
     padding-top: 1.5em;
     padding-bottom: 2em;
-}
+}*/

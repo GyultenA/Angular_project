@@ -23,11 +23,12 @@ getPosts (limit?: number){
   if (limit){
   url +=`?limit=${limit}`
   }
-   return this.http.get<Posts[]>(url);
+  // return this.http.get<Posts[]>(url);
+   return this.http.get<Posts[]>('https://agilebreath.backendless.app/api/data/allposts');
 }
 
 createPost(title:string, comment:string){
-  return this.http.post<Posts>('https://agilebreath.backendless.app/api/data/posts', { title, comment})
+  return this.http.post<Posts>('https://agilebreath.backendless.app/api/data/allposts', { title, comment})
 }
 
 }

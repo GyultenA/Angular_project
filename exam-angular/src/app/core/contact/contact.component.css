@@ -1,0 +1,28 @@
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css");
+
+.contact {
+    display: flex;
+    padding-top: 12em;
+    justify-content: center;
+
+}
+.contact h4 {
+    font-size: 1.6em;
+    padding-top: 2em;
+    padding-bottom: 0.5em;
+}
+
+.contact li {
+    list-style: none;
+}
+
+.contact i {
+    padding-right: 5.40px;
+    font-size: 12px;
+}
+
+.contact li i {
+    padding-left: 5.40px;
+    font-size: 12px;
+}

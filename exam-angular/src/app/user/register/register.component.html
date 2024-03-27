@@ -1,7 +1,10 @@
 <p>Register works!</p>
 
-<form class="register" [formGroup]="form" (ngSubmit)="register()">
-  <h2>Register Form</h2>
+<form class="register-page" [formGroup]="form" (ngSubmit)="register()"> 
+  <div class="register-header">
+    <h2>Register Form</h2>
+    <p>Please enter your credentials to register.</p>
+  </div> 
   <div class="input-container">
     <i class="fa fa-user icon"></i>
     <input class="input-field" 
@@ -21,7 +24,6 @@
       </p>
     </ng-container>
   </div>
-
   <div class="input-container">
     <i class="fa fa-envelope icon"></i>
     <input class="input-field" 
@@ -40,7 +42,6 @@
       </p>
     </ng-container>
   </div>
- 
   <ng-container formGroupName="passGroup">
     <div class="input-container">
       <label for="password">
@@ -54,7 +55,6 @@
       formControlName="password"
       />
     </div>
-
     <div class="input-container">
       <label for="rePassword">
         <i class="fa fa-key icon"></i>
@@ -85,10 +85,6 @@
 </button>
   
 <!-- <button class="btn">Register</button>-->
- 
-  <p class="text-center">
-      Have an account?
-      <a routerLink="/auth/login">LOGIN</a>
-    </p>
+  <p class="message">Have an account?<a routerLink="/auth/login">LOGIN</a></p>
 </form>
 
