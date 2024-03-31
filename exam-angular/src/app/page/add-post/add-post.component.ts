@@ -10,20 +10,21 @@ import { ApiService } from 'src/app/api.service';
 })
 export class AddPostComponent {
 
-  constructor (private apiService: ApiService, private router: Router){}
+  constructor(private apiService: ApiService, private router: Router) { }
 
   addPost(form: NgForm) {
     if (form.invalid) {
       return;
     }
- const {title, postText} = form.value;
+
+    const { title, description, imgUrl } = form.value;
     //console.log(form.value);
-    this.apiService.createPost(title, postText).subscribe(() => {
+    this.apiService.createPost(title, description, imgUrl).subscribe(() => {
       this.router.navigate(['/posts']);
     });
 
   }
 
-  
+
 
 }

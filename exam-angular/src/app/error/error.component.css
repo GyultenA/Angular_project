@@ -1,0 +1,21 @@
+@import url("https://fontawesome.com/icons/message?f=classic&s=regular");
+
+.mainbox {
+    margin: 20em auto;
+    height: 550px;
+    width: 550px;
+}
+
+.msg {
+    text-align: center;
+    font-size: 1.6rem;
+  }
+
+a {
+    text-decoration: none;
+    color: #0b7b25;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }

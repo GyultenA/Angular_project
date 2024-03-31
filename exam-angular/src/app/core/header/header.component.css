@@ -42,3 +42,10 @@ nav li {
     background-repeat: no-repeat;
     padding-left: 15em;
 }
+
+.site-header nav a:hover{
+    text-decoration: underline;
+    color: green;
+    border-radius: 2em;
+   transition: background-color  0.2s ease-in 0s;
+}

@@ -29,18 +29,26 @@ img {
 }
 
 body {
-  max-width: 1400px;
+ max-width: 1400px;
   margin: 0 auto;
  /* border: 2px solid black;
   color: #fff;*/
   padding-top: 1em;
   padding-bottom: 2em;
+  background: #EEE;
+  /*  font: 14px/1.5 "Lato", Verdana, sans-serif;*/
+  font: inherit;
+   /* min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;*/
+    
   }
 
   body {
     background-image: url("images/dog-and-cat-cover.jpg");
     background-repeat: no-repeat;
-    background-size: 40%;  /*cover*/
+    background-size: 60%;  /*cover*/
     background-position: top center;
     
 

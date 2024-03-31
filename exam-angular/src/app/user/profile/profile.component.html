@@ -1,4 +1,3 @@
-<p>profile works!</p>
 <div class="container">
     <div class="profile">
       <img src="./../../../assets/profile.png" alt="default user" />
@@ -81,3 +80,14 @@
       </ng-container>
     </div>
   </div>
+   <section class="view-my">
+      <button class="my-posts" (click)="myPosts($event)">My posts</button>
+      <ng-container *ngIf="showMyPosts">
+          <div class="list"  *ngFor="let p of userPosts">
+              <h2>Title</h2>
+              <p>Comment:</p>
+              <p>Created: <time></time></p>
+          </div>
+          <button class="btn" (click)="deletePost($event)">Delete Post</button>
+      </ng-container>
+   </section>

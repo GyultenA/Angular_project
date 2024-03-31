@@ -1,4 +1,14 @@
-<p>current-post works!</p>
-<a href="#">
-    <h3>Title</h3>
-</a>
+<div class="card">
+    <div >
+        <h3>Title:{{ singlePost.title}} </h3>
+        <div class="content">
+            <p>{{singlePost.comment}}</p>
+        </div>
+        <div class="author">
+            <p>{{singlePost.username}}</p>
+        </div>
+        <div>
+            <p>Date: <time>{{singlePost.created | time}}</time></p>
+        </div>
+    </div> 
+</div>

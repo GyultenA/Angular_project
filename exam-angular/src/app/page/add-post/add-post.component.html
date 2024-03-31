@@ -1,5 +1,4 @@
-<p>add-post works!</p>
-<section id="create">
+<section class="create">
     <article class="narrow">
         <header class="pad-med">
             <h1>New Post</h1>
@@ -8,6 +7,7 @@
            <!-- <div class="error">Error message.</div>-->
             <label>Title: <input type="text" 
                 name="title" 
+                id="title"
                 #inputTitle="ngModel"
                 ngModel
                 required
@@ -23,26 +23,27 @@
                   </ng-container>
             </label>
 
-            <label>Image URL: <input type="text" name="imgUrl"
+            <label>Image URL: <input type="text" name="imgUrl" #inputImg="ngModel" ngModel
                 ></label>
 
             <label>Comment: <textarea name="description"
-                #textareaPostText="ngModel"
+                id="description"
+                #description="ngModel"
                 ngModel
                 required
                 minlength="10"></textarea>
-                <ng-container *ngIf="textareaPostText.touched">
-                    <p class="error" *ngIf="textareaPostText?.errors?.['required']">
+                <ng-container *ngIf="description.touched">
+                    <p class="error" *ngIf="description?.errors?.['required']">
                       The field with your post is required.
                     </p>
-                    <p class="error" *ngIf="textareaPostText?.errors?.['minlength']">
+                    <p class="error" *ngIf="description?.errors?.['minlength']">
                       Post must be at least 10 characters long.
                     </p>
                   </ng-container>
             </label>
 
             <div class="new-post-buttons">
-                <button class="cancel">Cancel</button>
+                <button class="cancel" routerLink="/posts">Cancel</button>
                 <button class="public">Create Post</button>
               </div>
 

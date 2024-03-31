@@ -6,18 +6,15 @@
         <ul>
             <li><a routerLink="/home">HOME</a></li>
             <li><a routerLink="/posts">BLOG</a></li>
-
             <ul *ngIf="isLoggedIn" class="user">
                 <li><a routerLink="/auth/profile">{{username}}'s Profile</a></li> <!--[{first name}}-->
                 <li><a routerLink="/add-post">CREATE POST</a></li>
                 <li (click)="logout()"><a>LOGOUT</a></li>
             </ul>
-
                 <ul *ngIf="!isLoggedIn" class="guest">
                 <li><a routerLink="/auth/login">LOGIN</a></li>
                 <li><a routerLink="/auth/register">REGISTER</a></li>
                 </ul>
-
             <li><a routerLink="/contacts">CONTACTS</a></li>
         </ul>
     </nav>

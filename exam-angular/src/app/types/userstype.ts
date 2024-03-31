@@ -20,13 +20,32 @@ export interface Posts {
     objectId: string,
 }
 
+export interface SinglePost {
+  title:string,
+  comment:string,
+  username:string,
+  created:string,
+}
+
+export interface UserPosts {
+  image: string,
+  created: string,
+  title: string,
+  username: string,
+  ___class: string,
+  comment: string,
+  ownerId: null,
+  updated: number,
+  objectId: string,
+}
+
 
 
 export interface User {
-    email: string,
-    img: string,
-    username: string,
-    password: string,
+    email: string;
+    img: string;
+    username: string;
+    password: string;
 }
 
 export interface UserForAuth {

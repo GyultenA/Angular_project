@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Posts } from './types/usersType';
+import { Posts, SinglePost, UserPosts } from './types/usersType';
 
 @Injectable({
   providedIn: 'root'
@@ -27,8 +27,20 @@ getPosts (limit?: number){
    return this.http.get<Posts[]>('https://agilebreath.backendless.app/api/data/allposts');
 }
 
-createPost(title:string, comment:string){
+createPost(title:string, comment:string, imgUrl?:string){
   return this.http.post<Posts>('https://agilebreath.backendless.app/api/data/allposts', { title, comment})
+}
+
+getSinglePost (id:string){
+  return this.http.get<Posts>(`https://agilebreath.backendless.app/api/data/allposts/${id}`)
+}
+
+getUserPosts(id:string){
+  return this.http.get<UserPosts>(`https://agilebreath.backendless.app/api/data/allposts/${id}`)
+}
+
+deletePost(id:string){
+  return this.http.delete<SinglePost>(`https://agilebreath.backendless.app/api/data/allposts/${id}`)
 }
 
 }

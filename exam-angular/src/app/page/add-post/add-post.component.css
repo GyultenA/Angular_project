@@ -1,3 +1,7 @@
+section.create {
+    padding-top: 10em;
+}
+
 .main-form label {
     display: block;
     margin: 16px auto;
@@ -18,11 +22,15 @@
 }
 
 .pad-med {
-    padding: 16px 32px;
+    /*padding: 16px 16px;*/
+    padding-top: 8em;
+    text-align: center;
+    font-size: 1.5em;
 }
 
 .pad-large {
     padding: 32px 64px;
+    font-size: 1.2em;
 }
 
 
@@ -35,13 +43,13 @@
     margin-right: 280px;
 }
 
-.cta {
+/*.cta {
     display: block;
     margin: 32px auto;
     text-align: center;
     width: 200px;
     font-size: 20px;
-}
+}*/
 
 .error {
     text-align: center;

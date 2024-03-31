@@ -40,7 +40,7 @@ export class RegisterComponent {
     this.userService
       .register(username!, email!, password!, rePassword!)
       .subscribe(() => {
-        this.router.navigate(['/login'])
+        this.router.navigate(['/auth/login'])
       })
 
     //console.log(this.form.value)
