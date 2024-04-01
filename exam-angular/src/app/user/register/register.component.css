@@ -1,4 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.register-page {
+  padding-top: 12em;
+  padding-bottom: 5em;
+}
+
 header .header{
   background-color: #fff;
   height: 45px;
@@ -6,7 +12,7 @@ header .header{
 }
 header a img{
   width: 134px;
-margin-top: 4px;
+  margin-top: 4px;
 }
 
 .register-header h2 {
@@ -19,14 +25,14 @@ margin-top: 4px;
 }
 
 
-.register-page .form .input-container {
+.register-page .form .register{
   margin-top: -31px;
-margin-bottom: 26px;
+  margin-bottom: 26px;
 }
 
 .register-page {
   width: 360px;
-  padding: 8% 0 0;
+ /padding: 8% 0 0;
   margin: auto;
 }
 
@@ -40,6 +46,7 @@ margin-bottom: 26px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
+
 
 .input-container input {
   font-family: "Roboto", sans-serif;

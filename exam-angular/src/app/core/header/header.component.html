@@ -5,10 +5,11 @@
     <nav>
         <ul>
             <li><a routerLink="/home">HOME</a></li>
-            <li><a routerLink="/posts">BLOG</a></li>
+            <li><a routerLink="/page/posts">BLOG</a></li>
+            <li><a routerLink="/book">BOOKING</a></li>
             <ul *ngIf="isLoggedIn" class="user">
-                <li><a routerLink="/auth/profile">{{username}}'s Profile</a></li> <!--[{first name}}-->
-                <li><a routerLink="/add-post">CREATE POST</a></li>
+                <li><a routerLink="/auth/profile">{{username}} ACCOUNT</a></li> <!--[{first name}}-->
+                <li><a routerLink="/page/add-post">CREATE POST</a></li>
                 <li (click)="logout()"><a>LOGOUT</a></li>
             </ul>
                 <ul *ngIf="!isLoggedIn" class="guest">

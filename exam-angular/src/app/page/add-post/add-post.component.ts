@@ -20,7 +20,7 @@ export class AddPostComponent {
     const { title, description, imgUrl } = form.value;
     //console.log(form.value);
     this.apiService.createPost(title, description, imgUrl).subscribe(() => {
-      this.router.navigate(['/posts']);
+      this.router.navigate(['/page/posts']);
     });
 
   }

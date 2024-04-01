@@ -30,7 +30,7 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
     BrowserModule,
     CoreModule,
     SharedModule,
-    PageModule,
+   // PageModule,
     HttpClientModule,
    // UserModule,
     AppRoutingModule,

@@ -3,11 +3,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Infant&display=swap");
 
 
-/*Font-size – 18px
-Font-size for big title – 90px
-Font-size for other text – 16px
-Karla and Cormorant Infant). */
-
 * {
     padding: 0;
     margin: 0;
@@ -17,6 +12,8 @@ Karla and Cormorant Infant). */
 html {
     font:18px/1.5 "Karla", sans-serif;
 }
+
+html, body { height: 100%; }
 
 h1 h2 h3 h4 h5 h6 {
     font-family: "Karla", sans-serif;
@@ -29,14 +26,12 @@ img {
 }
 
 body {
- max-width: 1400px;
-  margin: 0 auto;
+ max-width: 1250px;
+ min-height: 100vh;
+ margin: 0 auto;
  /* border: 2px solid black;
   color: #fff;*/
-  padding-top: 1em;
-  padding-bottom: 2em;
   background: #EEE;
-  /*  font: 14px/1.5 "Lato", Verdana, sans-serif;*/
   font: inherit;
    /* min-height: 100vh;
     display: flex;
@@ -45,12 +40,11 @@ body {
     
   }
 
-  body {
-    background-image: url("images/dog-and-cat-cover.jpg");
+ body {
+    background-image: url("../images/dog-and-cat-cover.jpg");
     background-repeat: no-repeat;
-    background-size: 60%;  /*cover*/
-    background-position: top center;
-    
+    background-size: 680px 400px;
+    background-position: top center ; 
 
 }
 

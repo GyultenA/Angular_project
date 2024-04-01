@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { ContactComponent } from './contact/contact.component';
+import { BookingComponent } from './booking/booking.component';
 
 
 
@@ -11,11 +12,12 @@ import { ContactComponent } from './contact/contact.component';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    ContactComponent
+    ContactComponent,
+    BookingComponent
   ],
   imports: [
     CommonModule, RouterModule,
   ],
-  exports: [ HeaderComponent, FooterComponent, ContactComponent]
+  exports: [ HeaderComponent, FooterComponent, ContactComponent, BookingComponent]
 })
 export class CoreModule { }
