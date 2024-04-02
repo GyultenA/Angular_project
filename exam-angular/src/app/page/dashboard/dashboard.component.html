@@ -1,24 +1,25 @@
-<h2>See the new posts</h2>
-<div class="container">
-    <main>
-        <section>
-            <div class="inner">
-                <div *ngIf="!isLoading">
-                    <app-loader />
-                </div>
+<h1>See the new posts</h1>
+<main>
+    <section>
+        <div class="inner">
+            <div *ngIf="!isLoading">
+                <app-loader />
+            </div>
+            <div class="container">
                 <!-- Display a div with information about every post (if any)-->
-                <div class="content">
-                    <div *ngFor="let post of allPosts" class="post-list-container">
+                <div *ngFor="let post of allPosts" class="post-list-container">
+                    <figure class="media"><img src={{post.image}} alt="image" /></figure>
+                    <div class="content">
+                        <h2>{{post.title}}</h2>
                         <h3 class="author">{{post.username}}</h3>
-                        <figure class="media"><img src={{post.image}} alt="image" /></figure>
                         <p class="comment">{{post.comment | slice:25 }}</p>
                         <p>Date: <time>{{post.created | time}}</time></p>
                         <button *ngIf="isLoggedIn">
-                            <a class="details-btn" [routerLink]="post.objectId">More Info</a><!--{{post.id}}-->
+                            <a class="details-btn" [routerLink]="post.objectId">View More</a><!--{{post.id}}-->
                         </button>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
-</div>
+        </div>
+    </section>
+</main>

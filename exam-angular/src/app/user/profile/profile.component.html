@@ -1,6 +1,6 @@
 <div class="container">
     <div class="profile">
-      <img src="./../../../assets/profile.png" alt="default user" />
+      <img src="https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_1280.jpg" alt="default user" />
       <h3>User Info:</h3>
   
       <!-- READONLY MODE -->
@@ -80,7 +80,28 @@
       </ng-container>
     </div>
   </div>
-   <section class="view-my">
+
+  <section class="view-my">
+    <button class="my-posts" (click)="myPosts($event)">My posts</button>
+   <div class="wrap">
+    <ng-container *ngIf="showMyPosts">
+      <div class="box" *ngFor="let p of userPosts">
+        <div class="box-top">
+          <img class="box-image" src="">
+          <div class="title-flex">
+            <h3 class="box-title">{{p.title}}</h3>
+            <p class="time-info">{{p.created}}</p>
+          </div>
+          <p class="description">{{p.comment}}</p>
+        </div>
+        <a href="#" class="button">Delete Post</a>
+        <!--<a href="#" class="button">Edit Post</a>-->
+      </div>
+    </ng-container>
+   </div>
+  </section>
+  
+ <!-- <section class="view-my">
       <button class="my-posts" (click)="myPosts($event)">My posts</button>
       <ng-container *ngIf="showMyPosts">
           <div class="list"  *ngFor="let p of userPosts">
@@ -90,4 +111,7 @@
           </div>
           <button class="btn" (click)="deletePost($event)">Delete Post</button>
       </ng-container>
-   </section>
+   </section>-->
+
+
+   

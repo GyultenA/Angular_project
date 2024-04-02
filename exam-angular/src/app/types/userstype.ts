@@ -25,6 +25,7 @@ export interface SinglePost {
   comment:string,
   username:string,
   created:string,
+  image: string,
 }
 
 export interface UserPosts {
