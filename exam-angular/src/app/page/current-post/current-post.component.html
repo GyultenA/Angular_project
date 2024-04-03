@@ -1,4 +1,20 @@
-<div class="card">
+<section class="articles">
+    <article>
+      <div class="article-wrapper">
+        <figure>
+          <img src={{singlePost.image}} alt="" />
+        </figure>
+        <div class="article-body">
+          <h2>Title: {{singlePost.title}}</h2>
+          <p>Comment: {{singlePost.comment}}</p>
+          <p>Created by: {{singlePost.username}}</p>
+          <p>Date: {{singlePost.created | time}}</p>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!--<div class="card">
     <div >
         <h3>Title:{{ singlePost.title}} </h3>
         <div class="content">
@@ -11,4 +27,4 @@
             <p>Date: <time>{{singlePost.created | time}}</time></p>
         </div>
     </div> 
-</div>
+</div>-->

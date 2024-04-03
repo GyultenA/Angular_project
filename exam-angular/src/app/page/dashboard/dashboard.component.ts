@@ -25,13 +25,13 @@ export class DashboardComponent implements OnInit {
       
    // })
 
-   this.api.getPosts(5).subscribe({
+   this.api.getPosts(6).subscribe({
     next: (posts) => {
       const sortDatesCB = (
         a: { created: string },
         b: { created: string }
       ) => (new Date(b.created) as any) - (new Date(a.created) as any);
-      const lastPosts = posts.sort(sortDatesCB as any).slice(0, 5);
+      const lastPosts = posts.sort(sortDatesCB as any).slice(0, 6);
      // console.log(allPosts);
       this.allPosts = lastPosts;
     },

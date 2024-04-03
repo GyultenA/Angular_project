@@ -1,12 +1,41 @@
 <h1>See the new posts</h1>
-<main>
+<section class="articles">
+    <div *ngIf="!isLoading">
+        <app-loader />
+    </div>
+    <article *ngFor="let post of allPosts">
+      <div class="article-wrapper">
+        <figure>
+          <img src="{{post.image}}" alt="" />
+        </figure>
+        <div class="article-body">
+          <h2>{{post.title}}</h2>
+          <p>{{post.comment | slice:25}}</p>
+          <p>{{post.username}}</p>
+          <p>Date: {{post.created | time}}</p>
+          <button *ngIf="isLoggedIn">
+            <a [routerLink]="post.objectId"class="read-more">
+                Read more <span class="sr-only">about this is some title</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd" />
+                </svg>
+              </a>
+          </button>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!--<main>
     <section>
         <div class="inner">
             <div *ngIf="!isLoading">
                 <app-loader />
             </div>
             <div class="container">
-                <!-- Display a div with information about every post (if any)-->
+                 Display a div with information about every post (if any)
                 <div *ngFor="let post of allPosts" class="post-list-container">
                     <figure class="media"><img src={{post.image}} alt="image" /></figure>
                     <div class="content">
@@ -15,11 +44,12 @@
                         <p class="comment">{{post.comment | slice:25 }}</p>
                         <p>Date: <time>{{post.created | time}}</time></p>
                         <button *ngIf="isLoggedIn">
-                            <a class="details-btn" [routerLink]="post.objectId">View More</a><!--{{post.id}}-->
+                            <a class="details-btn" [routerLink]="post.objectId">View More</a>
                         </button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-</main>
+</main>-->
+<!--{{post.id}}-->

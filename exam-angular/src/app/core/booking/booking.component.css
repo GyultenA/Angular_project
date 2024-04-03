@@ -1,6 +1,10 @@
-section {
-    padding-top: 40em;
-    padding-bottom: 10em;
+section.articles-dogs {
+    padding-top: 20em;
+    padding-bottom: 8em;
+}
+
+section.articles-cat {
+  padding-bottom: 4em;
 }
 
 article {
@@ -104,7 +108,8 @@ article {
     min-height: 100vh;
   }
   
-  .articles {
+  .articles-dogs,
+  .articles-cat {
     display: grid;
     max-width: 1200px;
     margin-inline: auto;
