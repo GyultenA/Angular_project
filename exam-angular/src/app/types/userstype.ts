@@ -9,7 +9,7 @@
 //}
 
 export interface Posts {
-    image: string,
+    image: string | null,
     created: string,
     title: string,
     username: string,
@@ -25,7 +25,7 @@ export interface SinglePost {
   comment:string,
   username:string,
   created:string,
-  image: string,
+  image: string | null
 }
 
 export interface UserPosts {
@@ -60,4 +60,10 @@ export interface UserForAuth {
     username: string;
     email: string;
    // password: string;
+  }
+
+  export interface sPost {
+    title: string,
+    imageFile: File,
+    comment: string,
   }

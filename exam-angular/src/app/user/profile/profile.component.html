@@ -94,7 +94,10 @@
           </div>
           <p class="description">{{p.comment}}</p>
         </div>
-        <a href="#" class="button">Delete Post</a>
+        <button>
+          <a routerLink="" class="button">Delete Post</a>
+        </button>
+        
         <!--<a href="#" class="button">Edit Post</a>-->
       </div>
     </ng-container>
@@ -110,6 +113,10 @@
               <p>Created: <time></time></p>
           </div>
           <button class="btn" (click)="deletePost($event)">Delete Post</button>
+             or 
+              <button (click)="myPosts($event)">
+          <a routerLink="/auth/profile" class="button">Delete Post</a>
+        </button>
       </ng-container>
    </section>-->
 
