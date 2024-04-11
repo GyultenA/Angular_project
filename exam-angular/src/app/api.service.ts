@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Posts, SinglePost, UserPosts } from './types/usersType';
+import { Posts, SinglePost, UserPosts, nPost } from './types/usersType';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +41,10 @@ getUserPosts(id:string){
 
 deletePost(id:string){
   return this.http.delete<SinglePost>(`https://agilebreath.backendless.app/api/data/allposts/${id}`)
+}
+
+getUsPost(id:string){
+  return this.http.get<nPost[]>(`https://agilebreath.backendless.app/api/data/ex/${id}`)
 }
 
 }

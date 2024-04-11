@@ -6,8 +6,8 @@
       <!-- READONLY MODE -->
       <ng-container *ngIf="!showEditMode">
         <div class="flex">
-          <p>Username:</p>
-          <p>{{ profileDetails.username }}</p>
+          <p>Password:</p>
+          <p>{{ profileDetails.password }}</p>
         </div>
         <div class="flex">
           <p>Email:</p>
@@ -22,23 +22,24 @@
         <form [formGroup]="form" (ngSubmit)="saveProfileHandle()">
           <!-- username -->
           <div class="flex">
-            <p>Username:</p>
+            <p>Password:</p>
             <input
               type="text"
-              name="username"
-              id="username"
-              [value]="profileDetails.username"
-              formControlName="username"
+              name="password"
+              id="password"
+              [value]="profileDetails.password"
+              formControlName="password"
+              minlength="6"
             />
           </div>
   
           <!-- username validations -->
-          <ng-container *ngIf="form.get('username')?.touched">
-            <p class="error" *ngIf="form.get('username')?.errors?.['required']">
-              Username is required!
+          <ng-container *ngIf="form.get('password')?.touched">
+            <p class="error" *ngIf="form.get('password')?.errors?.['required']">
+              Password is required!
             </p>
-            <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">
-              Username must have at least 5 characters!
+            <p class="error" *ngIf="form.get('password')?.errors?.['minlength']">
+              Password must have at least 6 characters!
             </p>
           </ng-container>
   
@@ -84,7 +85,28 @@
   <section class="view-my">
     <button class="my-posts" (click)="myPosts($event)">My posts</button>
    <div class="wrap">
-    <ng-container *ngIf="showMyPosts">
+
+  <div class="box-top" *ngFor="let p of userPosts">
+    <img class="box-image" src="">
+    <div class="title-flex">
+      <h3 class="box-title">{{p.title}}</h3>
+      <p class="time-info">{{p.created}}</p>
+    </div>
+    <p class="description">{{p.comment}}</p>
+  </div>
+ 
+ <div class="box-top" *ngFor="let p of userPosts">
+  <img class="box-image" src="">
+  <div class="title-flex">
+    <h3 class="box-title">{{p.title}}</h3>
+    <p class="time-info">{{p.created}}</p>
+  </div>
+  <p class="description">{{p.comment}}</p>
+</div>
+   </div>
+  </section>
+
+   <ng-container *ngIf="showMyPosts">
       <div class="box" *ngFor="let p of userPosts">
         <div class="box-top">
           <img class="box-image" src="">
@@ -98,11 +120,9 @@
           <a routerLink="" class="button">Delete Post</a>
         </button>
         
-        <!--<a href="#" class="button">Edit Post</a>-->
+        <a href="#" class="button">Edit Post</a>
       </div>
     </ng-container>
-   </div>
-  </section>
   
  <!-- <section class="view-my">
       <button class="my-posts" (click)="myPosts($event)">My posts</button>

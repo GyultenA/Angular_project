@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { UserForAuth } from '../types/usersType';
+import { ProfileDetails, UserForAuth } from '../types/usersType';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
 
@@ -8,17 +8,28 @@ import { BehaviorSubject, Subscription, tap } from 'rxjs';
 })
 export class UserService implements OnDestroy {
  private user$$ = new BehaviorSubject<UserForAuth | undefined>(undefined)
- private user$ = this.user$$.asObservable();
+ public user$ = this.user$$.asObservable();
 
   user: UserForAuth | undefined;
   USER_KEY = '[user]';
 
+ isLoggedIn:boolean=false;
+
   userSubscription: Subscription;
+
+  profileDetails: ProfileDetails = {
+    password: '',
+    email: '',
+  };
 
   
   get isLogged():boolean {
-  // console.log(this.user);
+ // console.log(this.user);
     return !!this.user;
+  }
+
+  get getToggle(): boolean{
+    return this.isLoggedIn = true;
   }
 
   constructor(private http: HttpClient) { 
@@ -42,7 +53,7 @@ export class UserService implements OnDestroy {
   }
 
   register(username:string, email:string, password:string, rePassword:string){
-    return this.http.post<UserForAuth> ('https://agilebreath.backendless.app/api/data/usersexam', {username, email, password, rePassword})
+    return this.http.post<UserForAuth> ('https://agilebreath.backendless.app/api/data/ex', {username, email, password, rePassword})
     .pipe(tap((user) => this.user$$.next(user)));
   }
 
@@ -66,6 +77,15 @@ export class UserService implements OnDestroy {
 
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
+  }
+
+  getData(email:string, password:string){
+    this.profileDetails.email=email;
+   this.profileDetails.password= password;
+  }
+
+  getUserId():void{
+
   }
 
   

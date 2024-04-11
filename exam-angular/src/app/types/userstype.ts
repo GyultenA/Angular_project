@@ -53,17 +53,32 @@ export interface UserForAuth {
     username: string;
     email: string;
     password: string;
-    id: string;
+    objectId: string;
   }
 
   export interface ProfileDetails {
-    username: string;
+   // username: string;
     email: string;
-   // password: string;
+    password: string;
   }
 
   export interface sPost {
     title: string,
     imageFile: File,
     comment: string,
+  }
+
+  export interface nPost {
+   image: null,
+		pass: string,
+		created: string,
+		repass: string,
+		title: null,
+		ownerId: null,
+		___class: string,
+		comment: null,
+		updated:string,
+		email: string,
+		objectId: string,
+		username: string
   }

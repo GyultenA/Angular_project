@@ -4,6 +4,7 @@ import { EMAIL_DOMAINS, emailValidator } from 'src/app/shared/validator/email.va
 import { matchPasswordsValidator } from 'src/app/shared/validator/match-pass';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +26,9 @@ export class RegisterComponent {
     ),
   });
 
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) { }
+  constructor(private fb: FormBuilder, 
+    private userService: UserService,
+    private router: Router) { }
 
   get passGroup() {
     return this.form.get('passGroup');
@@ -40,7 +43,7 @@ export class RegisterComponent {
     this.userService
       .register(username!, email!, password!, rePassword!)
       .subscribe(() => {
-        this.router.navigate(['/home'])
+        this.router.navigate(['/auth/profile'])
         //this.router.navigate(['/auth/login'])
       })
 

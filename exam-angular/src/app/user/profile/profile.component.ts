@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { EMAIL_DOMAINS, emailValidator } from 'src/app/shared/validator/email.validator';
-import { ProfileDetails, UserPosts } from 'src/app/types/usersType';
+import { ProfileDetails, UserPosts, nPost } from 'src/app/types/usersType';
 import { UserService } from '../user.service';
 import { ApiService } from 'src/app/api.service';
 import { ActivatedRoute } from '@angular/router';
@@ -14,43 +14,87 @@ import { ActivatedRoute } from '@angular/router';
 export class ProfileComponent implements OnInit {
   showEditMode: boolean = false;
   showMyPosts: boolean = false;
+  private userId: string | undefined;
 
   userPosts: UserPosts[] | null = [];
+  nPost: nPost [] |null = []
+ 
+
+  
 
   profileDetails: ProfileDetails = {
-    username: '',
+    password: '',
     email: '',
   };
 
   form = this.fb.group({
-    username: ['', [Validators.required, Validators.minLength(5)]],
+    password: ['', [Validators.required, Validators.minLength(5)]],
     email: ['', [Validators.required, emailValidator(EMAIL_DOMAINS)]],
     
   });
+
+
 
   constructor(
     private fb: FormBuilder, 
     private userService: UserService,
     private apiService: ApiService,
-    private activeRoute: ActivatedRoute) {}
+    private activeRoute: ActivatedRoute) {
 
-    get userId(): string {
-      return this.userService.user?.id || '';
+      this.userService.user$.subscribe(user => {
+        this.userId = user?.objectId;
+        console.log(this.userId)
+    })
+
     }
+
+   // get userId(): string {
+     // console.log(this.userService.user?.objectId)
+     // return this.userService.user?.objectId || '';
+  //  }
   
   ngOnInit(): void {
-    const { username, email} = this.userService.user!;
+    //const email = this.userService.user!
+    const {email,password}= this.userService.user!;
+   // console.log(this.userService.user)
+   
+  
     this.profileDetails = {
-      username,
+      password,
       email,
     };
 
     this.form.setValue({
-      username,
+      password,
       email,
     });
 
-  }
+    this.activeRoute.params.subscribe((data)=>{
+     // console.log(data)
+      
+    })
+
+    let id = this.userId || "";
+    this.apiService.getUsPost(id).subscribe((userPosts)=>{
+       console.log(userPosts)
+         this.nPost = userPosts
+    })
+   
+       //console.log(email, pass)
+
+       // console.log(this.form.value)
+        //console.log(this.form.controls)
+       // console.log(this.form.value.email)
+
+      
+     }
+
+   
+
+
+    
+
+  
 
   onToggle(): void {
     this.showEditMode = !this.showEditMode;
@@ -63,9 +107,9 @@ export class ProfileComponent implements OnInit {
     }
 
     this.profileDetails = this.form.value as ProfileDetails;
-    const { username, email} = this.profileDetails;
+    const { password, email} = this.profileDetails;
     
-    this.userService.updateProfile(username, email)
+    this.userService.updateProfile(password, email)
     .subscribe(()=> {
       this.onToggle();
     })
@@ -81,6 +125,30 @@ export class ProfileComponent implements OnInit {
      this.showMyPosts = !this.showMyPosts;
   }
 
+  showPosts():void{
+
+  
+
+   // this.apiService.getUsPost(id).subscribe((data)=>{
+     // console.log(data)
+   // })
+
+    let id = this.userId || "";
+  this.apiService.getUsPost(id).subscribe((userPosts)=>{
+     console.log(userPosts)
+       this.nPost = userPosts
+  })
+   //this.activeRoute.params.subscribe((data)=>{
+  //  console.log(data)
+   // this.apiService.getPosts().subscribe((data)=>{
+     // console.log(data)
+
+     this.onToggleMyPosts();
+    //  console.log()
+    //})
+   //})
+  }
+
   //showPosts(): void {
    // this.activeRoute.params.subscribe((data) => {
      // const id = data['ownerId'];
@@ -90,14 +158,70 @@ export class ProfileComponent implements OnInit {
    // })
  // }
 
+ myPosts(e:Event){
+  e.preventDefault();
+  let id = this.userId || "";
+  this.apiService.getUsPost(id).subscribe((userPosts)=>{
+     console.log(userPosts)
+       this.nPost = userPosts
+      
 
-  myPosts(e:Event){
-    e.preventDefault();
-     this.onToggleMyPosts();
-  }
+  //this.activeRoute.params.subscribe((data) => {
+   // let objid = data['objectId']
+
+
+
+   // if(id===objid){
+     // this.apiService.getUsPost(id).subscribe((userPosts)=>{
+     //   console.log(userPosts)
+        //this.nPost = userPosts
+     // })
+   // }
+    
+    
+    
+  })
+
+
+
+
+ }
+
+ // myPosts(e:Event){
+  //  e.preventDefault();
+   // console.log(Event)
+  //  this.activeRoute.params.subscribe((data)=>{
+   //   console.log(data['email'])
+    //  console.log(data[0])
+      //this.apiService.getUsPost().subscribe((data)=>{
+       // console.log(data.email)
+       // console.log(data['email'])
+       //let email = data.email
+      // let pass = data.pass
+      // let em = data['email']
+
+       //console.log(em)
+
+       //console.log(email, pass)
+
+       // console.log(this.form.value)
+        //console.log(this.form.controls)
+       // console.log(this.form.value.email)
+
+    //  })
+    // })
+
+   
+
+
+
+
+    // this.onToggleMyPosts();
+  //}
 
   deletePost(e: Event){
     e.preventDefault();
+    let id = this.userId || "";
     this.activeRoute.params.subscribe((data)=>{
       const id = data ['objectId'];
 
@@ -105,5 +229,7 @@ export class ProfileComponent implements OnInit {
     })
    
   }
+
+ 
 
 }
