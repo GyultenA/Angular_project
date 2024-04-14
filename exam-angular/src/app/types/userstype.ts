@@ -64,8 +64,10 @@ export interface UserForAuth {
 
   export interface sPost {
     title: string,
-    imageFile: File,
+   // imageFile: File,
+   image?: string,
     comment: string,
+    created: string,
   }
 
   export interface nPost {
@@ -80,5 +82,9 @@ export interface UserForAuth {
 		updated:string,
 		email: string,
 		objectId: string,
-		username: string
+		username: string,
+    post: [
+      title: string,
+      comment: string,
+    ]
   }

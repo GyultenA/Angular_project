@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { ProfileDetails, UserForAuth } from '../types/usersType';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
 
 @Injectable({
@@ -16,6 +16,12 @@ export class UserService implements OnDestroy {
  isLoggedIn:boolean=false;
 
   userSubscription: Subscription;
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      "Content-Type": 'application/json'
+    })
+  }
 
   profileDetails: ProfileDetails = {
     password: '',
@@ -46,14 +52,14 @@ export class UserService implements OnDestroy {
   }
 
   login(email:string, password: string){
-   return this.http.post<UserForAuth>('https://agilebreath.backendless.app/api/data/usersexam', {email, password})
+   return this.http.post<UserForAuth>('https://agilebreath.backendless.app/api/data/usersexam', {email,password})
    .pipe(tap((user) => this.user$$.next(user)));
 
     //localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
   }
 
   register(username:string, email:string, password:string, rePassword:string){
-    return this.http.post<UserForAuth> ('https://agilebreath.backendless.app/api/data/ex', {username, email, password, rePassword})
+    return this.http.post<UserForAuth> ('https://agilebreath.backendless.app/api/data/usersexam', {username, email, password, rePassword})
     .pipe(tap((user) => this.user$$.next(user)));
   }
 
@@ -75,6 +81,8 @@ export class UserService implements OnDestroy {
     .pipe(tap(user => this.user$$.next(user)))
   }
 
+
+
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
   }
@@ -86,6 +94,11 @@ export class UserService implements OnDestroy {
 
   getUserId():void{
 
+  }
+
+  deleteuser(id: string){
+    return this.http.delete<UserForAuth>(`https://agilebreath.backendless.app/api/data/usersexam/${id}`)
+    .pipe(tap(() => this.user$$.next(undefined)));
   }
 
   

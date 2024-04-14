@@ -23,7 +23,7 @@
                   </ng-container>
             </label>
 
-            <label>Image URL: <input type="text" 
+            <label>Image Load <input type="file" 
               name="imgUrl" 
               #inputImg="ngModel" 
               ngModel
@@ -44,6 +44,7 @@
                     </p>
                   </ng-container>
             </label>
+            <label>Created by:{{username}}</label>
 
             <div class="new-post-buttons">
                 <button class="cancel" routerLink="/page/posts">Cancel</button>

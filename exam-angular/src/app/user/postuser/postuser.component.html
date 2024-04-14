@@ -1,0 +1,28 @@
+<p>postuser works!</p>
+<div >
+    <div class="list"  *ngFor="let p of npost">
+        <h2>Title {{ p.title}}</h2>
+        <p>Comment:{{p.comment}}</p>
+        <p>Created: <time>{{p.created}}</time></p>
+    </div>
+</div>
+
+<!--<section class="view-my">
+    <button class="my-posts" (click)="myPosts($event)">My posts</button>
+    <div class="list"  *ngFor="let p of spost">
+        <h2>Title {{ p.title}}</h2>
+        <p>Comment:{{p.comment}}</p>
+        <p>Created: <time>{{p.created}}</time></p>
+    </div>
+    <ng-container *ngIf="showMyPosts">
+        <div class="list"  *ngFor="let p of spost">
+            <h2>Title {{ p.title}}</h2>
+            <p>Comment:{{p.comment}}</p>
+            <p>Created: <time>{{p.created}}</time></p>
+        </div>
+        <button class="btn" (click)="deletePost($event)">Delete Post</button>
+            <button (click)="myPosts($event)">
+        <a routerLink="/auth/profile" class="button">Delete Post</a>
+      </button>
+    </ng-container>
+ </section>-->

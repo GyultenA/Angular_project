@@ -2,7 +2,7 @@
     <div class="profile">
       <img src="https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_1280.jpg" alt="default user" />
       <h3>User Info:</h3>
-  
+       <h4>Welcome {{username}}</h4>
       <!-- READONLY MODE -->
       <ng-container *ngIf="!showEditMode">
         <div class="flex">
@@ -77,13 +77,32 @@
           >
             Save
           </button>
-        </form>
+          <button class="left" (click)="deleteUser($event)">Delete account</button>
+                  </form>
       </ng-container>
     </div>
   </div>
 
+  <div class="list"  *ngFor="let p of npost">
+    <h2>Title {{ p.title}}</h2>
+    <p>Comment:{{p.comment}}</p>
+    <p>Created: <time>{{p.created}}</time></p>
+</div>
+
+ <!--<div class="box-top" *ngFor="let p of literable | keyvalue ">
+    <img class="box-image" src="">
+    <div class="title-flex">
+      <h3 class="box-title">{{p.title}}</h3>
+      <p class="time-info">{{p.created}}</p>
+    </div>
+    <p class="description">{{p.comment}}</p>
+  </div>
+
   <section class="view-my">
     <button class="my-posts" (click)="myPosts($event)">My posts</button>
+    <div *ngIf="empty">
+      <p>No posts</p>
+    </div>
    <div class="wrap">
 
   <div class="box-top" *ngFor="let p of userPosts">
@@ -122,7 +141,7 @@
         
         <a href="#" class="button">Edit Post</a>
       </div>
-    </ng-container>
+    </ng-container>--> 
   
  <!-- <section class="view-my">
       <button class="my-posts" (click)="myPosts($event)">My posts</button>

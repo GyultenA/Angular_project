@@ -13,10 +13,10 @@ import { ProfileDetails } from 'src/app/types/usersType';
 export class LoginComponent {
   domains = EMAIL_DOMAINS;
 
-  profileDetails: ProfileDetails = {
-    password: '',
-    email: '',
-  };
+ profileDetails: ProfileDetails = {
+ password: '',
+ email: '',
+ };
 
   get isLoggedInUser(): boolean {
     return this.userService.isLogged;
@@ -39,18 +39,18 @@ export class LoginComponent {
     const password = form.value.password;
    // console.log(email, password)
 
-    this.userService.login(email, password);
-    this.profileDetails.email=email
-    this.profileDetails.password=password
-  this.router.navigate(['/auth/profile'])
+   // this.userService.login(email, password);
+    //this.profileDetails.email=email
+   // this.profileDetails.password=password
+  //this.router.navigate(['/auth/profile'])
 
-  this.userService.getData(email,password)
+  //this.userService.getData(email,password)
 
-    //this.userService.login(email, password).subscribe((data) => {
-      //this.profileDetails.email= email
-     // this.profileDetails.password=password
-   // this.router.navigate(['/auth/profile']);
-   // })
+    this.userService.login(email,password).subscribe((data) => {
+    //this.profileDetails.email= email
+    // this.profileDetails.password=password
+   this.router.navigate(['/auth/profile']);
+   })
 
   }
 }

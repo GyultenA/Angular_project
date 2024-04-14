@@ -4,7 +4,7 @@ import { EMAIL_DOMAINS, emailValidator } from 'src/app/shared/validator/email.va
 import { ProfileDetails, UserPosts, nPost } from 'src/app/types/usersType';
 import { UserService } from '../user.service';
 import { ApiService } from 'src/app/api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -14,10 +14,13 @@ import { ActivatedRoute } from '@angular/router';
 export class ProfileComponent implements OnInit {
   showEditMode: boolean = false;
   showMyPosts: boolean = false;
+  empty: boolean = false
   private userId: string | undefined;
 
+  username: string | undefined;
+
   userPosts: UserPosts[] | null = [];
-  nPost: nPost [] |null = []
+  npost: nPost [] |null = []
  
 
   
@@ -39,11 +42,13 @@ export class ProfileComponent implements OnInit {
     private fb: FormBuilder, 
     private userService: UserService,
     private apiService: ApiService,
-    private activeRoute: ActivatedRoute) {
+    private activeRoute: ActivatedRoute,
+  private router: Router) {
 
       this.userService.user$.subscribe(user => {
         this.userId = user?.objectId;
-        console.log(this.userId)
+        this.username = user?.username
+      //  console.log(this.userId)
     })
 
     }
@@ -56,7 +61,8 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     //const email = this.userService.user!
     const {email,password}= this.userService.user!;
-   // console.log(this.userService.user)
+   //console.log(this.userService.user!)
+ 
    
   
     this.profileDetails = {
@@ -69,16 +75,30 @@ export class ProfileComponent implements OnInit {
       email,
     });
 
-    this.activeRoute.params.subscribe((data)=>{
+    //this.activeRoute.params.subscribe((data)=>{
      // console.log(data)
       
+   // })
+   let id = this.userId || "";
+   console.log(id)
+
+   this.apiService.getAllposts2().subscribe((data) => {
+     //console.log(data, 'this 2')
+   //  console.log(data[3])
+    // this.npost= data
     })
 
-    let id = this.userId || "";
-    this.apiService.getUsPost(id).subscribe((userPosts)=>{
-       console.log(userPosts)
-         this.nPost = userPosts
+    this.apiService.getAllUserPost(id).subscribe((data) => {
+     // console.log(data[3])
+    let us= Object.values(data)
+    console.log(us)
     })
+
+  //  let id = this.userId || "";
+  //  this.apiService.getUsPost(id).subscribe((userPosts)=>{
+    //   console.log(userPosts)
+        // this.nPost = userPosts
+  //  })
    
        //console.log(email, pass)
 
@@ -88,11 +108,7 @@ export class ProfileComponent implements OnInit {
 
       
      }
-
-   
-
-
-    
+ 
 
   
 
@@ -121,11 +137,19 @@ export class ProfileComponent implements OnInit {
     this.onToggle();
   }
 
-  onToggleMyPosts (): void{
-     this.showMyPosts = !this.showMyPosts;
+  deleteUser(e: Event): void{
+    e.preventDefault()
+    let id = this.userId || ""
+    this.userService.deleteuser(id).subscribe(()=>{
+      this.router.navigate(['/home'])
+    })
   }
 
-  showPosts():void{
+ //onToggleMyPosts (): void{
+   //  this.showMyPosts = !this.showMyPosts;
+ // }
+
+  //showPosts():void{
 
   
 
@@ -133,21 +157,24 @@ export class ProfileComponent implements OnInit {
      // console.log(data)
    // })
 
-    let id = this.userId || "";
-  this.apiService.getUsPost(id).subscribe((userPosts)=>{
-     console.log(userPosts)
-       this.nPost = userPosts
-  })
+  //  let id = this.userId || "";
+  //this.apiService.getUsPost(id).subscribe((userPosts)=>{
+   //  console.log(userPosts)
+     //  this.nPost = userPosts
+
+      // let iterablelist = Object.keys(this.nPost)
+       //console.log(iterablelist)
+  //})
    //this.activeRoute.params.subscribe((data)=>{
   //  console.log(data)
    // this.apiService.getPosts().subscribe((data)=>{
      // console.log(data)
 
-     this.onToggleMyPosts();
+    // this.onToggleMyPosts();
     //  console.log()
     //})
    //})
-  }
+//  }
 
   //showPosts(): void {
    // this.activeRoute.params.subscribe((data) => {
@@ -158,12 +185,18 @@ export class ProfileComponent implements OnInit {
    // })
  // }
 
- myPosts(e:Event){
-  e.preventDefault();
-  let id = this.userId || "";
-  this.apiService.getUsPost(id).subscribe((userPosts)=>{
-     console.log(userPosts)
-       this.nPost = userPosts
+// myPosts(e:Event){
+ // e.preventDefault();
+  ///let id = this.userId || "";
+ // this.apiService.getUsPost(id).subscribe((userPosts)=>{
+   //  console.log(userPosts)
+    //   this.nPost = userPosts
+     //  console.log(userPosts.length)
+     //  let iterablelist = Object.keys(this.nPost)
+
+      // if(this.nPost === null){
+       // this.empty= true
+      // }
       
 
   //this.activeRoute.params.subscribe((data) => {
@@ -180,7 +213,7 @@ export class ProfileComponent implements OnInit {
     
     
     
-  })
+ // })
 
 
 
@@ -219,17 +252,7 @@ export class ProfileComponent implements OnInit {
     // this.onToggleMyPosts();
   //}
 
-  deletePost(e: Event){
-    e.preventDefault();
-    let id = this.userId || "";
-    this.activeRoute.params.subscribe((data)=>{
-      const id = data ['objectId'];
 
-      this.apiService.deletePost(id)
-    })
-   
-  }
 
  
 
-}

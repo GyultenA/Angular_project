@@ -82,6 +82,7 @@ form {
   
   .green-button {
     background-color: green;
+    margin-left: 2em;
   }
   .error {
     color: red;
@@ -262,5 +263,11 @@ form {
     .box {
       flex-basis: calc(25% - 18px);
     }
+  }
+
+  .left {
+    color: #fff;
+    background-color: #444;
+    margin-left: 6em;
   }
   
