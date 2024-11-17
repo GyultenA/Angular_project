@@ -1,0 +1,54 @@
+.nav-container {
+    padding-top: 2em;
+    padding-bottom: 1em;
+   /* position: relative;*/
+    /*position: sticky; */
+    /*overflow: hidden;
+    position: fixed;
+    top: 0;*/
+ 
+   
+}
+
+nav {
+    
+    display: flex;
+    justify-content: space-around;
+    max-width: 1500px;
+    margin: 0 auto;
+   
+}
+
+div {
+    width: 100%;
+}
+
+
+
+ul {
+    display: flex;
+    padding-left: 25px;
+    padding-right: 25px;
+    list-style: none;
+}
+
+li {
+    margin-left: 5px;
+    margin-right: 15px;
+    cursor: pointer;
+    font-size: 35px;
+    color: rgb(27, 25, 25);
+}
+
+a {
+    color: rgb(27, 25, 25);
+}
+
+/*CSS Header sticky*/
+nav.header-sticky {
+    position: fixed;
+    background-color: chocolate;
+    z-index: 2000;
+    transition: .2s;
+  }
+

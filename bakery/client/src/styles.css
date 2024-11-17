@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+* {
+    margin: 0px; 
+    padding: 0px; 
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+main {
+  min-height: 100vh;
+  padding: 3em;
+  margin-top: 30px;
+ 
+}
+
+a {
+  text-decoration: none;
+}
+
+/*background-repeat: no-repeat;
+    background-size: 680px 400px;
+    background-position: top center ; */
+
+/*CSS Header sticky*/
+

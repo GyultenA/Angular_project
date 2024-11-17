@@ -1,0 +1,26 @@
+.container {
+    position: relative;
+}
+
+
+
+.content {
+  /*  position: absolute;*/
+    width: 100%;
+    text-align: center;
+}
+
+
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+    cursor: pointer;
+    font-style: italic;
+}
+
+h1, h2 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
