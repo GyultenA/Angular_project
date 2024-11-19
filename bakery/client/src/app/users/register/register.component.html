@@ -1,1 +1,103 @@
 <p>register works!</p>
+<div class="container">
+    <h1>Register</h1>
+    <form id="register-form" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <div class="form-group">
+            <label for="firstName">firstName:</label>
+            <input type="text" id="firstName" name="firstName" formControlName="firstName" placeholder="First Name">
+            <ng-container *ngIf="registerForm.get('firstName')?.touched">
+                <p class="error" *ngIf="registerForm.get('firstName')?.errors?.['required']">
+                   First name is required!
+                </p>
+                <p class="error" *ngIf="registerForm.get('firstName')?.errors?.['minlength']">
+                    First name should be at least 2 characters long.
+                 </p> 
+            </ng-container>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last name:</label>
+            <input type="text" id="lastName" name="lastName" formControlName="lastName" placeholder="last name">
+            <ng-container *ngIf="registerForm.get('lastName')?.touched">
+                <p class="error" *ngIf="registerForm.get('lastName')?.errors?.['required']">
+                    Last name is required!
+                </p>
+                <p class="error" *ngIf="registerForm.get('lastName')?.errors?.['minlength']">
+                    Last name should be at least 2 characters long!
+                </p>
+            </ng-container>
+        </div>
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" formControlName="username" placeholder="Username">
+            <ng-container *ngIf="registerForm.get('username')?.touched">
+                <p class="error" *ngIf="registerForm.get('username')?.errors?.['required']">
+                    Username is required!
+                </p>
+                <p class="error" *ngIf="registerForm.get('username')?.errors?.['minlength']">
+                    Username should be at least 2 characters long!
+                </p>
+            </ng-container>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" formControlName="email" placeholder="email">
+            <ng-container *ngIf="registerForm.get('email')?.touched">
+                <p class="error" *ngIf="registerForm.get('email')?.errors?.['required']">
+                    Email is required!
+                </p>
+                <p class="error" *ngIf="registerForm.get('email')?.errors?.['emailValidator']">
+                    Email is not valid!
+                </p>
+            </ng-container>
+        </div>
+
+        <div class="form-group">
+            <label for="avatar">Avatar:</label>
+            <input type="text" id="imageUrl" name="imageUrl" formControlName="avatar" placeholder="avatar image url">
+            <ng-container *ngIf="registerForm.get('avatar')?.touched">
+                <p class="error" *ngIf="registerForm.get('avatar')?.errors?.['required']">
+                    Avatar image is required!
+                </p>
+                <p class="error" *ngIf="registerForm.get('avatar')?.errors?.['pattern']">
+                    Please provide a valid URL ending with .jpg, .jpeg, .png, or .gif!
+                </p>
+            </ng-container>
+        </div>
+     
+        <ng-container formGroupName="passGroup">
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" formControlName="password" placeholder="******">
+                <ng-container *ngIf="passGroup?.get('password')?.touched">
+                    <p class="error" *ngIf="registerForm.get('password')?.errors?.['required']">
+                        Password is required!
+                    </p>
+                    <p class="error" *ngIf="passGroup?.get('password')?.errors?.['minlength']">
+                        Password should be between 4 and 6 characters long!
+                    </p>
+                    <p class="error" *ngIf="passGroup?.get('password')?.errors?.['maxlength']">
+                        Password should be between 4 and 6 characters long!
+                    </p>
+                </ng-container>
+            </div>
+            <div class="form-group">
+                <label for="rePassword">Confirm Password:</label>
+                <input type="rePassword" id="rePassword" name="rePassword" formControlName="rePassword">
+                <ng-container *ngIf="passGroup?.get('rePassword')?.touched">
+                    <p class="error" *ngIf="passGroup?.get('rePassword')?.errors?.['required']">
+                        RePassword is required!
+                    </p>
+                    <p class="error" *ngIf="passGroup?.get('rePassword')?.errors?.['passMatch']">
+                        RePassword does not match Password!
+                    </p>
+                </ng-container>
+            </div>
+        </ng-container>
+
+        <button>Register</button>
+        <p>Already have an account?
+            <a routerLink="/user/login">Login</a>
+        </p>
+
+    </form>
+</div>

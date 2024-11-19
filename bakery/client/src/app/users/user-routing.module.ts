@@ -8,7 +8,7 @@ import { ViewProfileComponent } from "./view-profile/view-profile.component";
 const routes: Routes = [
     {path:'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
-    {path:'logout', component:LoginComponent},
+  //  {path:'logout', component:LoginComponent},
     {path: 'profile',
         children: [
             {path: '', pathMatch:"full", component: ProfileComponent},
