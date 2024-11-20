@@ -5,12 +5,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './not-found.component.html',
   styleUrls: ['./not-found.component.css']
 })
-export class NotFoundComponent implements OnInit {
+export class NotFoundComponent  {
   isLoading: boolean = true;
 
-  ngOnInit(): void {
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 1000);
-  }
+  //ngOnInit(): void {
+  //  setTimeout(() => {
+    //  this.isLoading = false;
+  //  }, 1000);
+ // }
 }

@@ -6,8 +6,9 @@ const registerUser = async(req, res) => {
 
     try {
         const result = await authService.register(userData);
+        const { token, email, id } = result;
         res.cookie('auth', token);
-        res.status(200).json({ message: "registration is successful", username, id});
+        res.status(200).json({ message: "registration is successful", email, id});
         
     } catch (err){
         const errMsg = err.message;
@@ -25,8 +26,9 @@ const loginUser = async (req, res) => {
 
     try{
         const result = await authService.login(loginData);
-        res.cookie('auth', token);
-        res.status(200).json({ message: 'Login successful'})
+        const {token, email, id} = result;
+        res.cookie('auth', token, { httpOnly: true });
+        res.status(200).json({ message: 'Login successful', email, id})
     } catch (err) {
         const errMsg = err.message;
         if (err.name === 'ValidationError') {

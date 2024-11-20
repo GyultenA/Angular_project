@@ -18,10 +18,11 @@ exports.register = async (userData) => {
 
    const createdUser = await User.create(userData);
    const token = await generateToken(createdUser);
-   return { token, username: createdUser.username, id: createdUser._id, email: createdUser.email };
+  // return { token, username: createdUser.username, id: createdUser._id, email: createdUser.email };
+   return { token, email: createdUser.email, id: createdUser._id };
 };
 
-exports.login = async (email, password) => {
+exports.login = async ({email, password}) => {
    const user = await User.findOne({ email });
    if (!user) {
       throw new Error('Email or password is invalid');
@@ -39,7 +40,8 @@ exports.login = async (email, password) => {
    }
 
    const token = await generateToken(user);
-   return { token, username: user.username, id: user._id, email: user.email };
+  // return { token, username: user.username, id: user._id, email: user.email };
+   return { token, email: user.email, id: user._id,  };
 };
 
 exports.getOne = async (userId) => await User.findById(userId);

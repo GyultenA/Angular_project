@@ -65,6 +65,18 @@ export class UserService implements OnDestroy {
     }))
   }
 
+
+  
+  login(email:string, password:string){
+    const {apiUrl} = environment;
+
+    return this.http.post<UserAuth>(`${apiUrl}/user/login`,{email, password}, {withCredentials:true})
+    .pipe(tap((user) => {
+      this.user$$.next(user);
+      sessionStorage.setItem(this.KEY, JSON.stringify(user));
+    }))
+  }
+
   logout(){
     const { apiUrl} = environment;
     return this.http
