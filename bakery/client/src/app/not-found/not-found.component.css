@@ -1,3 +1,8 @@
+.main-error {
+  max-width: 800px;
+  margin: 100px auto;
+}
+
 .center-div {
     display: flex;
     justify-content: center;
@@ -14,14 +19,14 @@
   .h1-title {
     font-size: 30px;
     font-weight: bold;
-    margin: 20px;
+    text-align: center;
   }
   
   .h3-title {
     font-size: 16px;
     font-weight: bold;
     font-style: oblique;
-    margin: 20px;
+    text-align: center;
   }
   
   .h1-second-title {
@@ -34,7 +39,7 @@
   .p-text {
     font-size: 14px;
     font-weight: normal;
-    margin: 20px;
+    text-align: center;
   }
   
   .responsive-image {

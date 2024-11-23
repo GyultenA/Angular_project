@@ -2,27 +2,30 @@
 <div class="center-div" *ngIf="isLoading">
     <app-loader></app-loader>
   </div>
-  
-  <div class="grid-container">
-    <div class="grid-item">
-      <h1 class="h1-title">Oops... seems like a little detour!</h1>
-      <p class="p-text">
-        We suggest you navigate back to
-        <a [routerLink]="['/']"
-          >Home using the navigation bar above or simply by clicking here.</a
-        >
-      </p>
-      <p class="p-text"> If you continue to
-        encounter issues, please don't hesitate to reach out to the App creator.
-        Your detailed feedback, including screenshots and other relevant
-        information, will be invaluable in helping us improve. Thank you!
-      </p>
-    </div>
-    <div class="grid-item">
-      <img
-        src="../../assets/custom-404-page.png"
-        alt="page not found"
-        class="responsive-image"
-      />
+
+  <div class="main-error">
+    <div class="grid-container">
+      <div class="grid-item">
+        <h1 class="h1-title">Oops! The page you're looking for could not be found.</h1>
+        <h3 class="h3-title">
+          We suggest you navigate back to
+          <a [routerLink]="['/']"
+            >Home using the navigation bar above or simply by clicking here.</a
+          >
+        </h3>
+        <p class="p-text"> If you continue to
+          encounter issues, please don't hesitate to reach out to the App creator.
+          Your detailed feedback, including screenshots and other relevant
+          information, will be invaluable in helping us improve. Thank you!
+        </p>
+      </div>
+      <div class="grid-item">
+        <img
+          src="../../assets/custom-404-page.png"
+          alt="page not found"
+          class="responsive-image"
+        />
+      </div>
     </div>
   </div>
+  

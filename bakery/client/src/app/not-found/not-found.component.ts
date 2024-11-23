@@ -8,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class NotFoundComponent  {
   isLoading: boolean = true;
 
-  //ngOnInit(): void {
-  //  setTimeout(() => {
-    //  this.isLoading = false;
-  //  }, 1000);
- // }
+  ngOnInit(): void {
+   setTimeout(() => {
+    this.isLoading = false;
+  }, 1000);
+  }
 }

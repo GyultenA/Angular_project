@@ -9,6 +9,7 @@ import { MainModule } from './main/main.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersModule } from './users/users.module';
+import { ProductModule } from './product/product.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { UsersModule } from './users/users.module';
     SharedModule,
     MainModule,
     HttpClientModule,
-   UsersModule,
+    UsersModule,
+    ProductModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

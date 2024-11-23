@@ -33,4 +33,36 @@ export class ProductService {
         return this.http.post<Product>(`${apiUrl}/catalog/create`, payload, { withCredentials: true })
     }
 
+    getOneProduct(id:string){
+        const { apiUrl} = environment;
+        return this.http.get<Product>(`${apiUrl}/catalog/${id}`);
+    }
+
+    editProduct(id:string, updateData: any){
+        const {apiUrl} = environment;
+        return this.http.put<Product>(`${apiUrl}/catalog/${id}`, updateData, {withCredentials:true});
+    }
+
+    deleteProduct(id:string){
+        const {apiUrl} = environment;
+        return this.http.delete(`${apiUrl}/catalog/${id}`, {withCredentials:true});
+    }
+
+    requestProduct(id:string, userId:string, hasLike: boolean){
+        const {apiUrl} = environment;
+        const payload = {userId, hasLike};
+        return this.http.put<Product>(`${apiUrl}/catalog/likesub/${id}`, payload, {
+            withCredentials:true
+        })
+    }
+
+
+    cancelRequest(id: string, userId:string){
+        const {apiUrl} = environment;
+        const payload = { userId};
+        return this.http.put<Product>(`${apiUrl}/catalog/nolikesub/${id}`, payload, {withCredentials:true})
+    }
+
+
+
 }

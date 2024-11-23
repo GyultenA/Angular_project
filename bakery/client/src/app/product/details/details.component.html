@@ -1,0 +1,24 @@
+<p>details works!</p>
+
+<div class="container">
+    <h1>{{product.name}}</h1>
+    
+    <div class="product-details">
+      <img src="{{product.imageUrl}}" alt="product Image" class="product-image">
+      
+      <p><span class="type">:</span> {{product.type}}</p>
+      <p><span class="description">Description:</span><br>{{product.description}}</p>
+    <!--<p>Likes: {{}}</p>--->  
+  
+      <button *ngIf="isOwner === true"  [routerLink]="['/catalog', product._id, 'edit']">Edit</button>
+      <button *ngIf="isOwner === true" (click)="product._id && onDelete(productId)">Delete</button>
+      <button *ngIf="!hasLike && loggedIn && !isOwner" (click)="product._id && requestProduct(productId)">Like</button>
+      <button *ngIf="product.isLiked && hasLike && !isOwner" (click)="product._id && cancelLike(productId)">Unlike</button>
+      <!-- <button (click)="toggleLikedByUser(product._id)" *ngIf="!isLiked">Like</button> -->
+      <!-- <button (click)="toggleLikedByUser(product._id)" *ngIf="isLiked">Unlike</button> -->
+  
+      <p><span class="type">Browse for more inspiration:</span>
+      <a routerLink="/catalog">Back to Dashboard</a>
+      </p>
+    </div>
+  </div>

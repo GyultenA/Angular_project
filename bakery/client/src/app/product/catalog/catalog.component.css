@@ -1,0 +1,81 @@
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: calc(33.33% - 20px);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.card-content p {
+    margin: 10px 0;
+    color: #666;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    width: 100%;
+    margin-top: -10px;
+    margin-bottom: 30px;
+    padding: 10px;
+    background-color: gold;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: green;
+}
+a {
+  padding-left: 10px;
+  color: gold;
+}
+a:hover {
+  color: green;
+}
+
+.card-noCocktails{
+    max-width: 600px;
+    margin: 100px auto;
+    text-align: center;
+    display: flex;
+    height: 600px;
+}
+
+.card-noCocktails p {
+    font-size: 24px;
+    color: gold;
+    margin-bottom: 20px;
+}

@@ -1,1 +1,26 @@
 <p>catalog works!</p>
+<p>catalog works!</p>
+<p>catalog works!</p>
+
+<h1>Product Catalog</h1>
+<div *ngIf="this.hasResult" class="card-container">
+    <div *ngFor="let data of products" class="card">
+        <img src="{{data.imageUrl}}" alt="{{data.name}}">
+        <div class="card-content">
+            <h2>{{data.name}}</h2>
+            <p>Type: {{data.type}}</p>
+            <p>Description: {{data.description}}</p>
+            <a [routerLink]="['/catalog',data._id]">Details</a>
+        </div>
+    </div>
+</div>
+
+<ng-container *ngIf="!hasResult">
+    <div class="card-noCocktails" style="display: block;">
+        <h1>Sorry, there are no products at this time.</h1>
+        <br>
+        <p>You can be the first to add a product.</p>
+        <a routerLink="/catalog/create">Add new product</a>
+    </div>
+</ng-container>
+
