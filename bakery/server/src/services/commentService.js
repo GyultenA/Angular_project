@@ -13,7 +13,11 @@ exports.createNewComment = async(userId, createData) => {
     const createdComment = await Comment.create({
         ...createData,
         owner: userId,
-    })
+    });
+    const currentProduct = await Product.findById(createData.likeProduct);
+    currentProduct.usersWhoRated.push(createdComment.owner);
+    await currentProduct.save();
+    
     return createdComment;
 }
 
