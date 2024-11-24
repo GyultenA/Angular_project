@@ -38,9 +38,15 @@ export class ProductService {
         return this.http.get<Product>(`${apiUrl}/catalog/${id}`);
     }
 
-    editProduct(id:string, updateData: any){
+    editProduct(id:string, name:string, type:string, description: string, imageUrl: string){
         const {apiUrl} = environment;
-        return this.http.put<Product>(`${apiUrl}/catalog/${id}`, updateData, {withCredentials:true});
+        const updateData = {id, name, type, description, imageUrl}
+        return this.http.put<Product>(`${apiUrl}/catalog/${id}/edit`, updateData, {withCredentials:true});
+    }
+
+    editProductTwo(id:string, updatedFields: any){
+        const {apiUrl} = environment;
+        return this.http.put<Product>(`${apiUrl}/catalog/${id}/edit`, updatedFields, {withCredentials:true});
     }
 
     deleteProduct(id:string){

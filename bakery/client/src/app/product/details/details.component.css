@@ -2,9 +2,9 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: gold;
-    font-family: fantasy;
+    background-color: rgba(211, 203, 203, 0.5);
+    color: rgb(199, 87, 13);
+    font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
     box-sizing: border-box;
     min-height: 100vh; /* Make container at least as tall as the viewport */

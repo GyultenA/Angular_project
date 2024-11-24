@@ -6,6 +6,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { CatalogComponent } from './product/catalog/catalog.component';
 import { EditComponent } from './product/edit/edit.component';
 import { AddProductComponent } from './product/add-product/add-product.component';
+import { DetailsComponent } from './product/details/details.component';
 
 const routes: Routes = [
   { path: '', pathMatch: "full", component: HomeComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: "about", component: AboutComponent },
   { path: "catalog", component: CatalogComponent },
   { path: "catalog/create", component: AddProductComponent },
+  { path: "catalog/:productId", component: DetailsComponent},
   { path: "catalog/:productId/edit", component: EditComponent },
   { path: "catalog", loadChildren: () => import('./product/product.module').then((m) => m.ProductModule) },
 

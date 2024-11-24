@@ -73,7 +73,7 @@ const isProductOwner = async (req, res, next) => {
   const productId = req.params.productId;
   const current = await getOneProduct({ _id: productId });
 
-  if (!book) {
+  if (!current) {
     return res.status(404).send()
   }
 

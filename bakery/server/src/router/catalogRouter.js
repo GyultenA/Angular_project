@@ -10,7 +10,7 @@ router.get('/:productId', catalogController.getProduct);
 router.get('/search', catalogController.searchProduct);
 
 router.post('/create', isAuth, catalogController.newProduct);
-router.put('/:productId', isProductOwner, catalogController.updateProduct);
+router.put('/:productId/edit', isProductOwner, catalogController.updateProduct);
 router.delete('/:productId', isProductOwner, catalogController.removeProduct);
 
 router.put('/likesub/:productId', isAuth, catalogController.likeSubs);

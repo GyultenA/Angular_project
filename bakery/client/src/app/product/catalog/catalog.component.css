@@ -1,4 +1,7 @@
 
+.main-catalog {
+    padding: 2em;
+}
 h1 {
     text-align: center;
     color: #333;
@@ -7,20 +10,21 @@ h1 {
 .card-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
+    
 }
 
 .card {
     background-color: #fff;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(46, 44, 44, 0.1);
     width: calc(33.33% - 20px);
     margin-bottom: 20px;
     overflow: hidden;
 }
 
 .card img {
-    width: 100%;
+    width: 80%;
     height: auto;
     object-fit: cover;
 }
@@ -39,15 +43,25 @@ h1 {
     color: #666;
 }
 
+.add-product {
+   margin-right: 100px;
+   margin-left: 100px
+}
+
+.add-product a {
+    font-size: 18px;
+}
+
 button {
-    display: flex;
+    display: block;
     justify-content: center;
-    align-self: center;
+   /* align-self: center;*/
     width: 100%;
+    align-items: center;
     margin-top: -10px;
     margin-bottom: 30px;
     padding: 10px;
-    background-color: gold;
+    background-color: rgb(214, 139, 18);
     color: black;
     border: none;
     border-radius: 5px;
@@ -60,13 +74,13 @@ button:hover {
 }
 a {
   padding-left: 10px;
-  color: gold;
+  color: rgb(18, 18, 18);
 }
 a:hover {
-  color: green;
+  color: rgb(23, 26, 23);
 }
 
-.card-noCocktails{
+.card-noProducts{
     max-width: 600px;
     margin: 100px auto;
     text-align: center;
@@ -74,7 +88,7 @@ a:hover {
     height: 600px;
 }
 
-.card-noCocktails p {
+.card-noProducts p {
     font-size: 24px;
     color: gold;
     margin-bottom: 20px;

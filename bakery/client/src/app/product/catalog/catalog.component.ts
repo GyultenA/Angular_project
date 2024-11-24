@@ -40,7 +40,7 @@ export class CatalogComponent implements OnInit {
     })
 
 
-    console.log(this.hasResult)
+    //console.log(this.hasResult)
   }
 
 

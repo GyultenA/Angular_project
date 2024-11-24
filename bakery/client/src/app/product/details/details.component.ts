@@ -48,23 +48,25 @@ export class DetailsComponent implements OnInit {
       const id = data['productId'];
       this.productService.getOneProduct(id).subscribe(product => {
         this.product = product;
+
+        if (product.owner._id === this.currentUserId) {
+          this.isOwner = true;
+          console.log(this.isOwner)
+        }
+
+        const userHasLiked =product.likedBy?.some((u) => u.user?._id === this.currentUserId);
+
+        if (userHasLiked) {
+          this.hasLike = true;
+        }
+
+        const userRated = product.usersWhoRated?.some((userId) => userId.toString() === this.currentUserId);
+
+        if (userRated) {
+          this.hasRatedproduct = true;
+        }
+
       })
-
-      if (this.product.owner._id === this.currentUserId) {
-        this.isOwner = true;
-      }
-
-      const userHasLiked = this.product.likedBy?.some((u) => u.user?._id === this.currentUserId);
-
-      if (userHasLiked) {
-        this.hasLike = true;
-      }
-
-      const userRated = this.product.usersWhoRated?.some((userId) => userId.toString() === this.currentUserId);
-
-      if (userRated) {
-        this.hasRatedproduct = true;
-      }
 
     })
   }
