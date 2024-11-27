@@ -4,6 +4,7 @@ import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { ViewProfileComponent } from "./view-profile/view-profile.component";
+import { ProfileEditComponent } from "./profile-edit/profile-edit.component";
 
 const routes: Routes = [
     {path:'login', component: LoginComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
         children: [
             {path: '', pathMatch:"full", component: ProfileComponent},
             {path: ":userId", component: ViewProfileComponent},
+            {path: "edit/:userId", component: ProfileEditComponent}
         ]
     }
 ];

@@ -10,11 +10,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersModule } from './users/users.module';
 import { ProductModule } from './product/product.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -25,6 +27,7 @@ import { ProductModule } from './product/product.module';
     HttpClientModule,
     UsersModule,
     ProductModule,
+    NgbModule,
    
   ],
   providers: [],

@@ -12,7 +12,7 @@ router.post('/register', isGuest, registerUser);
 router.post('/login', isGuest, loginUser);
 router.post('/logout', isAuth, logoutUser);
 
-router.put('/my-profile/userid', isProfileOwner,editMyUser);
+router.put('/my-profile/:userid', isProfileOwner,editMyUser);
 
 module.exports = router;
 

@@ -7,6 +7,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 
 
 
@@ -16,7 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RegisterComponent,
     ProfileComponent,
     LogoutComponent,
-    ViewProfileComponent
+    ViewProfileComponent,
+    ProfileEditComponent
   ],
   imports: [
     CommonModule, UserRoutingModule, ReactiveFormsModule,FormsModule,

@@ -1,1 +1,24 @@
 <p>profile works!</p>
+<div class="card">
+    <div class="container">
+        <img class="card-img" src="{{user.avatar}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{user.firstName}} {{user.lastName}}</h5>
+          <p class="card-text">{{user.aboutMe}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{user.username}}</li>
+          <li class="list-group-item">{{user.email}}</li>
+          
+        </ul>
+        <div class="card-body">
+            <button class="card-link" (click)="clickShowProduct()">Your product</button>
+            <ng-container *ngIf="showProduct">
+               <p>{{user.productOwner}}</p>
+            </ng-container>
+          <a [routerLink]="['/user/profile/edit',this.currentUserId]" class="card-link">Edit Profile</a>
+        
+        </div>
+    </div>
+ 
+  </div>

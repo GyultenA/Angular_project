@@ -87,10 +87,23 @@ export class UserService implements OnDestroy {
     }))
   }
 
+getMyUser(id:string){
+  const { apiUrl} = environment;
+  return this.http.get<UserDetails>(`${apiUrl}/user/my-profile/${id}`, {withCredentials: true})
+}
 
+getProfile(id: string){
+  const {apiUrl} = environment;
+  return this.http.get<UserDetails>(`${apiUrl}/user/profile/${id}`)
+}
+
+editMyUser(id:string, updatedFields: any){
+  const { apiUrl} = environment;
+  return this.http.put<UserDetails>(`${apiUrl}/user/my-profile/${id}`, updatedFields, {withCredentials: true})
+}
 
   ngOnDestroy(): void {
-
+this.userSubsrcription?.unsubscribe()
   }
 
 
