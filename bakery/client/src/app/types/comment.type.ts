@@ -6,12 +6,12 @@ export interface Comment {
 _id?:string;
 title:string;
 description:string;
-helpfulYes: number;
-helpfulNo: number;
+helpfulYes?: number;
+helpfulNo?: number;
 usersVotedHelpf?: string[];
 owner: User;
 createdAt?: Date;
-product:Product;
+product?:Product;
 __v?:number
 
 }

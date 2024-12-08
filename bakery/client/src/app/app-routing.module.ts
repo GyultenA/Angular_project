@@ -18,6 +18,8 @@ const routes: Routes = [
   { path: "catalog/:productId/edit", component: EditComponent },
   { path: "catalog", loadChildren: () => import('./product/product.module').then((m) => m.ProductModule) },
 
+  {path: 'comment', loadChildren:() => import('./comments/comments.module').then((m) => m.CommentsModule)},
+
   { path: "user", loadChildren: () => import('./users/users.module').then((m) => m.UsersModule) },
   { path: "**", redirectTo: '/404' },
   { path: "404", component: NotFoundComponent }

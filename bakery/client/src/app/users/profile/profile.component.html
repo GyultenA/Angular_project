@@ -12,11 +12,12 @@
           
         </ul>
         <div class="card-body">
-            <button class="card-link" (click)="clickShowProduct()">Your product</button>
+            <button class="card-link" (click)="clickShowProduct()">Your products</button>
             <ng-container *ngIf="showProduct">
                <p>{{user.productOwner}}</p>
             </ng-container>
-          <a [routerLink]="['/user/profile/edit',this.currentUserId]" class="card-link">Edit Profile</a>
+            <button> <a [routerLink]="['/user/profile/edit',this.currentUserId]" class="card-link">Edit Profile</a></button>
+         
         
         </div>
     </div>

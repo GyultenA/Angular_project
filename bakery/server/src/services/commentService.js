@@ -6,7 +6,8 @@ const Product = require('../models/Product');
 
 
 exports.getAllComments = async() => {
-    const comments = await Comment.find().sort({createdAt: -1}).populate('user', 'username');
+    const comments = await Comment.find().sort({createdAt: -1}).populate('owner', 'username');
+    return comments;
 }
 
 exports.createNewComment = async(userId, createData) => {
@@ -14,9 +15,12 @@ exports.createNewComment = async(userId, createData) => {
         ...createData,
         owner: userId,
     });
-    const currentProduct = await Product.findById(createData.likeProduct);
-    currentProduct.usersWhoRated.push(createdComment.owner);
-    await currentProduct.save();
+
+    //await Book.findByIdAndUpdate(userId)
+
+ //   const currentProduct = await Product.findById(createData.likeProduct);
+    //currentProduct.usersWhoRated.push(createdComment.owner);
+   // await currentProduct.save();
     
     return createdComment;
 }
@@ -39,7 +43,7 @@ exports.commentVoteYes = async (commentId, owner) => {
 }
 
 
-exports.commmentVoteNo = async (commentId, owner) => {
+exports.commentVoteNo = async (commentId, owner) => {
     const comment = await Comment.findById(commentId);
     const negatVote = comment.helpfulNo + 1;
     comment.helpfulNo = negatVote;

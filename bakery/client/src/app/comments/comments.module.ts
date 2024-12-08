@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { AddCommentComponent } from './add-comment/add-comment.component';
 import { EditCommentComponent } from './edit-comment/edit-comment.component';
 import { AllComentsComponent } from './all-coments/all-coments.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommentRoutingModule } from './comment-routing.module';
+import { DetailsCommentComponent } from './details-comment/details-comment.component';
 
 
 
@@ -11,10 +13,11 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AddCommentComponent,
     EditCommentComponent,
-    AllComentsComponent
+    AllComentsComponent,
+    DetailsCommentComponent
   ],
   imports: [
-    CommonModule, FormsModule,
+    CommonModule, ReactiveFormsModule, FormsModule,CommentRoutingModule,
   ],
   exports:[AddCommentComponent, EditCommentComponent, AddCommentComponent]
 })

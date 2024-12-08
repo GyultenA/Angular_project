@@ -5,6 +5,7 @@ const allComments = async (req, res) => {
 
     try {
         const result = await getAllComments();
+        console.log(result)
         res.json(result);
 
     } catch (err) {
@@ -15,6 +16,13 @@ const allComments = async (req, res) => {
             res.status(500).json({ message: errMsg });
         }
     }
+}
+
+const getOneComment = async(req, res)=> {
+   const commentId = req.params.commentId;
+    const comment = await getOneComment(commentId);
+    res.send(comment);
+
 }
 
 const newComment = async (req, res) => {
@@ -89,7 +97,7 @@ const newComment = async (req, res) => {
     const { commentId } = req.params;
     const user = req.body.userId;
     try {
-       await commmentVoteNo(commentId, user);
+       await commentVoteNo(commentId, user);
        res.json({ message: 'Comment voted No successfully' });
     } catch (err) {
        const errMsg = err.message;
@@ -103,6 +111,7 @@ const newComment = async (req, res) => {
 
  module.exports = {
     allComments,
+    getOneComment,
     newComment,
     updateComment,
     removeComment,

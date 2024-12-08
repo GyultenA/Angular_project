@@ -51,7 +51,7 @@ export class DetailsComponent implements OnInit {
 
         if (product.owner._id === this.currentUserId) {
           this.isOwner = true;
-          console.log(this.isOwner)
+          //console.log(this.isOwner)
         }
 
         const userHasLiked =product.likedBy?.some((u) => u.user?._id === this.currentUserId);

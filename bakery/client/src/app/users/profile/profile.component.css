@@ -29,6 +29,17 @@ li {
     list-style: none;
 }
 
+button {
+    color: black;
+    background-color: gold;
+    border-color: gold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 5px;
+    size: 20px;
+}
+
 a {
     color: black;
     background-color: gold;
@@ -39,8 +50,12 @@ a {
 
 }
 
+button:hover,
 a:hover {
     background-color: green;
+}
+button:first-of-type {
+    margin-right: 2em;
 }
 
 .card-body {

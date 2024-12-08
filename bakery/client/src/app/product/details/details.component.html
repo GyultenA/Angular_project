@@ -1,5 +1,3 @@
-<p>details works!</p>
-
 <div class="container">
     <h1>{{product.name}}</h1>
     
@@ -12,7 +10,7 @@
   
       <button *ngIf="isOwner === true"  [routerLink]="['/catalog', product._id, 'edit']">Edit</button>
       <button *ngIf="isOwner === true" (click)="product._id && onDelete(product._id)">Delete</button>
-      <button *ngIf="isOwner === true"  [routerLink]="['/comment/create']">ADD COMMENT</button>
+      <button *ngIf="loggedIn"  [routerLink]="['/comment/create']">ADD COMMENT</button>
       <button *ngIf="!hasLike && loggedIn && !isOwner" (click)="product._id && requestProduct(productId)">Like</button>
       <button *ngIf="product.isLiked && hasLike && !isOwner" (click)="product._id && cancelLike(productId)">Unlike</button>
       <!-- <button (click)="toggleLikedByUser(product._id)" *ngIf="!isLiked">Like</button> -->
