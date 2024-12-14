@@ -13,9 +13,9 @@ export class CommentService {
 
   constructor(private http: HttpClient) { }
 
-  getAllComments() {
+  getAllComments(productId:string) {
     const { apiUrl } = environment;
-    return this.http.get<Comment[]>(`${apiUrl}/comment`, {withCredentials:true})
+    return this.http.get<Comment[]>(`${apiUrl}/comment/${productId}`, {withCredentials:true})
   }
 
   getOneComment(id:string){
@@ -23,9 +23,9 @@ export class CommentService {
     return this.http.get<Comment>(`${apiUrl}/comment/${id}`)
   }
 
-  addComment(product: string, title: string, description: string) {
+  addComment(productId: string, title: string, description: string) {
     const { apiUrl } = environment;
-    const payload = { product, title, description };
+    const payload = { productId, title, description };
 
     return this.http.post<Comment>(`${apiUrl}/comment/create`, payload, { withCredentials: true })
   }

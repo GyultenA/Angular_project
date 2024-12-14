@@ -1,9 +1,9 @@
-const produstService = require('../services/productService');
+const productService = require('../services/productService');
 const {User} = require('../models/User')
 
 const allProducts = async(req, res) => {
     try {
-        const prod = await produstService.getAllProduct();
+        const prod = await productService.getAllProduct();
         res.json(prod)
     } catch (err){
         const errMsg = err.message;
@@ -17,7 +17,7 @@ const allProducts = async(req, res) => {
 
 const latestProduct = async(req, res)=>{
   try {
- const prod = await produstService.getLatestProduct().lean();
+ const prod = await productService.getLatestProduct().lean();
  res.send(prod)
  } catch (err) {
     const errMsg = err.message;
@@ -31,15 +31,20 @@ const latestProduct = async(req, res)=>{
 
 const getProduct = async(req, res) => {
     const productId = req.params.productId;
-    const product = await produstService.getProductById(productId);
+    const product = await productService.getProductById(productId);
     res.send(product)
 }
 
+const productDetails = async(req, res) => {
+    const productId = req.params.productId;
+    const product = await productService.getProductById(productId);
+    console.log(product)
+}
 
 const searchProduct = async(req, res) => {
     try {
         const {name, type} = req.query;
-        const items = await produstService.searchProduct(name, type);
+        const items = await productService.searchProduct(name, type);
         res.send(items)
     } catch(err){
         const errMsg = err.message;
@@ -58,7 +63,7 @@ const newProduct = async(req, res)=> {
     const ownerId = req.user._id;
 
     try {
-        await produstService.addProduct(createData, ownerId);
+        await productService.addProduct(createData, ownerId);
         res.json({message: 'Product created successfully'})
     } catch (err) {
         const errMsg = err.message;
@@ -76,7 +81,7 @@ const updateProduct = async (req, res) => {
     const { productId } = req.params;
 
     try {
-        await produstService.editProduct(productId, editData);
+        await productService.editProduct(productId, editData);
         res.json({message: 'Product updated successfully'})
     } catch (error) {
         const errMsg = err.message;
@@ -92,7 +97,7 @@ const removeProduct = async (req, res) => {
     const { productId} = req.params;
 
     try {
-        await produstService.deleteProduct(productId);
+        await productService.deleteProduct(productId);
         res.json({ message: 'Product deleted'})
     } catch (err) {
         const errMsg = err.message;
@@ -109,7 +114,7 @@ const likeSubs = async (req, res) => {
     const { userId, isLiked} = req.body;
 
     try {
-        await produstService.likeProduct(productId, userId, isLiked);
+        await productService.likeProduct(productId, userId, isLiked);
         res.json({ message: 'You like this product'})
     } catch (err) {
         const errMsg = err.message;
@@ -126,7 +131,7 @@ const cancelSubs = async(req,res) => {
     const {userId} = req.body;
 
     try {
-        await produstService.notLikeProduct;
+        await productService.notLikeProduct;
         res.json({ message: 'you do not like this product' });
      } catch (err) {
         const errMsg = err.message;

@@ -4,7 +4,9 @@ const {User} = require('../models/User');
 const allComments = async (req, res) => {
 
     try {
-        const result = await getAllComments();
+      const productId = req.params.productId;
+
+        const result = await getAllComments(productId);
         console.log(result)
         res.json(result);
 
@@ -18,19 +20,31 @@ const allComments = async (req, res) => {
     }
 }
 
-const getOneComment = async(req, res)=> {
-   const commentId = req.params.commentId;
-    const comment = await getOneComment(commentId);
-    res.send(comment);
+//const getOneComment = async(req, res)=> {
+   //const commentId = req.params.commentId;
+   //const comment = await getOneComment(commentId);
+   //res.send(comment);
 
-}
+//}
+
+//const getCommentDetails = async (req, res) => {
+  // const commentId = req.params.commentId;
+   //const comment = await getOneCommentDetails(commentId);
+  // res.send(comment)
+//}
 
 const newComment = async (req, res) => {
-    const createData = req.body;
-    const userId = req.user._id;
+   
  
     try {
-       await createNewComment (userId, createData);
+      const { productId, title, description } = req.body;
+      const userId = req.user._id;
+
+       await createNewComment (userId, {
+         product: productId,
+         title,
+         description,
+       });
        res.json({ message: 'Comment added successfully' });
     } catch (err) {
        const errMsg = err.message;
@@ -111,7 +125,6 @@ const newComment = async (req, res) => {
 
  module.exports = {
     allComments,
-    getOneComment,
     newComment,
     updateComment,
     removeComment,

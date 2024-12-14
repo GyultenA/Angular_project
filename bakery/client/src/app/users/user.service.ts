@@ -59,51 +59,51 @@ export class UserService implements OnDestroy {
     return this.http.post<UserAuth>(`${apiUrl}/user/register`, {
       firstName, lastName, username, email, password, rePassword, avatar,
     }, { withCredentials: true })
-    .pipe(tap((user) => {
-      this.user$$.next(user);
-      sessionStorage.setItem(this.KEY, JSON.stringify(user))
-    }))
+      .pipe(tap((user) => {
+        this.user$$.next(user);
+        sessionStorage.setItem(this.KEY, JSON.stringify(user))
+      }))
   }
 
 
-  
-  login(email:string, password:string){
-    const {apiUrl} = environment;
 
-    return this.http.post<UserAuth>(`${apiUrl}/user/login`,{email, password}, {withCredentials:true})
-    .pipe(tap((user) => {
-      this.user$$.next(user);
-      sessionStorage.setItem(this.KEY, JSON.stringify(user));
-    }))
+  login(email: string, password: string) {
+    const { apiUrl } = environment;
+
+    return this.http.post<UserAuth>(`${apiUrl}/user/login`, { email, password }, { withCredentials: true })
+      .pipe(tap((user) => {
+        this.user$$.next(user);
+        sessionStorage.setItem(this.KEY, JSON.stringify(user));
+      }))
   }
 
-  logout(){
-    const { apiUrl} = environment;
+  logout() {
+    const { apiUrl } = environment;
     return this.http
-    .post(`${apiUrl}/user/logout`, {}, {withCredentials:true})
-    .pipe(tap(() => {
-      this.user$$.next(undefined);
-      sessionStorage.removeItem(this.KEY);
-    }))
+      .post(`${apiUrl}/user/logout`, {}, { withCredentials: true })
+      .pipe(tap(() => {
+        this.user$$.next(undefined);
+        sessionStorage.removeItem(this.KEY);
+      }))
   }
 
-getMyUser(id:string){
-  const { apiUrl} = environment;
-  return this.http.get<UserDetails>(`${apiUrl}/user/my-profile/${id}`, {withCredentials: true})
-}
+  getMyUser(id: string) {
+    const { apiUrl } = environment;
+    return this.http.get<UserDetails>(`${apiUrl}/user/my-profile/${id}`, { withCredentials: true })
+  }
 
-getProfile(id: string){
-  const {apiUrl} = environment;
-  return this.http.get<UserDetails>(`${apiUrl}/user/profile/${id}`)
-}
+  getProfile(id: string) {
+    const { apiUrl } = environment;
+    return this.http.get<UserDetails>(`${apiUrl}/user/profile/${id}`)
+  }
 
-editMyUser(id:string, updatedFields: any){
-  const { apiUrl} = environment;
-  return this.http.put<UserDetails>(`${apiUrl}/user/my-profile/${id}`, updatedFields, {withCredentials: true})
-}
+  editMyUser(id: string, updatedFields: any) {
+    const { apiUrl } = environment;
+    return this.http.put<UserDetails>(`${apiUrl}/user/my-profile/${id}`, updatedFields, { withCredentials: true })
+  }
 
   ngOnDestroy(): void {
-this.userSubsrcription?.unsubscribe()
+    this.userSubsrcription?.unsubscribe()
   }
 
 

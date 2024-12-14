@@ -4,28 +4,64 @@ const Product = require('../models/Product');
 
 
 
+exports.getAllComments = async (productId) => {
+    try {
+      const comments = await Comment.find({ product: productId })
+        .sort({ createdAt: -1 })
+        .populate('owner', 'username');
+  
+      return comments;
+    } catch (error) {
+      throw new Error('Error fetching comments');
+    }
+  };
 
-exports.getAllComments = async() => {
-    const comments = await Comment.find().sort({createdAt: -1}).populate('owner', 'username');
-    return comments;
-}
+
 
 exports.createNewComment = async(userId, createData) => {
-    const createdComment = await Comment.create({
-        ...createData,
-        owner: userId,
-    });
+    try{
+        const createdComment = await Comment.create({
+            ...createData,
+            owner: userId,
+        });
 
-    //await Book.findByIdAndUpdate(userId)
+        console.log(createData)
+        const product = await Product.findById(createData.product);
+
+        if(!product){
+            throw new Error('Product not found')
+        }
+
+        await User.findByIdAndUpdate(userId, {$push: {commentOwner: createdComment._id}});
+        return createdComment;
+    }catch (err){
+        throw new Error ('Error creating comment')
+    }
+
+    }
+   
+
+
+   // product.comments.push(createdComment)
+   // await product.save();
+
+   // product.usersWhoRated.push(createdComment.owner);
+   // await product.save();
+
+    
+  // const currentProduct = await Product.findById(createData.product);
+  // currentProduct.comments.push(createdComment)
 
  //   const currentProduct = await Product.findById(createData.likeProduct);
     //currentProduct.usersWhoRated.push(createdComment.owner);
    // await currentProduct.save();
     
-    return createdComment;
-}
+  
+
 
 exports.getOneComment = async(commentId) => await Comment.findById(commentId);
+
+exports.getOneCommentDetails = (commentId) => this.getOneComment(commentId).populate('owner').populate('likeProduct')
 
 
 exports.editComment = async (commentId, editData) => await Comment.findByIdAndUpdate(commentId, editData);

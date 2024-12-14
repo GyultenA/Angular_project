@@ -1,7 +1,7 @@
 
 <div class="container">
     <h1>Edit your profile</h1>
-    <form id="register-form" [formGroup]="editUserForm" (ngSubmit)="onEditUser()">
+    <form id="editUser-form" [formGroup]="editUserForm" (ngSubmit)="onEditUserTwo()" >
         <div class="form-group">
             <label for="firstName">First Name:</label>
             <input type="text" id="firstName" name="firstName" formControlName="firstName" placeholder="First name">
@@ -12,11 +12,14 @@
                 <p class="error" *ngIf="editUserForm.get('firstName')?.errors?.['minlength']">
                     First name should be at least 2 characters long.
                  </p> 
+                 <p class="error" *ngIf="editUserForm.get('firstName')?.errors?.['maxlength']">
+                    First name should be no more than 30 characters long.
+                 </p> 
             </ng-container>
         </div>
         <div class="form-group">
             <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" formControlName="lastName" placeholder="Last name">
+            <input type="text" id="lastName" name="lastName" formControlName="lastName" placeholder="Last name" >
             <ng-container *ngIf="editUserForm.get('lastName')?.touched">
                 <p class="error" *ngIf="editUserForm.get('lastName')?.errors?.['required']">
                     Last name is required!
@@ -24,17 +27,26 @@
                 <p class="error" *ngIf="editUserForm.get('lastName')?.errors?.['minlength']">
                     Last name should be at least 2 characters long!
                 </p>
+                <p class="error" *ngIf="editUserForm.get('lastName')?.errors?.['maxlength']">
+                    Last name should be no more than 30 characters long.
+                </p>
             </ng-container>
         </div>
         <div class="form-group">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" formControlName="username" placeholder="Username">
+            <input type="text" id="username" name="username" formControlName="username" placeholder="Username" >
             <ng-container *ngIf="editUserForm.get('username')?.touched">
                 <p class="error" *ngIf="editUserForm.get('username')?.errors?.['required']">
                     Username is required!
                 </p>
                 <p class="error" *ngIf="editUserForm.get('username')?.errors?.['minlength']">
                     Username should be at least 2 characters long!
+                </p>
+                <p class="error" *ngIf="editUserForm.get('username')?.errors?.['maxlength']">
+                    Username should be at least 2 characters long!
+                </p>
+                <p class="error" *ngIf="editUserForm.get('username')?.errors?.['pattern']">
+                    Invalid username!
                 </p>
             </ng-container>
         </div>
@@ -48,12 +60,18 @@
                 <p class="error" *ngIf="editUserForm.get('email')?.errors?.['emailValidator']">
                     Email is not valid!
                 </p>
+                <p class="error" *ngIf="editUserForm.get('email')?.errors?.['minlength']">
+                    Email should be at least 10 characters long!
+                </p>
+                <p class="error" *ngIf="editUserForm.get('email')?.errors?.['maxlength']">
+                    Email should be no more 50 characters long!
+                </p>
             </ng-container>
         </div>
 
         <div class="form-group">
             <label for="avatar">Avatar:</label>
-            <input type="text" id="imageUrl" name="imageUrl" formControlName="avatar" placeholder="Avatar image url">
+            <input type="text" id="avatar" name="avatar" formControlName="avatar" placeholder="Avatar image url" >
             <ng-container *ngIf="editUserForm.get('avatar')?.touched">
                 <p class="error" *ngIf="editUserForm.get('avatar')?.errors?.['required']">
                     Avatar image is required!
@@ -67,19 +85,20 @@
         <div class="form-group">
             <label for="aboutMe">Write something about yourself</label>
             <textarea id="aboutMe" name="aboutMe" rows="4" 
-            formControlName="aboutMe"
+            formControlName="aboutMe" 
             ></textarea>
             <ng-container *ngIf="editUserForm.get('aboutMe')?.touched"> 
                 <p *ngIf="editUserForm.get('aboutMe')?.errors?.['maxlength']"
                  class="error">
-                 Description should be no more 1000 characters long.
+                 Description should be no more 800 characters long.
                 </p>
             </ng-container>
         </div>
      
         
 
-        <button type="submit" [disabled]="editUserForm.invalid">Save Changes</button>
+    <!--<button type="submit" [disabled]="editUserForm.invalid"  >Save Changes</button>-->
+        <button type="submit">Save Changes</button>
 
     </form>
 </div>

@@ -1,9 +1,9 @@
-import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 
 import { CommentService } from '../comment.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import {Comment} from '../../types/comment.type'
+import { Comment } from '../../types/comment.type'
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -11,47 +11,55 @@ import { Subscription } from 'rxjs';
   templateUrl: './add-comment.component.html',
   styleUrls: ['./add-comment.component.css']
 })
-export class AddCommentComponent implements OnInit{
- 
-  productId: string = '';
+export class AddCommentComponent implements OnInit {
 
-  private paramsSubscription: Subscription = new Subscription();
-  @Output() currentProductData = new EventEmitter<{
-    productId: string;
-  }>();
+  @Input() productId: string = "";
+
+  paramsSubscription: Subscription = new Subscription();
+
 
   constructor(
-    private commentService: CommentService, 
-    private activeRoute: ActivatedRoute, 
+    private commentService: CommentService,
+    private route: ActivatedRoute,
     private router: Router,
-   
-  ){}
 
-    ngOnInit(): void {
-     this.paramsSubscription =  this.activeRoute.params.subscribe((data) => {
-        const valueId = data['productId'];
-        this.productId = valueId;
-        console.log(this.productId)
-      })
+  ) { }
+
+  ngOnInit(): void {
+
+    this.route.params.subscribe((params) => {
+      this.productId = params['productId'];
+      console.log('Product Id', this.productId)
+    })
+
+    //  this.paramsSubscription =  this.activeRoute.params.subscribe((data) => {
+    //  const valueId = data['productId'];
+    //  this.productId = valueId;
+    // console.log(this.productId)
+    //})
+  }
+
+  addNewComment(formComment: NgForm) {
+
+    if (formComment.invalid) {
+      return;
     }
 
-    addNewComment(formComment:NgForm){
+    /// const currentProductId = this.productId;
+    const title = formComment.value.title;
+    const commentBody = formComment.value.description;
+    console.log(this.productId);
 
-      if(formComment.invalid){
-        return;
+    this.commentService.addComment(this.productId, title, commentBody).subscribe({
+      next:() => {
+        console.log('Comment added successfully');
+        this.router.navigate(['/comment', this.productId])
       }
-
-      const currentProductId = this.productId;
-      const title = formComment.value.title;
-      const commentBody = formComment.value.description;
-
-      this.commentService.addComment(currentProductId,title,commentBody).subscribe(() => {
-        this.router.navigate(['/comment'])
-      })
+    })
 
 
 
-    }
+  }
 
 
 

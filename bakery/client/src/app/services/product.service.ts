@@ -54,9 +54,9 @@ export class ProductService {
         return this.http.delete(`${apiUrl}/catalog/${id}`, {withCredentials:true});
     }
 
-    requestProduct(id:string, userId:string, hasLike: boolean){
+    requestProduct(id:string, userId:string, isLiked: boolean){
         const {apiUrl} = environment;
-        const payload = {userId, hasLike};
+        const payload = {userId, isLiked};
         return this.http.put<Product>(`${apiUrl}/catalog/likesub/${id}`, payload, {
             withCredentials:true
         })

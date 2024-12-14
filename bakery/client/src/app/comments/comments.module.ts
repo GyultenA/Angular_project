@@ -6,6 +6,7 @@ import { AllComentsComponent } from './all-coments/all-coments.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommentRoutingModule } from './comment-routing.module';
 import { DetailsCommentComponent } from './details-comment/details-comment.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -17,8 +18,8 @@ import { DetailsCommentComponent } from './details-comment/details-comment.compo
     DetailsCommentComponent
   ],
   imports: [
-    CommonModule, ReactiveFormsModule, FormsModule,CommentRoutingModule,
+    CommonModule, ReactiveFormsModule, FormsModule,CommentRoutingModule, SharedModule
   ],
-  exports:[AddCommentComponent, EditCommentComponent, AddCommentComponent]
+  exports:[AddCommentComponent, EditCommentComponent, AllComentsComponent]
 })
 export class CommentsModule { }

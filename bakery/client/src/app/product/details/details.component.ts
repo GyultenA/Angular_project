@@ -5,6 +5,8 @@ import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/types/product.type';
 import { UserService } from 'src/app/users/user.service';
 
+import { AllComentsComponent } from 'src/app/comments/all-coments/all-coments.component';
+
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -18,11 +20,8 @@ export class DetailsComponent implements OnInit {
   hasLike: boolean = false;
   hasRatedproduct: boolean = false;
 
-  private paramsSubscription: Subscription = new Subscription();
-  @Output() currentProductData = new EventEmitter<{
-    hasLike: boolean;
-    productId: string;
-  }>();
+  paramsSubscription: Subscription = new Subscription();
+  @Output() currentProductData = new EventEmitter<{productId: string}>();
 
   constructor(
     private userApi: UserService,
@@ -80,10 +79,10 @@ export class DetailsComponent implements OnInit {
 
   requestProduct(id: string): void {
     const userId = this.currentUserId;
-    const isRented = true;
+    const isLiked = true;
 
     if(userId){
-      this.productService.requestProduct(id, userId, isRented).subscribe(() => {
+      this.productService.requestProduct(id, userId, isLiked).subscribe(() => {
         this.router.navigate(['/catalog']);
       })
     }
@@ -109,15 +108,24 @@ export class DetailsComponent implements OnInit {
     this.paramsSubscription = this.activeRoute.params.subscribe((data) => {
       this.productId = data['productId'];
       this.currentProductData.emit({
-        hasLike: this.hasRatedproduct,
+
         productId: this.productId
       })
     })
+    console.log(this.productId)
+  
   }
 
   toggleAndSendProductData(){
     this.onToggle();
-    this.sendProductData();
+    this.currentProductData.emit({productId: this.productId});
+   
+  }
+
+  openAddCommentPage(): void {
+    const url= `/comment/create/${this.productId}`;
+    this.router.navigate([url])
+   // window.open(url, '_blank')
   }
 
 }

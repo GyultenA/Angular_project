@@ -6,6 +6,7 @@ import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
 import { CatalogRoutingModule } from './catalog-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommentsModule } from '../comments/comments.module';
 
 
 
@@ -17,7 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EditComponent
   ],
   imports: [
-    CommonModule, CatalogRoutingModule, ReactiveFormsModule, FormsModule,
+    CommonModule, CatalogRoutingModule, ReactiveFormsModule, FormsModule, CommentsModule,
   ],
   exports:[],
 })

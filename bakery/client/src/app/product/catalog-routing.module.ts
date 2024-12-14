@@ -9,7 +9,7 @@ import { EditComponent } from "./edit/edit.component";
 
 
 const routes: Routes = [
-    {path: 'catalog', children: [
+    {path: '', children: [
         {path: '', pathMatch: 'full', component: CatalogComponent},
         {path: ':productId', children: [
             {path:'', pathMatch: 'full', component: DetailsComponent},

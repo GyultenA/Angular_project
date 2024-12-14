@@ -14,6 +14,14 @@ export class ProfileEditComponent implements OnInit{
 
   user = {} as UserDetails;
   showProduct: boolean = false;
+  profileDetails: UserDetails = {
+    firstName: "",
+    lastName: "",
+    username: "",
+    email: "",
+    avatar: "",
+    aboutMe: "",
+  }
 
   constructor(
     private userApi: UserService,
@@ -26,14 +34,14 @@ export class ProfileEditComponent implements OnInit{
     return this.userApi.currentUsername
   }
 
-  get currentUserId(): string | undefined {
+  get currentUserId(): string | undefined{
     return this.userApi.currentUserId;
   }
 
   editUserForm = this.fb.group({
     firstName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
     lastName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
-    username: ["", [Validators.required, Validators.maxLength(2), Validators.maxLength(30), Validators.pattern('^[a-zA-Z0-9_-]+$')]],
+    username: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30), Validators.pattern('^[a-zA-Z0-9_-]+$')]],
     email: ["", [Validators.required, Validators.minLength(10), Validators.maxLength(50), emailValidator(EMAIL_DOMAINS),]],
     avatar: [
       '',
@@ -42,7 +50,7 @@ export class ProfileEditComponent implements OnInit{
         Validators.pattern(/https?:\/\/.+\.(jpg|jpeg|png|gif)/i),
       ],
     ],
-    aboutMe: ['', [Validators.maxLength(1000)]],
+    aboutMe: ['', [Validators.maxLength(800)]],
   })
 
 
@@ -54,41 +62,89 @@ export class ProfileEditComponent implements OnInit{
         this.user = user;
 
         const { firstName, lastName, username, email, avatar, aboutMe } = this.user;
-        this.editUserForm.setValue({
+        this.editUserForm.patchValue({
           firstName, lastName, username, email, avatar, aboutMe
         })
+        console.log('oninit')
       })
     }
   }
 
-  onEditUser(): void {
+  onEditUser() {
     if(this.editUserForm.invalid){
       return;
     }
 
-    const userId = this.currentUserId;
-    const updatedFields = this.getUpdatedFields(this.user, this.editUserForm.value);
 
-    if(userId){
-      this.userApi.editMyUser(userId,updatedFields).subscribe({
-        next:(response) => {
-          console.log('User profile updated successfully');
-          this.router.navigate([`/user/my-profile/${userId}`])
-        }
+    this.profileDetails = this.editUserForm.value as UserDetails;
+
+    const userId = this.currentUserId || ""
+
+    const { firstName, lastName, username, email, avatar, aboutMe } = this.profileDetails;
+    //const updatedFields = this.getUpdatedFields(this.user, this.editUserForm.value);
+
+    const updatedFields = this.getUpdatedFields(this.user, this.editUserForm.getRawValue());
+
+   
+     // this.userApi.editMyUser(userId , {firstName, lastName, username,email, avatar, aboutMe}).subscribe(() => {
+      //  this.router.navigate([`/user/my-profile/${userId}`]);
+       // console.log('onedit')
+     // })
+
+      this.userApi.editMyUser(userId , updatedFields).subscribe(() => {
+        this.router.navigate([`/user/my-profile/${userId}`]);
+        console.log('onedit')
       })
     }
+
+
+    onEditUserTwo() {
+      console.log('Edit form submitted');
+      if (this.editUserForm.invalid) {
+        console.error("Form is invalid", this.editUserForm.errors);
+        return;
+      }
+      const userId = this.currentUserId || "";
+      const updatedFields = this.getUpdatedFields(this.user, this.editUserForm.getRawValue());
+    
+      console.log("Updating user with ID:", userId);
+      console.log("Payload to send:", updatedFields);
+    
+      this.userApi.editMyUser(userId, updatedFields).subscribe({
+        next: () => {
+          console.log('User updated successfully');
+          this.router.navigate([`/user/my-profile/${userId}`]);
+        },
+        error: (err) => {
+          console.error('Error updating user:', err);
+        }
+      });
+    }
+
+    getUpdatedFields(original: any, updated: any) {
+      const updatedFields: any = {};
+      for (const key in original) {
+        if (updated.hasOwnProperty(key) && original[key] !== updated[key]) {
+          updatedFields[key] = updated[key];
+        }
+      }
+      return updatedFields;
+    }
+
+    getErrorMessage(controlName: string): string | null {
+      const control = this.editUserForm.get(controlName);
+      if (control?.errors?.['required']) return `${controlName} is required!`;
+      if (control?.errors?.['minlength']) return `${controlName} should be at least ${control.errors['minlength'].requiredLength} characters long!`;
+      if (control?.errors?.['maxlength']) return `${controlName} should be no more than ${control.errors['maxlength'].requiredLength} characters long!`;
+      if (control?.errors?.['pattern']) return `Invalid format for ${controlName}!`;
+      return null;
+    }
+
+    //<p class="error" *ngIf="getErrorMessage('firstName')">{{ getErrorMessage('firstName') }}</p>
     
   }
 
-  getUpdatedFields(original: any, updated: any) {
-    const updatedFields: any = {};
-    for (const key in original) {
-      if (updated.hasOwnProperty(key) && original[key] !== updated[key]) {
-        updatedFields[key] = updated[key];
-      }
-    }
-    return updatedFields;
-  }
 
 
-}
+
+

@@ -58,7 +58,7 @@ const userSchema = new mongoose.Schema({
    },
    aboutMe: {
       type: String,
-      maxlength: [1000, 'About me maximal length is 1000 symbols'],
+      maxlength: [800, 'About me maximal length is 1000 symbols'],
       default: ' ',
    },
    productOwner: [{

@@ -11,7 +11,7 @@ helpfulNo?: number;
 usersVotedHelpf?: string[];
 owner: User;
 createdAt?: Date;
-product?:Product;
+product:Product;
 __v?:number
 
 }

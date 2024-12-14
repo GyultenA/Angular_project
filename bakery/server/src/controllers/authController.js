@@ -1,5 +1,5 @@
 const authService = require('../services/authservice');
-const {User} = require('../models/User')
+const User = require('../models/User')
 
 const registerUser = async(req, res) => {
     const userData = req.body;
@@ -83,20 +83,29 @@ const logoutUser = async (req, res) => {
  };
 
  const editMyUser = async (req, res) => {
-    const payload = req.body;
-    const { userId } = req.params;
-    try {
-       await authService.editMyInfo(userId, payload);
-       res.json({ message: 'User info updated successfully' });
-    } catch (err) {
-       const errMsg = err.message;
-       if (err.name === 'ValidationError') {
-          res.status(400).json({ message: errMsg });
-       } else {
-          res.status(500).json({ message: errMsg });
-       }
-    }
- }
+   const payload = req.body;
+   const { userId } = req.params;
+ 
+   console.log('Payload received:', payload);
+   console.log('User ID:', userId);
+ 
+   try {
+     const result = await authService.editMyInfo(userId, payload);
+     if (!result) {
+       return res.status(404).json({ message: 'User not found' });
+     }
+     console.log('Update result:', result);
+     res.json({ message: 'User info updated successfully' });
+   } catch (err) {
+     console.error('Error in editMyUser:', err);
+     if (err.name === 'ValidationError') {
+       res.status(400).json({ message: err.message });
+     } else {
+       res.status(500).json({ message: 'Internal server error' });
+     }
+   }
+ };
+ 
 
  
 module.exports = {

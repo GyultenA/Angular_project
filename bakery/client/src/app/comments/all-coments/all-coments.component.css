@@ -92,3 +92,10 @@ a:hover {
     color: gold;
     margin-bottom: 20px;
 }
+
+.center-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }

@@ -41,7 +41,7 @@ exports.addProduct = async (createData, ownerId)=> {
         usersWhoRated: [ownerId]
     });
 
-    await User.findByIdAndUpdate(ownerId, {$push: {productOner: createdProduct._id}});
+    await User.findByIdAndUpdate(ownerId, {$push: {productOwner: createdProduct._id}});
     return createdProduct;
 }
 

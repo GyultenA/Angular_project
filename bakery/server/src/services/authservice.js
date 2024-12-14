@@ -46,7 +46,11 @@ exports.login = async ({email, password}) => {
 
 exports.getOne = async (userId) => await User.findById(userId);
 
-exports.getUserInfo = async (userId) => await userModel.findById(userId).populate('commentOwner').populate('productLikeList');
+exports.getUserInfo = async (userId) => await User.findById(userId).populate('commentOwner').populate('productOwner');
 
-exports.editMyInfo = async (userId, payload) => await userModel.findByIdAndUpdate(userId, payload, { runValidators: true });
+exports.editMyInfo = async (userId, payload) => {
+   const result = await User.findByIdAndUpdate(userId, payload, {runValidators:true});
+   console.log(result);
+   return result;
+} 
 

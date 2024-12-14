@@ -36,7 +36,7 @@ const commentSchema = new mongoose.Schema({
       type: Date,
       default: Date.now
    },
-   likeProduct: {
+   product: {
       type: mongoose.Types.ObjectId,
       ref: 'Product',
    }

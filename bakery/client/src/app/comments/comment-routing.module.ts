@@ -7,10 +7,10 @@ import { DetailsCommentComponent } from "./details-comment/details-comment.compo
 
 
 const routes: Routes = [
-    {path:'', pathMatch:'full', component: AllComentsComponent},
+    {path:':productId', pathMatch:'full', component: AllComentsComponent},
     {path: 'create', component: AddCommentComponent},
     {path: ':commentId/edit', component:EditCommentComponent},
-    {path: ':commentId', component: DetailsCommentComponent},
+    {path: ':commentId/details', component: DetailsCommentComponent},
 
 ]
 

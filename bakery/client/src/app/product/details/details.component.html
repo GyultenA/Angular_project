@@ -4,15 +4,22 @@
     <div class="product-details">
       <img src="{{product.imageUrl}}" alt="product Image" class="product-image">
       
-      <p><span class="type">:</span> {{product.type}}</p>
+      <p><span class="type"></span> {{product.type}}</p>
       <p><span class="description">Description:</span><br>{{product.description}}</p>
     <!--<p>Likes: {{}}</p>--->  
   
       <button *ngIf="isOwner === true"  [routerLink]="['/catalog', product._id, 'edit']">Edit</button>
       <button *ngIf="isOwner === true" (click)="product._id && onDelete(product._id)">Delete</button>
-      <button *ngIf="loggedIn"  [routerLink]="['/comment/create']">ADD COMMENT</button>
-      <button *ngIf="!hasLike && loggedIn && !isOwner" (click)="product._id && requestProduct(productId)">Like</button>
-      <button *ngIf="product.isLiked && hasLike && !isOwner" (click)="product._id && cancelLike(productId)">Unlike</button>
+      <button *ngIf="loggedIn" (click)="toggleAndSendProductData()">ADD COMMENT</button>
+     <!-- <button *ngIf="loggedIn === true" (click)="toggleAndSendProductData()" >View comments for this product</button>--->
+      <button *ngIf="loggedIn === true" (click)="sendProductData()" [routerLink]="['/comment', product._id]">View comments for this product</button>
+      <div *ngIf="showComments">
+         <app-add-comment  [productId]="productId"></app-add-comment>
+        
+      </div>
+   
+      <button *ngIf="!hasLike && loggedIn && !isOwner" (click)="product._id && requestProduct(product._id)">Like</button>
+      <button *ngIf="product.isLiked && hasLike && !isOwner" (click)="product._id && cancelLike(product._id)">Unlike</button>
       <!-- <button (click)="toggleLikedByUser(product._id)" *ngIf="!isLiked">Like</button> -->
       <!-- <button (click)="toggleLikedByUser(product._id)" *ngIf="isLiked">Unlike</button> -->
   
@@ -21,3 +28,5 @@
       </p>
     </div>
   </div>
+
+ 

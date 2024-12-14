@@ -27,7 +27,7 @@ private errorSubscription!: Subscription;
 registerForm = this.fb.group({
 firstName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
 lastName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
-username: ["",[Validators.required, Validators.maxLength(2), Validators.maxLength(30), Validators.pattern('^[a-zA-Z0-9_-]+$')] ],
+username: ["",[Validators.required, Validators.minLength(2), Validators.maxLength(30), Validators.pattern('^[a-zA-Z0-9_-]+$')] ],
 email: ["", [Validators.required, Validators.minLength(10),Validators.maxLength(50), emailValidator(EMAIL_DOMAINS),] ],
 
 passGroup: this.fb.group({
