@@ -65,7 +65,7 @@ export class ProfileEditComponent implements OnInit{
         this.editUserForm.patchValue({
           firstName, lastName, username, email, avatar, aboutMe
         })
-        console.log('oninit')
+       // console.log('oninit')
       })
     }
   }
@@ -92,7 +92,8 @@ export class ProfileEditComponent implements OnInit{
      // })
 
       this.userApi.editMyUser(userId , updatedFields).subscribe(() => {
-        this.router.navigate([`/user/my-profile/${userId}`]);
+       // this.router.navigate([`/user/my-profile/${userId}`]);
+        this.router.navigate(['/user/profile'])
         console.log('onedit')
       })
     }

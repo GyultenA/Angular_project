@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: "about", component: AboutComponent },
   {path: 'search', component: SearchComponent},
  // { path: "catalog", component: CatalogComponent },
- // { path: "catalog/create", component: AddProductComponent },
+ { path: "catalog/create", component: AddProductComponent },
  // { path: "catalog/:productId", component: DetailsComponent},
  // { path: "catalog/:productId/edit", component: EditComponent },
   { path: "catalog", loadChildren: () => import('./product/product.module').then((m) => m.ProductModule) },

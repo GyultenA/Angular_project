@@ -4,6 +4,7 @@ import { UserService } from '../user.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EMAIL_DOMAINS, emailValidator } from 'src/app/utils/email_validator';
+import { Product } from 'src/app/types/product.type';
 
 @Component({
   selector: 'app-profile',
@@ -13,6 +14,8 @@ import { EMAIL_DOMAINS, emailValidator } from 'src/app/utils/email_validator';
 export class ProfileComponent implements OnInit {
   user = {} as UserDetails;
   showProduct: boolean = false;
+  userProducts: Product[] = [];
+
 
   constructor(
     private userApi: UserService,
@@ -52,31 +55,44 @@ export class ProfileComponent implements OnInit {
       this.userApi.getMyUser(userId).subscribe((user) => {
         this.user = user;
 
+
+        console.log('this is user', this.user);
+        let productArray = this.user.productOwner;
+        console.log('product array', productArray)
+
+        productArray?.forEach((product) => { this.userProducts.push(product) })
+
+        console.log('Product Owner Field:', this.user.productOwner);
+
+
+
         const { firstName, lastName, username, email, avatar, aboutMe } = this.user;
         this.editUserForm.setValue({
           firstName, lastName, username, email, avatar, aboutMe
         })
       })
+
+
     }
   }
 
   onEditUser(): void {
-    if(this.editUserForm.invalid){
+    if (this.editUserForm.invalid) {
       return;
     }
 
     const userId = this.currentUserId;
     const updatedFields = this.getUpdatedFields(this.user, this.editUserForm.value);
 
-    if(userId){
-      this.userApi.editMyUser(userId,updatedFields).subscribe({
-        next:(response) => {
+    if (userId) {
+      this.userApi.editMyUser(userId, updatedFields).subscribe({
+        next: (response) => {
           console.log('User profile updated successfully');
           this.router.navigate([`/user/my-profile/${userId}`])
         }
       })
     }
-    
+
   }
 
   getUpdatedFields(original: any, updated: any) {
@@ -90,7 +106,12 @@ export class ProfileComponent implements OnInit {
   }
 
   clickShowProduct() {
-    this.showProduct= true;
+    this.showProduct = true;
+   
+  }
+
+  onToggle(): void {
+    this.showProduct = !this.showProduct;
   }
 
 }

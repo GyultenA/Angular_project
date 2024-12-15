@@ -1,24 +1,19 @@
-<p>add-product works!</p>
 <div class="main-create">
-    <div  class="container">
+    <div class="container">
         <h1>Create Product</h1>
         <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" 
-                formControlName="name"
-                >
+                <input type="text" id="name" name="name" formControlName="name">
                 <ng-container *ngIf="productForm.get('name')?.touched">
                     <p class="error" *ngIf="productForm.get('name')?.errors?.['required']">
                         Product name is required!
                     </p>
-                    <p *ngIf="productForm.get('name')?.errors?.['minlength']"
-                     class="error">
-                     Product name should be at least 2 characters long.
+                    <p *ngIf="productForm.get('name')?.errors?.['minlength']" class="error">
+                        Product name should be at least 2 characters long.
                     </p>
-                    <p *ngIf="productForm.get('name')?.errors?.['maxlength']"
-                     class="error">
-                     Product name should beno more 30 characters long.
+                    <p *ngIf="productForm.get('name')?.errors?.['maxlength']" class="error">
+                        Product name should beno more 30 characters long.
                     </p>
                 </ng-container>
             </div>
@@ -27,44 +22,37 @@
                 <select name="type" id="type" formControlName="type">
                     <option *ngFor="let type of types" [value]="type">{{ type}}</option>
                 </select>
-               <!--<textarea id="ingredients" name="ingredients" rows="4" 
-                formControlName="ingredients"
-                ></textarea>---> 
+
                 <ng-container *ngIf="productForm.get('type')?.touched">
                     <p class="error" *ngIf="productForm.get('type')?.errors?.['required']">
                         Type is required!
                     </p>
-                  <!----->  <p *ngIf="productForm.get('type')?.errors?.['minlength']"
-                     class="error">
-                    Type must be at least 5 characters long.
+                    <!----->
+                    <p *ngIf="productForm.get('type')?.errors?.['minlength']" class="error">
+                        Type must be at least 5 characters long.
                     </p>
                 </ng-container>
             </div>
             <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea id="description" name="description" rows="4" 
-                formControlName="description"
-                ></textarea>
+                <textarea id="description" name="description" rows="4" formControlName="description"></textarea>
                 <ng-container *ngIf="productForm.get('description')?.touched">
                     <p class="error" *ngIf="productForm.get('description')?.errors?.['required']">
                         Description is required!
                     </p>
-                    <p *ngIf="productForm.get('description')?.errors?.['minlength']"
-                     class="error">
-                     Description should be between 10 and 250 characters long.
+                    <p *ngIf="productForm.get('description')?.errors?.['minlength']" class="error">
+                        Description should be between 10 and 450 characters long.
                     </p>
-                    <p *ngIf="productForm.get('description')?.errors?.['maxlength']"
-                    class="error">
-                    Description should be between 10 and 250 characters long.
-                   </p>
+                    <p *ngIf="productForm.get('description')?.errors?.['maxlength']" class="error">
+                        Description should be between 10 and 450 characters long.
+                    </p>
                 </ng-container>
             </div>
-    
+
             <div class="form-group">
                 <label for="imageUrl">imageURL:</label>
                 <input type="text" id="imageUrl" name="imageUrl" placeholder="Please enter a link to your product"
-                formControlName="imageUrl"
-                >
+                    formControlName="imageUrl">
                 <ng-container *ngIf="productForm.get('imageUrl')?.touched">
                     <p class="error" *ngIf="productForm.get('imageUrl')?.errors?.['required']">
                         imageURL is required!
@@ -72,15 +60,10 @@
                     <p class="error" *ngIf="productForm.get('imageUrl')?.errors?.['pattern']">
                         Please provide a valid URL ending with .jpg, .jpeg, .png, or .gif !
                     </p>
-    
+
                 </ng-container>
             </div>
             <button type="button" [disabled]="productForm.invalid" (click)="onSubmit()">Create Product</button>
         </form>
     </div>
 </div>
-
-
-
-
-

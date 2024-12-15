@@ -1,71 +1,111 @@
-
+/* General Container Styling */
 .container {
-    max-width: 500px;
-    margin: 100px auto;
+    max-width: 600px;
+    margin: 0 auto; /* Center container */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  h1 {
     text-align: center;
-    background-color: rgba(38, 37, 37, 0.5);
-    color: gold;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-
-}
-
-h1 {
-    font-size: 24px;
+    font-size: 2rem;
+    color: #333;
     margin-bottom: 20px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-label {
+  }
+  
+  /* Form Styling */
+  form {
+    width: 100%;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
     display: block;
-    font-size: 18px;
+    font-weight: bold;
     margin-bottom: 5px;
-}
-
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="rePassword"] {
+    color: #444;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="rePassword"],
+  textarea {
     width: 100%;
     padding: 10px;
+    font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
-}
-
-button {
-    display: block;
+    background-color: #fff;
+  }
+  
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+  }
+  
+  textarea {
+    resize: vertical; /* Vertical resizing only */
+  }
+  
+  /* Error Messages */
+  .error {
+    color: #e74c3c; /* Bright red for error messages */
+    font-size: 0.875rem;
+    margin-top: 5px;
+  }
+  
+  /* Submit Button */
+  button {
     width: 100%;
-    padding: 10px;
-    background-color: gold;
-    color: black;
+    padding: 12px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
-    font-size: large;
-}
-
-button:hover {
-    background-color: green;
-}
-
-a{
-    color: gold;
-}
-a:hover{
-    color: green;
-}
-p.error {
-    text-align: left;
-    border-radius: 0.3em;
-    color: red;
-    padding-top: 0;
-}
-
-.input-error {
-    border-left-color: red;
-}
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Link to Login */
+  p {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9rem;
+  }
+  
+  p a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  p a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .container {
+      padding: 15px;
+    }
+  
+    h1 {
+      font-size: 1.8rem;
+    }
+  }
+  
+  

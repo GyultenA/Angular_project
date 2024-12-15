@@ -58,11 +58,15 @@ const isCommentOwner = async (req, res, next) => {
 
 const isProfileOwner = async (req, res, next) => {
   const userId = req.params.userId
+
   const user = await getOne({ _id: userId });
+
+  console.log("Authenticated user ID:", req.user?._id);
+console.log("Profile owner ID:", user._id);
   if (!user) {
     return res.status(404).send();
   }
-  if (user._id.toString() !== req.user?._id) {
+  if (user._id.toString() !== req.user?._id.toString()) {
     return res.status(403).send({ error: 'Not authorized to access this profile' });
   };
   req.user = user;

@@ -97,6 +97,12 @@ export class UserService implements OnDestroy {
     return this.http.get<UserDetails>(`${apiUrl}/user/profile/${id}`)
   }
 
+  getUserProduct(id: string){
+    const { apiUrl } = environment;
+    console.log(id)
+    return this.http.get<any>(`${apiUrl}/user/profile/${id}/product`)
+  }
+
   editMyUser(id: string, updatedFields: any) {
     const { apiUrl } = environment;
     return this.http.put<UserDetails>(`${apiUrl}/user/my-profile/${id}`, updatedFields, { withCredentials: true })

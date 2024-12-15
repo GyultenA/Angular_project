@@ -105,6 +105,21 @@ const logoutUser = async (req, res) => {
      }
    }
  };
+
+ const getUserProduct = async (req, res) => {
+   try {
+      const item = await authService.getUserInfo(req.params.userId);
+      res.send(item);  
+   } catch (err) {
+      const errMsg = err.message;
+      if (err.name === 'ValidationError') {
+         res.status(400).json({ message: errMsg });
+      } else {
+         res.status(500).json({ message: errMsg });
+      }
+   }
+};
+
  
 
  
@@ -115,4 +130,5 @@ module.exports = {
     getUser,
     getMyUser,
     editMyUser,
+    getUserProduct,
  }

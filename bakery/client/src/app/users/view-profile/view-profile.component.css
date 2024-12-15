@@ -1,0 +1,81 @@
+.card {
+    background-color: rgba(207, 203, 203, 0.5);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 100px;
+    padding: 10px;
+
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: white;
+    padding: 2em;
+    border-radius: 8px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.card-img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+li {
+    font-size: 24px;
+    list-style: none;
+}
+
+button {
+    color: black;
+    background-color: gold;
+    border-color: gold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 5px;
+    size: 20px;
+}
+
+a {
+    color: black;
+    background-color: gold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 5px;
+
+}
+
+button:hover,
+a:hover {
+    background-color: green;
+}
+
+button:first-of-type {
+    margin-right: 2em;
+}
+
+.card-body {
+    padding-top: 1em;
+}
+
+.list-group {
+    padding-top: 1em;
+}
+
+.product-list {
+    display: flex;           /* Align items in a row */
+    gap: 10px;               /* Add spacing between items */
+    flex-wrap: wrap;
+    padding-bottom: 1em;         /* Allow wrapping to the next line if needed */
+  }
+  
+  .product-item {
+    background-color: #f8f9fa; /* Light background for better visibility */
+    padding: 5px 10px;         /* Add padding for better readability */
+    border: 1px solid #ddd;    /* Optional: Add a border for visual distinction */
+    border-radius: 5px;        /* Optional: Rounded corners */
+  }

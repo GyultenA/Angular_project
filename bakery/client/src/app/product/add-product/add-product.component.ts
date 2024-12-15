@@ -15,7 +15,7 @@ export class AddProductComponent {
 
   productForm = this.fb.group({
     name: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
-    description:["", [Validators.required,Validators.minLength(10), Validators.maxLength(250) ]],
+    description:["", [Validators.required,Validators.minLength(10), Validators.maxLength(450) ]],
     type: ["",[Validators.required]],
     imageUrl: ["",[ Validators.required,
       Validators.pattern(/https:\/\/.+\.(jpg|jpeg|png|gif)/i),]]

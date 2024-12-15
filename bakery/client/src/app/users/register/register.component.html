@@ -1,10 +1,10 @@
-<p>register works!</p>
+
 <div class="container">
     <h1>Register</h1>
     <form id="register-form" [formGroup]="registerForm" (ngSubmit)="onRegister()">
         <div class="form-group">
-            <label for="firstName">firstName:</label>
-            <input type="text" id="firstName" name="firstName" formControlName="firstName" placeholder="First Name">
+            <label for="firstName">First name:</label>
+            <input type="text" id="firstName" name="firstName" formControlName="firstName" placeholder="first name">
             <ng-container *ngIf="registerForm.get('firstName')?.touched">
                 <p class="error" *ngIf="registerForm.get('firstName')?.errors?.['required']">
                    First name is required!

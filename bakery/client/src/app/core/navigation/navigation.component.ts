@@ -14,6 +14,14 @@ export class NavigationComponent {
     private router: Router,
   ){}
 
+  get loggedIn(): boolean {
+    return this.userServise.isLoggedIn;
+  }
+
+  get currentUser():string | undefined{
+    return this.userServise.currentUsername;
+  }
+
   logout(){
     this.userServise.logout().subscribe(()=> {
       this.router.navigate(['/user/login'])

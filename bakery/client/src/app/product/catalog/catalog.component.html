@@ -1,5 +1,11 @@
 
 <h1>Product Catalog</h1>
+<ng-container *ngIf="loggedIn">
+    <div class="add-product">
+       <button><a routerLink="/catalog/create"><strong>Add new product</strong></a></button>
+    </div>
+</ng-container>
+
 <div class="main-catalog">
     <div *ngIf="this.hasResult" class="card-container">
         <div *ngFor="let data of products" class="card">
@@ -13,12 +19,6 @@
         </div>
     </div>
 </div>
-
-<ng-container *ngIf="loggedIn">
-    <div class="add-product">
-       <button> <a routerLink="/catalog/create"><strong>Add new product</strong></a></button>
-    </div>
-</ng-container>
 
 
 <ng-container *ngIf="!hasResult">
