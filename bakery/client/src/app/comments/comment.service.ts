@@ -20,7 +20,8 @@ export class CommentService {
 
   getOneComment(id:string){
     const {apiUrl} = environment;
-    return this.http.get<Comment>(`${apiUrl}/comment/${id}`)
+    console.log(`service:${apiUrl}/comment/${id}` )
+    return this.http.get<Comment>(`${apiUrl}/comment/${id}/details`, {withCredentials:true})
   }
 
   addComment(productId: string, title: string, description: string) {
@@ -37,7 +38,7 @@ export class CommentService {
       description: description,
     }
 
-    return this.http.put<Comment>(`${apiUrl}/commment/${id}`, editFields, { withCredentials: true });
+    return this.http.put<Comment>(`${apiUrl}/comment/${id}/edit`, editFields, { withCredentials: true });
   }
 
   deleteComment(id:string){

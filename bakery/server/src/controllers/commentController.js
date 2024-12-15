@@ -1,5 +1,6 @@
-const { getAllComments, createNewComment, editComment, deleleteComment, commentVoteYes, commmentVoteNo } = require("../services/commentService")
+const { getAllComments, createNewComment, editComment, deleleteComment, commentVoteYes, commmentVoteNo, getOneCommentDetails } = require("../services/commentService")
 const {User} = require('../models/User');
+const Comment = require('../models/Comment')
 
 const allComments = async (req, res) => {
 
@@ -27,11 +28,28 @@ const allComments = async (req, res) => {
 
 //}
 
-//const getCommentDetails = async (req, res) => {
-  // const commentId = req.params.commentId;
-   //const comment = await getOneCommentDetails(commentId);
-  // res.send(comment)
-//}
+const getCommentDetails = async (req, res) => {
+ const commentId = req.params.commentId;
+ try {
+   console.log('comment id:', commentId);
+   const comment = await Comment.findById(commentId).populate('owner', 'username').exec();
+
+   if (!comment) {
+      console.log('Comment not found');
+      return res.status(404).json({ message: 'Comment not found' });
+    }
+
+    console.log('catch',comment);
+    res.status(200).json(comment)
+
+ } catch(err){
+   console.log('comment details', err);
+   res.status(500).json({ message: errMsg });
+ }
+  // const comment = await getOneCommentDetails(commentId);
+  //res.json(comment)
+  
+}
 
 const newComment = async (req, res) => {
    
@@ -128,6 +146,7 @@ const newComment = async (req, res) => {
     newComment,
     updateComment,
     removeComment,
+    getCommentDetails,
     voteYes,
     voteNo,
  }

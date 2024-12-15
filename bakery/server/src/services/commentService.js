@@ -61,7 +61,11 @@ exports.createNewComment = async(userId, createData) => {
 
 exports.getOneComment = async(commentId) => await Comment.findById(commentId);
 
-exports.getOneCommentDetails = (commentId) => this.getOneComment(commentId).populate('owner').populate('likeProduct')
+exports.getOneCommentDetails = async (commentId) =>{
+const result =  await Comment.findById(commentId).populate('owner', 'username');
+console.log(result);
+return result
+} 
 
 
 exports.editComment = async (commentId, editData) => await Comment.findByIdAndUpdate(commentId, editData);

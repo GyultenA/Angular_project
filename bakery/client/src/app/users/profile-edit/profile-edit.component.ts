@@ -113,7 +113,7 @@ export class ProfileEditComponent implements OnInit{
       this.userApi.editMyUser(userId, updatedFields).subscribe({
         next: () => {
           console.log('User updated successfully');
-          this.router.navigate([`/user/my-profile/${userId}`]);
+          this.router.navigate([`/user/profile/${userId}`]);
         },
         error: (err) => {
           console.error('Error updating user:', err);
