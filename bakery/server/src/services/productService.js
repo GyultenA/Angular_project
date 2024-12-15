@@ -1,5 +1,5 @@
 const Product = require('../models/Product');
-const {User} = require('../models/User');
+const { User } = require('../models/User');
 const Comment = require('../models/Comment');
 
 exports.getAllProduct = async () => {
@@ -7,21 +7,27 @@ exports.getAllProduct = async () => {
     return products
 }
 
-exports.getLatestProduct =  async () =>await Product.find().sort({ createdDate: -1 }).limit(6).populate('owner', 'username');
+exports.getLatestProduct = async () => await Product.find().sort({ createdDate: -1 }).limit(6).populate('owner', 'username');
 
 
 exports.search = async (name, type) => {
     let query = {};
 
-    if (name) {
+    if (name.trim()) {
         query.name = new RegExp(name, 'i');
+        console.log(`search backend ${query.name}`);
     }
 
     if (type) {
-        query.type = type;
+        query.type = new RegExp(`^${type}$`, 'i');
+        console.log(`Searching by type: ${type}`);
     }
+    console.log('query beinig sent to database', query);
 
-    return Product.find(query).lean();
+    const results = await Product.find(query).lean();
+    console.log('Search results from database:', results);
+    return results;
+
     //return Product.find(query).populate('owner', 'username').lean();
 }
 
@@ -32,35 +38,35 @@ exports.getProductById = async (productId) => {
 
 }
 
-exports.getOneProduct = async(productId) => await Product.findById(productId);
+exports.getOneProduct = async (productId) => await Product.findById(productId);
 
-exports.addProduct = async (createData, ownerId)=> {
+exports.addProduct = async (createData, ownerId) => {
     const createdProduct = await Product.create({
         ...createData,
         owner: ownerId,
         usersWhoRated: [ownerId]
     });
 
-    await User.findByIdAndUpdate(ownerId, {$push: {productOwner: createdProduct._id}});
+    await User.findByIdAndUpdate(ownerId, { $push: { productOwner: createdProduct._id } });
     return createdProduct;
 }
 
-exports.editProduct = async (productId, editData)=> {
+exports.editProduct = async (productId, editData) => {
     await Product.findByIdAndUpdate(productId, editData, { runValidators: true })
 }
 
-exports.deleteProduct = async(productId)=> await Product.findByIdAndDelete(productId);
+exports.deleteProduct = async (productId) => await Product.findByIdAndDelete(productId);
 
-exports.likeProduct = async (productId, userId, isLiked)=> {
+exports.likeProduct = async (productId, userId, isLiked) => {
     const current = await Product.findById(productId);
-    current.likedBy.push({ user: userId, likeOn: Date.now()});
+    current.likedBy.push({ user: userId, likeOn: Date.now() });
     await current.save();
 
-    await Product.findByIdAndUpdate(productId, {isLiked: isLiked}, {runValidators:true});
-    await User.findByIdAndUpdate(userId, {$push: {productLikeList: productId}})
+    await Product.findByIdAndUpdate(productId, { isLiked: isLiked }, { runValidators: true });
+    await User.findByIdAndUpdate(userId, { $push: { productLikeList: productId } })
 }
 
 exports.notLikeProduct = async (productId, userId) => {
-    await Product.updateOne({_id: productId}, {$pull: {likedBy: {user: userId}}});
-    await User.updateOne({_id: userId}, {$pull: {productLikeList: productId}});
+    await Product.updateOne({ _id: productId }, { $pull: { likedBy: { user: userId } } });
+    await User.updateOne({ _id: userId }, { $pull: { productLikeList: productId } });
 }

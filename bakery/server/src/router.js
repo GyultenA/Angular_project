@@ -3,10 +3,12 @@ const router = require('express').Router();
 const auth = require('./router/userRouter');
 const catalog = require('./router/catalogRouter');
 const comment = require('./router/commentRouter');
+const searchParams = require('./router/searchRouter');
 
 router.use('/user', auth);
 router.use('/catalog', catalog);
 router.use('/comment', comment);
+router.use('/search', searchParams)
 
 router.get('/', (req, res) => {
     res.send(`<h3>You Shall Not Pass!!!</h3>

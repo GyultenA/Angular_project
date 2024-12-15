@@ -44,11 +44,14 @@ const productDetails = async(req, res) => {
 const searchProduct = async(req, res) => {
     try {
         const {name, type} = req.query;
-        const items = await productService.searchProduct(name, type);
+        console.log('Received Query Params:', req.query);
+        console.log('Received Search Request:', { name, type });
+        const items = await productService.search(name, type);
+        console.log('Search Results:', items);
         res.send(items)
     } catch(err){
         const errMsg = err.message;
-      if (errMsg === 'User not found') {
+      if (errMsg === 'product not found') {
          res.status(404).json({ message: errMsg });
       } else if (err.name === 'ValidationError') {
          res.status(400).json({ message: errMsg });

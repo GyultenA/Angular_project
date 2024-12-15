@@ -7,15 +7,17 @@ import { CatalogComponent } from './product/catalog/catalog.component';
 import { EditComponent } from './product/edit/edit.component';
 import { AddProductComponent } from './product/add-product/add-product.component';
 import { DetailsComponent } from './product/details/details.component';
+import { SearchComponent } from './main/search/search.component';
 
 const routes: Routes = [
   { path: '', pathMatch: "full", component: HomeComponent },
 
   { path: "about", component: AboutComponent },
-  { path: "catalog", component: CatalogComponent },
-  { path: "catalog/create", component: AddProductComponent },
-  { path: "catalog/:productId", component: DetailsComponent},
-  { path: "catalog/:productId/edit", component: EditComponent },
+  {path: 'search', component: SearchComponent},
+ // { path: "catalog", component: CatalogComponent },
+ // { path: "catalog/create", component: AddProductComponent },
+ // { path: "catalog/:productId", component: DetailsComponent},
+ // { path: "catalog/:productId/edit", component: EditComponent },
   { path: "catalog", loadChildren: () => import('./product/product.module').then((m) => m.ProductModule) },
 
   {path: 'comment', loadChildren:() => import('./comments/comments.module').then((m) => m.CommentsModule)},
