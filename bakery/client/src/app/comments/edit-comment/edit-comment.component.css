@@ -1,69 +1,78 @@
+
 .container {
-    max-width: 500px;
-    margin: 100px auto;
-    text-align: center;
-    background-color: rgba(38, 37, 37, 0.5);
-    font-family: Georgia, 'Times New Roman', Times, serif;;
-    color: gold;
-    
-}
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
 
-#comment-form {
-    padding-bottom: 2em;
-}
-
-h1 {
+  .container h1 {
     font-size: 24px;
     margin-bottom: 20px;
-}
-
-.form-group {
+    text-align: center;
+    color: #333;
+  }
+  
+  
+  .form-group {
     margin-bottom: 20px;
-}
-
-label {
+  }
+  
+  .form-group label {
     display: block;
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-
-input[type="text"],
-input[type="password"] {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #555;
+  }
+  
+  .form-group input,
+  textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+  }
+  
+  .form-group input:focus,
+  textarea {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  
+  .error {
+    font-size: 14px;
+    color: #d9534f;
+    margin-top: 5px;
+  }
+  
 
-button {
+  button {
     display: block;
     width: 100%;
-    padding: 10px;
-    background-color: gold;
-    color: black;
+    padding: 12px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: green;
-}
-a {
-    color: gold;
-}
-a:hover {
-    color: green;
-}
-p.error {
-    text-align: left;
-    border-radius: 0.3em;
-    color: red;
-    padding-top: 0;
-}
-
-.input-error {
-    border-left-color: red;
-}
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  button:hover:not(:disabled) {
+    background-color: #0056b3;
+  }
+  

@@ -16,7 +16,7 @@
       <ng-container *ngIf="showProduct">
         <div *ngIf="userProducts.length > 0; else noProducts">
           <h6>Your Created Products:</h6>
-          <div class="product-list" >
+          <div class="product-list">
             <span *ngFor="let product of userProducts" class="product-item">{{product.name}}</span>
           </div>
         </div>

@@ -1,14 +1,9 @@
-
 <div class="container">
     <h1>Login</h1>
     <form id="login-form" #formLogin="ngForm" (ngSubmit)="onLogin(formLogin)">
         <div class="form-group">
             <label for="email">Email:</label>
-            <input type="text" id="email" name="email" 
-            required
-            ngModel
-            #emailField="ngModel"
-            >
+            <input type="text" id="email" name="email" required ngModel #emailField="ngModel">
             <ng-container *ngIf="emailField.touched">
                 <p class="error" *ngIf="emailField.errors?.['required']">
                     Username is required!
@@ -17,19 +12,15 @@
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" 
-            required
-            ngModel
-            #passwordField="ngModel"
-            >
+            <input type="password" id="password" name="password" required ngModel #passwordField="ngModel">
             <ng-container *ngIf="passwordField.touched">
                 <p class="error" *ngIf="passwordField.errors?.['required']">
                     Password is required!
                 </p>
             </ng-container>
         </div>
-        <button type="submit"  [disabled]="!formLogin.valid">Login</button>
-        <p>Don't have an account? 
+        <button type="submit" [disabled]="!formLogin.valid">Login</button>
+        <p>Don't have an account?
             <a routerLink="/user/register">Register</a>
         </p>
     </form>

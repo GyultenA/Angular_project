@@ -1,48 +1,74 @@
-.nav-container {
-    padding-top: 2em;
-    padding-bottom: 1em;
-   /* position: relative;*/
-    /*position: sticky; */
-    /*overflow: hidden;
-    position: fixed;
-    top: 0;*/
- 
-   
-}
 
-nav {
+  /* Navigation Container */
+.nav-container {
+    background-color: #c97c11;
+    padding: 10px 20px;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  nav {
     
     display: flex;
     justify-content: space-around;
     max-width: 1500px;
     margin: 0 auto;
    
+   
 }
-
-div {
-    width: 100%;
-}
-
-
-
-ul {
-    display: flex;
-    padding-left: 25px;
-    padding-right: 25px;
+  
+  /* Navigation Menu Styling */
+  nav ul {
     list-style: none;
-}
-
-li {
-    margin-left: 5px;
-    margin-right: 15px;
-    cursor: pointer;
-    font-size: 35px;
-    color: rgb(27, 25, 25);
-}
-
-a {
-    color: rgb(27, 25, 25);
-}
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+   padding: 0;
+  
+  }
+  
+  /* Navigation Links */
+  nav ul li {
+    margin: 0px 100px; 
+   
+  }
+  
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  /* Hover effect on links */
+  nav ul li a:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  /* Active state for links */
+  nav ul li a.router-link-active {
+    background-color: #0056b3;
+    color: #fff;
+  }
+  
+  /* Logout and Login Links */
+  nav ul li a {
+    display: inline-block;
+  }
+  
+  nav ul li a:hover {
+    background-color: #e60000;
+    color: #fff;
+  }
+  
+  nav ul li a:focus {
+    outline: none;
+  }
+  
 
 /*CSS Header sticky*/
 nav.header-sticky {

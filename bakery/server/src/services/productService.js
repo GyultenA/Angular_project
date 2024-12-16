@@ -59,14 +59,20 @@ exports.deleteProduct = async (productId) => await Product.findByIdAndDelete(pro
 
 exports.likeProduct = async (productId, userId, isLiked) => {
     const current = await Product.findById(productId);
-    current.likedBy.push({ user: userId, likeOn: Date.now() });
-    await current.save();
+   // current.likedBy.push({ user: userId, likeOn: Date.now() });
+    //await current.save();
 
-    await Product.findByIdAndUpdate(productId, { isLiked: isLiked }, { runValidators: true });
-    await User.findByIdAndUpdate(userId, { $push: { productLikeList: productId } })
+    if (!current.likedBy.some(like => like.user.toString() === userId)) {
+        current.likedBy.push({ user: userId, likeOn: Date.now() });
+        await current.save();
+      }
+
+   const result = await Product.findByIdAndUpdate(productId, { $addToSet: { usersWhoRated: userId } }, { new:true}).lean();
+    await User.findByIdAndUpdate(userId, { $push: { productLikeList: productId } });
+    return result;
 }
 
 exports.notLikeProduct = async (productId, userId) => {
-    await Product.updateOne({ _id: productId }, { $pull: { likedBy: { user: userId } } });
+    await Product.updateOne({ _id: productId }, { $pull: { usersWhoRated: userId, likedBy: {user: userId}  } });
     await User.updateOne({ _id: userId }, { $pull: { productLikeList: productId } });
 }

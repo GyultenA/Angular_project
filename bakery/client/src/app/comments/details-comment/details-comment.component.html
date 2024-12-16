@@ -5,7 +5,7 @@
     <div *ngIf="comment; else noComment" class="comment-item">
       <h3>{{comment.title}}</h3>
       <p>{{comment.description}}</p>
-      <p class="comment-author"><strong>Author:{{comment.owner.username}}</strong></p>
+      <p class="comment-author"><strong>Author: {{comment.owner.username}}</strong></p>
       <p><strong>Posted On:</strong>{{comment.createdAt | date: "dd MMM yyyy"}}</p>
     </div>
     <button class="delete-btn" *ngIf="isOwner===true" (click)="comment._id && deleteComment(comment._id)">DELETE</button>

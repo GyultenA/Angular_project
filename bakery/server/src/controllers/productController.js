@@ -134,7 +134,7 @@ const cancelSubs = async(req,res) => {
     const {userId} = req.body;
 
     try {
-        await productService.notLikeProduct;
+        await productService.notLikeProduct(productId, userId);
         res.json({ message: 'you do not like this product' });
      } catch (err) {
         const errMsg = err.message;

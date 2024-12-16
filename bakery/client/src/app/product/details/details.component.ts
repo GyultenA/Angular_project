@@ -14,14 +14,17 @@ import { AllComentsComponent } from 'src/app/comments/all-coments/all-coments.co
 })
 export class DetailsComponent implements OnInit {
   product = {} as Product;
+  allProducts: Product[] = [];
   isOwner: boolean = false;
   showComments: boolean = false;
   productId: string = '';
   hasLike: boolean = false;
   hasRatedproduct: boolean = false;
+  userId: string = '';
+
 
   paramsSubscription: Subscription = new Subscription();
-  @Output() currentProductData = new EventEmitter<{productId: string}>();
+  @Output() currentProductData = new EventEmitter<{ productId: string }>();
 
   constructor(
     private userApi: UserService,
@@ -42,6 +45,8 @@ export class DetailsComponent implements OnInit {
     return this.userApi.currentUserId;
   }
 
+
+
   ngOnInit(): void {
     this.paramsSubscription = this.activeRoute.params.subscribe((data) => {
       const id = data['productId'];
@@ -53,7 +58,7 @@ export class DetailsComponent implements OnInit {
           //console.log(this.isOwner)
         }
 
-        const userHasLiked =product.likedBy?.some((u) => u.user?._id === this.currentUserId);
+        const userHasLiked = product.likedBy?.some((u) => u.user?._id === this.currentUserId);
 
         if (userHasLiked) {
           this.hasLike = true;
@@ -63,6 +68,7 @@ export class DetailsComponent implements OnInit {
 
         if (userRated) {
           this.hasRatedproduct = true;
+          this.hasLike = true;
         }
 
       })
@@ -70,7 +76,7 @@ export class DetailsComponent implements OnInit {
     })
   }
 
-  onDelete(id:string): void {
+  onDelete(id: string): void {
     //const valueId = (this.product._id)?.toString();
     this.productService.deleteProduct(id).subscribe(() => {
       this.router.navigate(['/catalog']);
@@ -81,30 +87,35 @@ export class DetailsComponent implements OnInit {
     const userId = this.currentUserId;
     const isLiked = true;
 
-    if(userId){
-      this.productService.requestProduct(id, userId, isLiked).subscribe(() => {
+    if (userId) {
+      this.productService.requestProduct(id, userId, isLiked).subscribe((updatedProduct) => {
+        this.allProducts = this.allProducts?.map(prod => prod._id === id ? { ...prod, ...updatedProduct } : prod);
         this.router.navigate(['/catalog']);
       })
     }
   }
 
 
-  cancelLike(id:string): void {
+  cancelLike(id: string): void {
     const userId = this.currentUserId;
 
-    if(userId){
-      this.productService.cancelRequest(id,userId).subscribe(() => {
+    if (userId) {
+      this.productService.cancelRequest(id, userId).subscribe((updatedProduct) => {
+        this.allProducts = this.allProducts?.map(prod => prod._id === id ? { ...prod, ...updatedProduct } : prod);
         this.router.navigate(['/catalog'])
       })
     }
   }
+
+
+
 
   onToggle(): void {
     this.showComments = !this.showComments;
   }
 
 
-  sendProductData(){
+  sendProductData() {
     this.paramsSubscription = this.activeRoute.params.subscribe((data) => {
       this.productId = data['productId'];
       this.currentProductData.emit({
@@ -113,19 +124,19 @@ export class DetailsComponent implements OnInit {
       })
     })
     console.log(this.productId)
-  
+
   }
 
-  toggleAndSendProductData(){
+  toggleAndSendProductData() {
     this.onToggle();
-    this.currentProductData.emit({productId: this.productId});
-   
+    this.currentProductData.emit({ productId: this.productId });
+
   }
 
   openAddCommentPage(): void {
-    const url= `/comment/create/${this.productId}`;
+    const url = `/comment/create/${this.productId}`;
     this.router.navigate([url])
-   // window.open(url, '_blank')
+    // window.open(url, '_blank')
   }
 
 }

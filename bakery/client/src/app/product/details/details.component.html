@@ -16,12 +16,14 @@
       for this product</button>
     <div *ngIf="showComments">
       <app-add-comment [productId]="productId"></app-add-comment>
-
     </div>
 
+    <!--<button *ngIf="!hasLike && loggedIn && !isOwner" (click)="product._id && requestProduct(product._id)">Like</button>-->
+
     <button *ngIf="!hasLike && loggedIn && !isOwner" (click)="product._id && requestProduct(product._id)">Like</button>
-    <button *ngIf="product.isLiked && hasLike && !isOwner"
-      (click)="product._id && cancelLike(product._id)">Unlike</button>
+    <button *ngIf="hasLike && loggedIn && !isOwner" (click)="product._id && cancelLike(product._id)">Unlike</button>
+
+
     <!-- <button (click)="toggleLikedByUser(product._id)" *ngIf="!isLiked">Like</button> -->
     <!-- <button (click)="toggleLikedByUser(product._id)" *ngIf="isLiked">Unlike</button> -->
 

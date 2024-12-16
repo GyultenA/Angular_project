@@ -1,94 +1,91 @@
+/* Container for the Edit Product form */
 .container {
+  width: 80%;
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: gold;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  text-align: center;
-  box-sizing: border-box;
-  min-height: 100vh; /* Make container at least as tall as the viewport */
-
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-  font-size: 34px;
-  margin-bottom: 10px;
   text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
-.cocktail-details {
-  font-size: larger;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.cocktail-image {
-  width: 200px;
-  max-width: fit-content;
-  height:fit-content;
-  align-self: center;
-  /* margin-bottom: -130px; */
-}
-
-.ingredient {
-  margin: 10px;
-  font-weight: bold;
-}
-
-.instructions {
-  white-space: pre-line; /* Preserve line breaks */
-}
-button {
-  display: flex;
-  justify-content: center;
-  align-self: center;
-  width: 100%;
-  margin-top: -10px;
-  margin-bottom: 30px;
-  padding: 10px;
-  background-color: gold;
-  color: black;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: green;
-}
-a {
-padding-left: 10px;
-color: gold;
-}
-a:hover {
-color: green;
-}
-
+/* Form group styling */
 .form-group {
-margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
+/* Label styling */
 label {
-font-weight: bold;
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
 }
 
+/* Input, select, and textarea styles */
 input[type="text"],
+select,
 textarea {
-width: 100%;
-padding: 10px;
-font-size: 16px;
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
-p.error {
-  text-align: left;
-  border-radius: 0.3em;
-  color: red;
-  padding-top: 0;
+textarea {
+  resize: vertical;
+  min-height: 100px;
 }
 
-.input-error {
-  border-left-color: red;
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+/* Error message styles */
+.error {
+  color: #ff0000;
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
+/* Button styling */
+button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
 }

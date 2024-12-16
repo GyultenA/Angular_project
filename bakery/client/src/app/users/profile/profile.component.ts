@@ -107,7 +107,7 @@ export class ProfileComponent implements OnInit {
 
   clickShowProduct() {
     this.showProduct = true;
-   
+
   }
 
   onToggle(): void {

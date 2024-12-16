@@ -11,7 +11,7 @@ import { ErrorService } from './error.service';
 
 export class ErrorComponent implements OnInit {
   message: string | undefined | null;
-  constructor(private errorService: ErrorService) {}
+  constructor(private errorService: ErrorService) { }
 
   ngOnInit(): void {
     this.errorService.apiError$.subscribe(err => {
@@ -20,11 +20,11 @@ export class ErrorComponent implements OnInit {
     })
   }
 
-  get current(){
+  get current() {
     return this.message;
   }
- 
-   
+
+
 
 
 }

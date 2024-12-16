@@ -54,14 +54,14 @@ export class EditComponent implements OnInit {
     const productId = this.activeRoute.snapshot.paramMap.get("productId");
     const updatedFields = this.getUpdatedFields(this.originalProduct, formValue);
 
-    if(productId){
-    this.productService.editProductTwo(productId, updatedFields).subscribe((product)=> {
-    this.originalProduct= product
-    })
-    this.router.navigate([`/catalog/${productId}`]);
+    if (productId) {
+      this.productService.editProductTwo(productId, updatedFields).subscribe((product) => {
+        this.originalProduct = product
+      })
+      this.router.navigate([`/catalog/${productId}`]);
 
+    }
   }
-}
 
 
   onSubmit(editForm: NgForm) {

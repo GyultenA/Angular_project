@@ -10,7 +10,7 @@ import { EMAIL_DOMAINS, emailValidator } from 'src/app/utils/email_validator';
   templateUrl: './profile-edit.component.html',
   styleUrls: ['./profile-edit.component.css']
 })
-export class ProfileEditComponent implements OnInit{
+export class ProfileEditComponent implements OnInit {
 
   user = {} as UserDetails;
   showProduct: boolean = false;
@@ -34,7 +34,7 @@ export class ProfileEditComponent implements OnInit{
     return this.userApi.currentUsername
   }
 
-  get currentUserId(): string | undefined{
+  get currentUserId(): string | undefined {
     return this.userApi.currentUserId;
   }
 
@@ -65,13 +65,13 @@ export class ProfileEditComponent implements OnInit{
         this.editUserForm.patchValue({
           firstName, lastName, username, email, avatar, aboutMe
         })
-       // console.log('oninit')
+        // console.log('oninit')
       })
     }
   }
 
   onEditUser() {
-    if(this.editUserForm.invalid){
+    if (this.editUserForm.invalid) {
       return;
     }
 
@@ -85,65 +85,65 @@ export class ProfileEditComponent implements OnInit{
 
     const updatedFields = this.getUpdatedFields(this.user, this.editUserForm.getRawValue());
 
-   
-     // this.userApi.editMyUser(userId , {firstName, lastName, username,email, avatar, aboutMe}).subscribe(() => {
-      //  this.router.navigate([`/user/my-profile/${userId}`]);
-       // console.log('onedit')
-     // })
 
-      this.userApi.editMyUser(userId , updatedFields).subscribe(() => {
-       // this.router.navigate([`/user/my-profile/${userId}`]);
-        this.router.navigate(['/user/profile'])
-        console.log('onedit')
-      })
-    }
+    // this.userApi.editMyUser(userId , {firstName, lastName, username,email, avatar, aboutMe}).subscribe(() => {
+    //  this.router.navigate([`/user/my-profile/${userId}`]);
+    // console.log('onedit')
+    // })
 
-
-    onEditUserTwo() {
-      console.log('Edit form submitted');
-      if (this.editUserForm.invalid) {
-        console.error("Form is invalid", this.editUserForm.errors);
-        return;
-      }
-      const userId = this.currentUserId || "";
-      const updatedFields = this.getUpdatedFields(this.user, this.editUserForm.getRawValue());
-    
-      console.log("Updating user with ID:", userId);
-      console.log("Payload to send:", updatedFields);
-    
-      this.userApi.editMyUser(userId, updatedFields).subscribe({
-        next: () => {
-          console.log('User updated successfully');
-          this.router.navigate([`/user/profile/${userId}`]);
-        },
-        error: (err) => {
-          console.error('Error updating user:', err);
-        }
-      });
-    }
-
-    getUpdatedFields(original: any, updated: any) {
-      const updatedFields: any = {};
-      for (const key in original) {
-        if (updated.hasOwnProperty(key) && original[key] !== updated[key]) {
-          updatedFields[key] = updated[key];
-        }
-      }
-      return updatedFields;
-    }
-
-    getErrorMessage(controlName: string): string | null {
-      const control = this.editUserForm.get(controlName);
-      if (control?.errors?.['required']) return `${controlName} is required!`;
-      if (control?.errors?.['minlength']) return `${controlName} should be at least ${control.errors['minlength'].requiredLength} characters long!`;
-      if (control?.errors?.['maxlength']) return `${controlName} should be no more than ${control.errors['maxlength'].requiredLength} characters long!`;
-      if (control?.errors?.['pattern']) return `Invalid format for ${controlName}!`;
-      return null;
-    }
-
-    //<p class="error" *ngIf="getErrorMessage('firstName')">{{ getErrorMessage('firstName') }}</p>
-    
+    this.userApi.editMyUser(userId, updatedFields).subscribe(() => {
+      // this.router.navigate([`/user/my-profile/${userId}`]);
+      this.router.navigate(['/user/profile'])
+      console.log('onedit')
+    })
   }
+
+
+  onEditUserTwo() {
+    console.log('Edit form submitted');
+    if (this.editUserForm.invalid) {
+      console.error("Form is invalid", this.editUserForm.errors);
+      return;
+    }
+    const userId = this.currentUserId || "";
+    const updatedFields = this.getUpdatedFields(this.user, this.editUserForm.getRawValue());
+
+    console.log("Updating user with ID:", userId);
+    console.log("Payload to send:", updatedFields);
+
+    this.userApi.editMyUser(userId, updatedFields).subscribe({
+      next: () => {
+        console.log('User updated successfully');
+        this.router.navigate([`/user/profile/${userId}`]);
+      },
+      error: (err) => {
+        console.error('Error updating user:', err);
+      }
+    });
+  }
+
+  getUpdatedFields(original: any, updated: any) {
+    const updatedFields: any = {};
+    for (const key in original) {
+      if (updated.hasOwnProperty(key) && original[key] !== updated[key]) {
+        updatedFields[key] = updated[key];
+      }
+    }
+    return updatedFields;
+  }
+
+  getErrorMessage(controlName: string): string | null {
+    const control = this.editUserForm.get(controlName);
+    if (control?.errors?.['required']) return `${controlName} is required!`;
+    if (control?.errors?.['minlength']) return `${controlName} should be at least ${control.errors['minlength'].requiredLength} characters long!`;
+    if (control?.errors?.['maxlength']) return `${controlName} should be no more than ${control.errors['maxlength'].requiredLength} characters long!`;
+    if (control?.errors?.['pattern']) return `Invalid format for ${controlName}!`;
+    return null;
+  }
+
+  //<p class="error" *ngIf="getErrorMessage('firstName')">{{ getErrorMessage('firstName') }}</p>
+
+}
 
 
 

@@ -1,31 +1,31 @@
 <div class="card">
-    <div class="container">
-      <img class="card-img" src="{{user.avatar}}" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">{{user.firstName}} {{user.lastName}}</h5>
-        <p class="card-text">{{user.aboutMe}}</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">{{user.username}}</li>
-        <li class="list-group-item">{{user.email}}</li>
-  
-      </ul>
-      <div class="card-body">
-        <button class="card-link" (click)="onToggle()">{{ showProduct ? 'Hide Products' : 'Your Products' }}</button>
-  
-        <ng-container *ngIf="showProduct">
-          <div *ngIf="userProducts.length > 0; else noProducts">
-            <h6>Your Created Products:</h6>
-            <div class="product-list" >
-              <span *ngFor="let product of userProducts" class="product-item">{{product.name}}</span>
-            </div>
+  <div class="container">
+    <img class="card-img" src="{{user.avatar}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{user.firstName}} {{user.lastName}}</h5>
+      <p class="card-text">{{user.aboutMe}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{user.username}}</li>
+      <li class="list-group-item">{{user.email}}</li>
+
+    </ul>
+    <div class="card-body">
+      <button class="card-link" (click)="onToggle()">{{ showProduct ? 'Hide Products' : 'Your Products' }}</button>
+
+      <ng-container *ngIf="showProduct">
+        <div *ngIf="userProducts.length > 0; else noProducts">
+          <h6>Your Created Products:</h6>
+          <div class="product-list">
+            <span *ngFor="let product of userProducts" class="product-item">{{product.name}}</span>
           </div>
-        </ng-container>
-        <ng-template #noProducts>
-          <p>No products created yet.</p>
-        </ng-template>
-  
-        <button> <a [routerLink]="['/user/profile/edit',this.currentUserId]" class="edit-link">Edit Profile</a></button>
-      </div>
+        </div>
+      </ng-container>
+      <ng-template #noProducts>
+        <p>No products created yet.</p>
+      </ng-template>
+
+      <button> <a [routerLink]="['/user/profile/edit',this.currentUserId]" class="edit-link">Edit Profile</a></button>
     </div>
   </div>
+</div>

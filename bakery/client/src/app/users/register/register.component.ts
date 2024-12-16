@@ -16,75 +16,79 @@ import { Router } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent{
+export class RegisterComponent {
 
-isLoading: boolean = true;
-hide = true;
-hideRe = true;
+  isLoading: boolean = true;
+  hide = true;
+  hideRe = true;
 
-private errorSubscription!: Subscription;
+  private errorSubscription!: Subscription;
 
-registerForm = this.fb.group({
-firstName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
-lastName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
-username: ["",[Validators.required, Validators.minLength(2), Validators.maxLength(30), Validators.pattern('^[a-zA-Z0-9_-]+$')] ],
-email: ["", [Validators.required, Validators.minLength(10),Validators.maxLength(50), emailValidator(EMAIL_DOMAINS),] ],
+  registerForm = this.fb.group({
+    firstName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+    lastName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+    username: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30), Validators.pattern('^[a-zA-Z0-9_-]+$')]],
+    email: ["", [Validators.required, Validators.minLength(10), Validators.maxLength(50), emailValidator(EMAIL_DOMAINS),]],
 
-passGroup: this.fb.group({
-  password: ["",Validators.required, Validators.minLength(4), Validators.maxLength(6)],
-  rePassword: ["", [Validators.required]],
-}, {validators: [passMatch('password', "rePassword")]}),
-avatar: ["", [Validators.required, Validators.pattern(/https?:\/\/.+\.(jpg|jpeg|png|gif)/i)]]
-})
-
-
-get passGroup(){
-  return this.registerForm.get('passGroup')
-}
+    passGroup: this.fb.group({
+      password: ["", Validators.required, Validators.minLength(4), Validators.maxLength(6)],
+      rePassword: ["", [Validators.required]],
+    }, { validators: [matchPass('password', "rePassword")] }),
+    avatar: ["", [Validators.required, Validators.pattern(/https?:\/\/.+\.(jpg|jpeg|png|gif)/i)]]
+  })
 
 
-
-constructor(
-  private fb: FormBuilder,
-  private userApi: UserService,
-  /*private modal: ErrorComponent,*/
-  /* private modal: MatSnackBar,*/
-  private router: Router,
-
- /* private errorHandlerService: ErrorService,*/
-) { }
-
-
-
-
-onRegister(): void {
-  if (this.registerForm.invalid) {
-    return;
+  get passGroup() {
+    return this.registerForm.get('passGroup')
   }
 
-  const {
-    firstName,
-    lastName,
-    username,
-    email,
-    passGroup: { password, rePassword } = {},
-    avatar,
-  } = this.registerForm.value;
 
-  this.userApi
-    .register(
-      firstName!,
-      lastName!,
-      username!,
-      email!,
-      password!,
-      rePassword!,
-      avatar!,
-    ).subscribe(() => {
-      //this.registerForm.reset();
-      this.router.navigate(['/about'])
 
-    })
+  constructor(
+    private fb: FormBuilder,
+    private userApi: UserService,
+    /*private modal: ErrorComponent,*/
+    /* private modal: MatSnackBar,*/
+    private router: Router,
+
+    /* private errorHandlerService: ErrorService,*/
+  ) { }
+
+
+
+
+  onRegister(): void {
+    if (this.registerForm.invalid) {
+      return;
+    }
+
+    const {
+      firstName,
+      lastName,
+      username,
+      email,
+      passGroup: { password, rePassword } = {},
+      avatar,
+    } = this.registerForm.value;
+
+    this.userApi
+      .register(
+        firstName!,
+        lastName!,
+        username!,
+        email!,
+        password!,
+        rePassword!,
+        avatar!,
+      ).subscribe(() => {
+        //this.registerForm.reset();
+        this.router.navigate(['/about'])
+
+      })
+  }
+
+}
+function matchPass(arg0: string, arg1: string): any {
+  throw new Error('Function not implemented.');
 }
 
-}
