@@ -65,7 +65,7 @@ export class ProductService {
         if (type) {
             params = params.set('type', type)
         }
-        console.log('Search API Params:', params.toString());
+       // console.log('Search API Params:', params.toString());
 
         return this.http.get<Product[]>(`${apiUrl}/search`, { params })
     }

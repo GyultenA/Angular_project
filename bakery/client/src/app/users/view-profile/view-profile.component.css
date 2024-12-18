@@ -67,15 +67,15 @@ button:first-of-type {
 }
 
 .product-list {
-    display: flex;           /* Align items in a row */
-    gap: 10px;               /* Add spacing between items */
+    display: flex;          
+    gap: 10px;              
     flex-wrap: wrap;
-    padding-bottom: 1em;         /* Allow wrapping to the next line if needed */
+    padding-bottom: 1em;         
   }
   
   .product-item {
-    background-color: #f8f9fa; /* Light background for better visibility */
-    padding: 5px 10px;         /* Add padding for better readability */
-    border: 1px solid #ddd;    /* Optional: Add a border for visual distinction */
-    border-radius: 5px;        /* Optional: Rounded corners */
+    background-color: #f8f9fa; 
+    padding: 5px 10px;       
+    border: 1px solid #ddd;    
+    border-radius: 5px;       
   }

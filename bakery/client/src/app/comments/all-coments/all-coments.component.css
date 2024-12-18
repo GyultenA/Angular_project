@@ -1,5 +1,6 @@
 .main-catalog {
     padding: 2em;
+    margin-top: 1em;
 }
 h1 {
     text-align: center;
@@ -55,21 +56,26 @@ button {
     display: block;
     justify-content: center;
    /* align-self: center;*/
-    width: 100%;
+    width: 50%;
     align-items: center;
-    margin-top: -10px;
-    margin-bottom: 30px;
+   /* margin-top: -10px;*/
+   /* margin-bottom: 30px;*/
+   margin: 0 auto;
     padding: 10px;
     background-color: rgb(214, 139, 18);
     color: black;
+    font-weight: bold;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
+.btn{
+    margin-bottom: 1em;
+}
 
 button:hover {
-    background-color: green;
+    background-color: #007bff;
 }
 a {
   padding-left: 10px;

@@ -50,7 +50,7 @@ exports.getUserInfo = async (userId) => await User.findById(userId).populate('pr
 
 exports.editMyInfo = async (userId, payload) => {
    const result = await User.findByIdAndUpdate(userId, payload, {runValidators:true});
-   console.log(result);
+  // console.log(result);
    return result;
 } 
 

@@ -1,8 +1,7 @@
 
-/* General Form Styling */
 form {
     max-width: 600px;
-    margin: 0 auto; /* Center the form */
+    margin: 0 auto; 
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;
@@ -17,7 +16,6 @@ form {
     color: #333;
   }
   
-  /* Form Group Styling */
   .form-group {
     margin-bottom: 15px;
   }
@@ -46,17 +44,17 @@ form {
   }
   
   textarea {
-    resize: vertical; /* Allow resizing only vertically */
+    resize: vertical; 
   }
   
-  /* Error Messages */
+
   .error {
-    color: #e74c3c; /* Red color for errors */
+    color: #e74c3c; 
     font-size: 0.875rem;
     margin-top: 5px;
   }
   
-  /* Buttons */
+
   button {
     display: block;
     width: 100%;
@@ -76,13 +74,13 @@ form {
     background-color: #0056b3;
   }
   
-  /* Add spacing for form elements */
+  
   .form-group input,
   .form-group textarea {
     margin-bottom: 5px;
   }
   
-  /* Placeholder Styling */
+
   input::placeholder, textarea::placeholder {
     font-style: italic;
     color: #aaa;

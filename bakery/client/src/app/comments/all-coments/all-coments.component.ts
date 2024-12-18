@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { CommentService } from '../comment.service';
 import { UserService } from 'src/app/users/user.service';
 import { Comment} from '../../types/comment.type'
@@ -20,6 +21,7 @@ productId: string = "";
     private commentService: CommentService,
     private userApi: UserService,
     private route: ActivatedRoute,
+    private location: Location,
   ) { }
 
   get currentUserId(): string | undefined {
@@ -39,21 +41,6 @@ productId: string = "";
 
        this.loadComments();
       })
-
-    //this.commentService.getAllComments(this.productId).subscribe((data) => {
-    // this.comments = data;
-    // console.log(this.comments);
-    // console.log(this.hasResult)
-    // console.log(this.comments.length)
-    // console.log(this.productId)
-    // this.hasResult= true;
-    // return this.comments;
-    
-   // })
-
-   // if (this.comments?.length ===0){
-    //  this.hasResult = false
-   // }
   
   }
 
@@ -70,8 +57,7 @@ productId: string = "";
           this.hasResult = true;
          }
 
-         console.log(this.hasResult)
-         console.log('Comments:', this.comments)
+
         
       },
       error:(err)=> {
@@ -101,6 +87,10 @@ productId: string = "";
         this.ngOnInit();
       })
     }
+  }
+
+  goBack(){
+    this.location.back();
   }
 
 }

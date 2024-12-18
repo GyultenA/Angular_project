@@ -20,7 +20,7 @@ export class CommentService {
 
   getOneComment(id:string){
     const {apiUrl} = environment;
-    console.log(`service:${apiUrl}/comment/${id}` )
+   // console.log(`service:${apiUrl}/comment/${id}` )
     return this.http.get<Comment>(`${apiUrl}/comment/${id}/details`, {withCredentials:true})
   }
 

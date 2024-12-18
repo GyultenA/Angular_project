@@ -29,14 +29,9 @@ export class AddCommentComponent implements OnInit {
 
     this.route.params.subscribe((params) => {
       this.productId = params['productId'];
-      console.log('Product Id', this.productId)
+    //  console.log('Product Id', this.productId)
     })
 
-    //  this.paramsSubscription =  this.activeRoute.params.subscribe((data) => {
-    //  const valueId = data['productId'];
-    //  this.productId = valueId;
-    // console.log(this.productId)
-    //})
   }
 
   addNewComment(formComment: NgForm) {
@@ -45,11 +40,9 @@ export class AddCommentComponent implements OnInit {
       return;
     }
 
-    /// const currentProductId = this.productId;
     const title = formComment.value.title;
     const commentBody = formComment.value.description;
-    console.log(this.productId);
-
+   
     this.commentService.addComment(this.productId, title, commentBody).subscribe({
       next:() => {
         console.log('Comment added successfully');

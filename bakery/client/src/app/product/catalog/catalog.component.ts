@@ -39,8 +39,6 @@ export class CatalogComponent implements OnInit {
       return this.products;
     })
 
-
-    //console.log(this.hasResult)
   }
 
 

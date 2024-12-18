@@ -54,14 +54,15 @@ export class EditComponent implements OnInit {
     const productId = this.activeRoute.snapshot.paramMap.get("productId");
     const updatedFields = this.getUpdatedFields(this.originalProduct, formValue);
 
-    if (productId) {
-      this.productService.editProductTwo(productId, updatedFields).subscribe((product) => {
-        this.originalProduct = product
-      })
-      this.router.navigate([`/catalog/${productId}`]);
+    if(productId){
+    this.productService.editProductTwo(productId, updatedFields).subscribe((product)=> {
+    this.originalProduct= product
+    })
+   
+    this.router.navigate([`/catalog`]);
 
-    }
   }
+}
 
 
   onSubmit(editForm: NgForm) {
@@ -78,15 +79,13 @@ export class EditComponent implements OnInit {
       editForm.value.imageUrl).subscribe(product => {
         this.product = product;
       })
+     // console.log(this.product)
     this.router.navigate(['/catalog'])
 
   }
 
 
-
-
 }
-
 
 
 

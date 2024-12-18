@@ -1,4 +1,3 @@
-/* General Container Styling */
 .container {
     max-width: 600px;
     margin: 0 auto; /* Center container */
@@ -16,7 +15,6 @@
     margin-bottom: 20px;
   }
   
-  /* Form Styling */
   form {
     width: 100%;
   }
@@ -53,17 +51,17 @@
   }
   
   textarea {
-    resize: vertical; /* Vertical resizing only */
+    resize: vertical; 
   }
   
   /* Error Messages */
   .error {
-    color: #e74c3c; /* Bright red for error messages */
+    color: #e74c3c; 
     font-size: 0.875rem;
     margin-top: 5px;
   }
   
-  /* Submit Button */
+ 
   button {
     width: 100%;
     padding: 12px 15px;
@@ -81,7 +79,7 @@
     background-color: #0056b3;
   }
   
-  /* Link to Login */
+ 
   p {
     text-align: center;
     margin-top: 15px;

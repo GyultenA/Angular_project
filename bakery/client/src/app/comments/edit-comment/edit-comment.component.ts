@@ -22,7 +22,6 @@ export class EditCommentComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.params.subscribe((params) => {
       this.commentId = params['commentId'];
-console.log(this.commentId)
       this.commentService.getOneComment(this.commentId).subscribe({
         next:(data) => {
           this.commentTitle = data.title;
@@ -33,10 +32,6 @@ console.log(this.commentId)
         }
       })
     })
-   // const commentId = this.activeRoute.snapshot.params['commentId'];
-    //this.commentService.getOneComment(commentId).subscribe((data) => {
-     // this.comment = data;
-    //})
 
   }
 
@@ -58,7 +53,6 @@ console.log(this.commentId)
       }
     })
 
-  //  this.router.navigate(['/catalog'])
   }
 
 }

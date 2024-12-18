@@ -55,15 +55,9 @@ export class ProfileComponent implements OnInit {
       this.userApi.getMyUser(userId).subscribe((user) => {
         this.user = user;
 
-
-        console.log('this is user', this.user);
         let productArray = this.user.productOwner;
-        console.log('product array', productArray)
 
         productArray?.forEach((product) => { this.userProducts.push(product) })
-
-        console.log('Product Owner Field:', this.user.productOwner);
-
 
 
         const { firstName, lastName, username, email, avatar, aboutMe } = this.user;
@@ -87,7 +81,7 @@ export class ProfileComponent implements OnInit {
     if (userId) {
       this.userApi.editMyUser(userId, updatedFields).subscribe({
         next: (response) => {
-          console.log('User profile updated successfully');
+         // console.log('User profile updated successfully');
           this.router.navigate([`/user/my-profile/${userId}`])
         }
       })

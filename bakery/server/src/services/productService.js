@@ -15,17 +15,16 @@ exports.search = async (name, type) => {
 
     if (name.trim()) {
         query.name = new RegExp(name, 'i');
-        console.log(`search backend ${query.name}`);
+       // console.log(`search backend ${query.name}`);
     }
 
     if (type) {
         query.type = new RegExp(`^${type}$`, 'i');
-        console.log(`Searching by type: ${type}`);
+       // console.log(`Searching by type: ${type}`);
     }
-    console.log('query beinig sent to database', query);
+  
 
     const results = await Product.find(query).lean();
-    console.log('Search results from database:', results);
     return results;
 
     //return Product.find(query).populate('owner', 'username').lean();

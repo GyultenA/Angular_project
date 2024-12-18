@@ -8,7 +8,7 @@ const allComments = async (req, res) => {
       const productId = req.params.productId;
 
         const result = await getAllComments(productId);
-        console.log(result)
+       // console.log(result)
         res.json(result);
 
     } catch (err) {
@@ -21,17 +21,11 @@ const allComments = async (req, res) => {
     }
 }
 
-//const getOneComment = async(req, res)=> {
-   //const commentId = req.params.commentId;
-   //const comment = await getOneComment(commentId);
-   //res.send(comment);
-
-//}
 
 const getCommentDetails = async (req, res) => {
  const commentId = req.params.commentId;
  try {
-   console.log('comment id:', commentId);
+ //  console.log('comment id:', commentId);
    const comment = await Comment.findById(commentId).populate('owner', 'username').exec();
 
    if (!comment) {
@@ -39,15 +33,13 @@ const getCommentDetails = async (req, res) => {
       return res.status(404).json({ message: 'Comment not found' });
     }
 
-    console.log('catch',comment);
     res.status(200).json(comment)
 
  } catch(err){
-   console.log('comment details', err);
+  // console.log('comment details', err);
    res.status(500).json({ message: errMsg });
  }
-  // const comment = await getOneCommentDetails(commentId);
-  //res.json(comment)
+
   
 }
 

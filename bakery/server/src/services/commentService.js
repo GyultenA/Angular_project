@@ -25,7 +25,6 @@ exports.createNewComment = async (userId, createData) => {
       owner: userId,
     });
 
-    console.log(createData)
     const product = await Product.findById(createData.product);
 
     if (!product) {
@@ -41,29 +40,10 @@ exports.createNewComment = async (userId, createData) => {
 }
 
 
-
-// product.comments.push(createdComment)
-// await product.save();
-
-// product.usersWhoRated.push(createdComment.owner);
-// await product.save();
-
-
-// const currentProduct = await Product.findById(createData.product);
-// currentProduct.comments.push(createdComment)
-
-//   const currentProduct = await Product.findById(createData.likeProduct);
-//currentProduct.usersWhoRated.push(createdComment.owner);
-// await currentProduct.save();
-
-
-
-
 exports.getOneComment = async (commentId) => await Comment.findById(commentId);
 
 exports.getOneCommentDetails = async (commentId) => {
   const result = await Comment.findById(commentId).populate('owner', 'username');
-  console.log(result);
   return result
 }
 

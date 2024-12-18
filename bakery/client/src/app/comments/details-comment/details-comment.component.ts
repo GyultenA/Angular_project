@@ -40,11 +40,9 @@ export class DetailsCommentComponent implements OnInit {
    
     this.route.params.subscribe((params) => {
       this.commentId = params['commentId'];
-      console.log('comment Id:',this.commentId);
       
       this.commentService.getOneComment(this.commentId).subscribe((data) => {
         this.comment = data;
-        console.log(data)
 
         if (data.owner && data.owner._id === this.currentUserId) {
           this.isOwner = true;
@@ -61,7 +59,7 @@ export class DetailsCommentComponent implements OnInit {
         this.router.navigate(['/catalog'])
       },
       error:(err) => {
-        console.log('Error delete comment', err)
+       // console.log('Error delete comment', err)
       }
      
     })

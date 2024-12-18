@@ -99,7 +99,7 @@ export class UserService implements OnDestroy {
 
   getUserProduct(id: string){
     const { apiUrl } = environment;
-    console.log(id)
+   // console.log(id)
     return this.http.get<any>(`${apiUrl}/user/profile/${id}/product`)
   }
 

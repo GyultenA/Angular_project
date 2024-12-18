@@ -1,4 +1,4 @@
-/* General Styles */
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -16,7 +16,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Header Styles */
+
 .container h1 {
   font-size: 2rem;
   text-align: center;
@@ -24,7 +24,6 @@ body {
   margin-bottom: 1.5rem;
 }
 
-/* Product Details */
 .product-details {
   display: flex;
   flex-direction: column;
@@ -60,7 +59,6 @@ body {
   color: #222;
 }
 
-/* Buttons */
 button {
   margin: 0.5rem;
   padding: 0.5rem 1.2rem;
@@ -82,7 +80,7 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* Back Link */
+
 a {
   color: #ffa500;
   text-decoration: none;
@@ -94,7 +92,7 @@ a:hover {
   color: #ff7b00;
 }
 
-/* Additional Features */
+
 .product-details button {
   margin-top: 1rem;
 }

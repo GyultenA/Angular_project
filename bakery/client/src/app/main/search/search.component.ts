@@ -58,7 +58,7 @@ export class SearchComponent implements OnInit {
     if(this.searchProduct.valid){
       const name = this.searchProduct.value.name?.trim() || '';
       const type = this.searchProduct.value.type || '';
-      console.log('search params',{name, type})
+      //console.log('search params',{name, type})
 
       this.productService.searchProducts(name, type).subscribe({
         next: (response) => {
@@ -68,13 +68,14 @@ export class SearchComponent implements OnInit {
           this.searchService.searchResults = response;
 
           if(this.searchResult.length !==0){
-            console.log('products found');
+           // console.log('products found');
             this.productFound= true;
             this.isLoading = false;
+            this.searchProduct.reset();
           }
         },
         error:(err)=> {
-          console.log('products not found');
+        //  console.log('products not found');
           this.productFound= false;
         }
       })

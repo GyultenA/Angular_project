@@ -86,8 +86,8 @@ const logoutUser = async (req, res) => {
    const payload = req.body;
    const { userId } = req.params;
  
-   console.log('Payload received:', payload);
-   console.log('User ID:', userId);
+  // console.log('Payload received:', payload);
+  /// console.log('User ID:', userId);
  
    try {
      const result = await authService.editMyInfo(userId, payload);

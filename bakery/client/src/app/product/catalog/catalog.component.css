@@ -1,4 +1,4 @@
-/* General Page Styling */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -14,7 +14,7 @@ h1 {
     margin-top: 1.5rem;
 }
 
-/* Main Catalog Section */
+
 .main-catalog {
     display: flex;
     justify-content: center;

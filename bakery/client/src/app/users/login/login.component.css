@@ -15,7 +15,7 @@
     margin-bottom: 20px;
   }
   
-  /* Form Styling */
+
   form {
     width: 100%;
   }
@@ -52,12 +52,12 @@
   }
   
   textarea {
-    resize: vertical; /* Vertical resizing only */
+    resize: vertical; 
   }
   
   /* Error Messages */
   .error {
-    color: #e74c3c; /* Bright red for error messages */
+    color: #e74c3c; 
     font-size: 0.875rem;
     margin-top: 5px;
   }
